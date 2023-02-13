@@ -1,3 +1,8 @@
+# StakeTheStigma
+## Project Description:  
+Dashboard to display articles and insights about stigmatized topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
+## Table of Contents (optional):  
+## How to install and run:  
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## How to use project:  
+## Credits:  
