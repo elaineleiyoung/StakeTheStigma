@@ -3,6 +3,8 @@
 Dashboard to display articles and insights about stigmatized topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
 ## Table of Contents (optional):  
 ## How to install and run:  
+### Need to install firebase  
+npm install firebase  
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
