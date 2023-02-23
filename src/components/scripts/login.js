@@ -1,4 +1,5 @@
 import styles from "../styles/Login.module.css";
+import { db } from "../../firebase";
 
 function Login() {
     return (
