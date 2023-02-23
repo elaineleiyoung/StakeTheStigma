@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 
-logo {
+.logo {
     width: 100%;
     top: 20%;
     position: absolute;
@@ -30,5 +30,6 @@ nav > button {
 nav > button:hover {
     width: 115px;
     height: 115px;
+    cursor: pointer;
     transition: 1s;
 }
