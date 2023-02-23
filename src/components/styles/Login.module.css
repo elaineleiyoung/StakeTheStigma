@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+}
+
+logo {
+    width: 100%;
+    top: 20%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+}
+
+nav {
+    width: 100%;
+    top: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+nav > button {
+    margin: 16px;
+    width: 100px;
+    height: 100px;
+    transition: 1s;
+    background-color: orange;
+}
+
+nav > button:hover {
+    width: 115px;
+    height: 115px;
+    transition: 1s;
+}
