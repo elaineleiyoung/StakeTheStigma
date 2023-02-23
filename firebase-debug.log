@@ -1,0 +1,25 @@
+[debug] [2023-02-13T21:27:09.256Z] ----------------------------------------------------------------------
+[debug] [2023-02-13T21:27:09.257Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2023-02-13T21:27:09.258Z] CLI Version:   11.22.0
+[debug] [2023-02-13T21:27:09.258Z] Platform:      darwin
+[debug] [2023-02-13T21:27:09.258Z] Node Version:  v18.4.0
+[debug] [2023-02-13T21:27:09.268Z] Time:          Mon Feb 13 2023 16:27:09 GMT-0500 (Eastern Standard Time)
+[debug] [2023-02-13T21:27:09.269Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-13T21:27:09.370Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-13T21:27:09.372Z] > authorizing via signed-in user (yangivan0614@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/ivanyang/Desktop/stakethestigma copy
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
