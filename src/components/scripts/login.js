@@ -6,9 +6,17 @@ import { Link, useNavigate, useLocation} from 'react-router-dom'
 
 function Login() {
     const navigate = useNavigate()
-    const addUserHandler = () => {
+    const addGuestHandler = () => {
         addDoc(collection(db, "guestUsers"), {
             name: "idk"
+        });
+        alert("Guest user added");
+    }
+    const addUserHandler = () => {
+        addDoc(collection(db, "users"), {
+            name: "geneva",
+            password: "123",
+            topics: []
         });
         alert("Guest user added");
     }
@@ -20,8 +28,8 @@ function Login() {
         <main>
             <h1 className = {styles.logo}>Stake The Stigma</h1>
             <nav>
-             <button className={styles.guest} onClick = {addUserHandler}>Guest User</button>
-             <button className={styles.login} onClick={test}>Log in</button>
+             <button className={styles.guest} onClick = {addGuestHandler}>Guest User</button>
+             <button className={styles.login} onClick={addUserHandler}>Log in</button>
              <button className={styles.contributor}>Contributor</button>
         </nav>
         </main>
