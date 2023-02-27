@@ -1,8 +1,8 @@
 /*This file contains our api requests*/
 
-export const getNhsArticles = async () => {
-    const subscriptionKey = '0ecc566433df4d06904e85cb33cbc202'
-    const url = 'https://api.nhs.uk/conditions/Periods';
+export const getNhsArticles = async (topic) => {
+    const subscriptionKey = '357fd6edc9ba4a5c930b4f5e663c6384'
+    const url = 'https://api.nhs.uk/conditions/' + topic;
     const response = await fetch(url,{
         headers:{
             'subscription-key': subscriptionKey

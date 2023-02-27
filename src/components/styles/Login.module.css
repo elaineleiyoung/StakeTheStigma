@@ -33,3 +33,9 @@ nav > button:hover {
     cursor: pointer;
     transition: 1s;
 }
+.articleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 10px;
+}

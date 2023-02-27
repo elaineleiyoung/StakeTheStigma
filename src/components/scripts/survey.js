@@ -57,24 +57,24 @@ function handleSubmit() {
           Submit
         </Button>
         <StyledChip
-          label="Menstruation"
-          onClick={() => handleTopicClick("menstruation")}
-          clicked={selectedTopics.includes("menstruation")}
+          label="Menopause"
+          onClick={() => handleTopicClick("menopause")}
+          clicked={selectedTopics.includes("menopause")}
         />
         <StyledChip
-          label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv_vaccination")}
-          clicked={selectedTopics.includes("hpv_vaccination")}
+          label="HPV"
+          onClick={() => handleTopicClick("human-papilloma-virus-hpv")}
+          clicked={selectedTopics.includes("human-papilloma-virus-hpv")}
         />
         <StyledChip
           label="Polycystic ovary syndrome (PCOS)"
-          onClick={() => handleTopicClick("pcos")}
-          clicked={selectedTopics.includes("pcos")}
+          onClick={() => handleTopicClick("polycystic-ovary-syndrome-pcos/")}
+          clicked={selectedTopics.includes("polycystic-ovary-syndrome-pcos/")}
         />
         <StyledChip
-          label="Pregnancy"
-          onClick={() => handleTopicClick("pregnancy")}
-          clicked={selectedTopics.includes("pregnancy")}
+          label="Periods"
+          onClick={() => handleTopicClick("periods")}
+          clicked={selectedTopics.includes("periods")}
         />
         <p>Message - {message}</p>
       </div>
