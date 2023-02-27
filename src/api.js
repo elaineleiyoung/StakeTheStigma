@@ -9,8 +9,11 @@ export const getNhsArticles = async () => {
         }
     })
     const responseJson = await response.json()
-    const cleanedJson = responseJson['mainEntityOfPage'].filter((blob)=>{
+    const cleanedMainEntity = responseJson['mainEntityOfPage'].filter((blob)=>{
         return blob['mainEntityOfPage'].length > 0;
     })
-    return cleanedJson
+    return{
+        ...responseJson,
+        'mainEntityOfPage': cleanedMainEntity
+    }
 }
