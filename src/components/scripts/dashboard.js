@@ -5,6 +5,10 @@ import { Link, useNavigate, useLocation} from 'react-router-dom'
 import { getNhsArticles } from "../../api";
 import React, { useEffect, useState } from 'react';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter, Image, Stack, Heading, Divider, ButtonGroup, Button, Text, Card, CardHeader, CardBody, CardFooter, useDisclosure } from '@chakra-ui/react'
+import { getAuth } from "firebase/auth";
+import { getFirestore, getDoc } from "firebase/firestore";
+
+
 /*
 Source - https://chakra-ui.com/docs/components/card/usage
 Card: The parent wrapper that provides context for its children.
@@ -13,11 +17,34 @@ CardBody: The wrapper that houses the card's main content.
 CardFooter: The footer that houses the card actions.
 */
 function Dashboard() {
+    const auth = getAuth();
+    const firestore = getFirestore();
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const navigate = useNavigate() /*navigate allows us to navigate between components*/
     const [description,setDescription] = useState(null)
     const [content, setContent] = useState([])
+    const [email, setEmail] = useState(null)
+    const [topics, setTopics] = useState(null)
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(async (user) => {
+          if (user) {
+            setEmail(user.email);
+            const userDocRef = doc(firestore, "users", user.uid);
+            const userDoc = await getDoc(userDocRef);
+            if (userDoc.exists()) {
+              setTopics(userDoc.data().topics);
+            } else {
+              setTopics([]);
+            }
+          } else {
+            setEmail(null);
+            setTopics(null);
+          }
+        });
+    
+        return unsubscribe;
+      }, [auth, firestore]);
     function removeHtmlTags(text) {
         const regex = /(<([^>]+)>)/gi;
         return text.replace(regex, "");
@@ -37,8 +64,12 @@ function Dashboard() {
     }
     return (
         <main>
-            <h1>Hi this is the dashboard</h1>
+            <h1>Hi {email}</h1>
+            <h1>Your topics are</h1>
+            {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+            <div>
             <button onClick={fetchArticle}>Click me to view json for nhs period articles!</button>
+            </div>
             <div>
             <Card maxW='sm'>
   <CardBody>
@@ -71,7 +102,7 @@ function Dashboard() {
 </Card>
 <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent maxWidth="80vw">
           <ModalHeader>Periods</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
