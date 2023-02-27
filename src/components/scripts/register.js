@@ -1,5 +1,5 @@
 import styles from "../styles/Register.module.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -9,6 +9,7 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const emailInputRef = useRef(null);
 
     const signIn = e => {
         e.preventDefault();
@@ -48,12 +49,12 @@ function Register() {
 
     return (
         <section className = {styles.layout}>
-            <h1>Stake The Stigma</h1>
+            <h1>Register</h1>
             <div>
                 <form>
                     <div className = {styles.emailInput}>
                         <h4>Email</h4>
-                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
+                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email} autoFocus ref={emailInputRef}/>
                     </div>
                     <div className = {styles.passwordInput}>
                         <h4>Password</h4>

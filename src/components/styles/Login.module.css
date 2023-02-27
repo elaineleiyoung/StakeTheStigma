@@ -1,38 +1,57 @@
-html, body {
-    height: 100%;
-}
-
-.logo {
-    width: 100%;
-    top: 20%;
-    position: absolute;
+main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    font-size: 36px;
-}
-
-nav {
-    width: 100%;
-    top: 50%;
-    position: absolute;
+    height: 100vh;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  nav {
     display: flex;
-    justify-content: center;
-}
-
-nav > button {
-    margin: 16px;
-    width: 100px;
-    height: 100px;
-    transition: 1s;
-    background-color: orange;
-}
-
-nav > button:hover {
-    width: 115px;
-    height: 115px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    transition: 1s;
-}
+    transition: all 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .guest {
+    background-color: #c9c9c9;
+    color: #333;
+  }
+  
+  .contributor {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  button a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .logo {
+    font-family: 'SF Pro', sans-serif;
+  }
 .articleContainer {
     display: flex;
     flex-wrap: wrap;
