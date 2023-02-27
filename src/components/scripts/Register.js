@@ -1,3 +1,4 @@
+import styles from "../styles/Register.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
@@ -33,26 +34,24 @@ function Register() {
     }
 
     return (
-        <section>
+        <section className = {styles.layout}>
             <h1>Stake The Stigma</h1>
             <div>
-                <div>
-                    <div>
-                        <h2>Sign-in</h2>
-                    </div>
-                    <form>
+                <form>
+                    <div className = {styles.emailInput}>
                         <h4>Email</h4>
-                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}}/>
-
+                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
+                    </div>
+                    <div className = {styles.passwordInput}>
                         <h4>Password</h4>
-                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} />
+                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} className = {styles.password} />
+                    </div>
 
-                        <button type = "submit" onClick = {signIn}>Sign In</button>
-                    </form>
+                    <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>Sign In</button>
+                </form>
 
-                    <p>Don't have an account? Create one here!</p>
-                    <button onClick = {createAccount}>Create your account</button>
-                </div>
+                <p>Don't have an account? Create one here!</p>
+                <button className = {styles.createAccBtn} onClick = {createAccount}>Create your account</button>
             </div>
         </section>
     );

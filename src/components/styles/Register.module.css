@@ -1,0 +1,42 @@
+.layout {
+    text-align: center;
+    margin: 10em 20em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    outline: 2px solid green;
+    background-color:#81ecec;
+}
+
+.userInput > h4 {
+    font-size: 12px;
+}
+
+.email, .password {
+    height: 30px;
+}
+
+.signInBtn, .createAccBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+      
+.signInBtn:hover, .createAccBtn:hover {
+    background-color: #0056b3;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+      
+
+
+
