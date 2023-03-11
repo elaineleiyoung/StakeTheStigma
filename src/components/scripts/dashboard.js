@@ -6,7 +6,7 @@ import { getNhsArticles } from "../../api";
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
-import Article from '../article'
+import Article from './article'
 import { Text} from '@chakra-ui/react'
 
 /*
