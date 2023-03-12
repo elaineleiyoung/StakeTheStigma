@@ -58,3 +58,7 @@ main {
     justify-content: left;
     gap: 10px;
 }
+.submit{
+
+  font-size: 25px;
+}

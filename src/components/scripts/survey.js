@@ -52,10 +52,8 @@ function handleSubmit() {
   return (
     <main>
       <h1 className={styles.logo}>Survey Page</h1>
+      <p>Choose your topics: {message}</p>
       <div >
-        <Button component={Link} color="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
         <StyledChip
           label="Menopause"
           onClick={() => handleTopicClick("menopause")}
@@ -76,8 +74,10 @@ function handleSubmit() {
           onClick={() => handleTopicClick("periods")}
           clicked={selectedTopics.includes("periods")}
         />
-        <p>Message - {message}</p>
       </div>
+      <Button className={styles.submit} component={Link} color="primary" onClick={handleSubmit}>
+          Submit
+      </Button>
     </main>
   );
 }

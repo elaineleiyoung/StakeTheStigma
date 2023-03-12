@@ -2,30 +2,25 @@ import styles from "../styles/Login.module.css";
 import { db } from "../../firebase";
 import { doc, setDoc, collection, addDoc } from "firebase/firestore"; 
 import { Link, useNavigate, useLocation} from 'react-router-dom'
-import { getNhsArticles } from "../../api";
+import { getNhsArticles } from "../../nhsApi";
+import { getNewsArticles } from "../../newsApi";
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
 import { Text} from '@chakra-ui/react'
 
-/*
-Source - https://chakra-ui.com/docs/components/card/usage
-Card: The parent wrapper that provides context for its children.
-CardHeader: The wrapper that contains a card's header.
-CardBody: The wrapper that houses the card's main content.
-CardFooter: The footer that houses the card actions.
-*/
 function Dashboard() {
     const auth = getAuth();
     const firestore = getFirestore();
 
-    const navigate = useNavigate() /*navigate allows us to navigate between components*/
+    const navigate = useNavigate()
     const [description,setDescription] = useState(null)
     const [content, setContent] = useState([])
     const [email, setEmail] = useState(null)
     const [topics, setTopics] = useState(null)
     const [fullContent, setFullContent] = useState([])
+    
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -44,18 +39,33 @@ function Dashboard() {
         });
         return unsubscribe;
       }, [auth, firestore]);
-      useEffect(() => {
+
+    useEffect(() => {
         const fetchData = async () => {
           const newContent = [];
           for (let i = 0; i < topics.length; i++) {
             try {
-              const responseJson = await getNhsArticles(topics[i]);
-              const data = {
+              // Fetch data from the NHS API
+              const responseJsonNhs = await getNhsArticles(topics[i]);
+              const dataNhs = {
                 title: topics[i],
-                description: responseJson['description'],
-                content: responseJson['mainEntityOfPage']
+                description: responseJsonNhs['description'],
+                content: responseJsonNhs['mainEntityOfPage']
               }
-              newContent.push(data);
+              newContent.push(dataNhs);
+
+              // Fetch data from the NewsAPI
+              const responseJsonNews = await getNewsArticles(topics[i]);
+              const articles = responseJsonNews.articles;
+              articles.forEach(article => {
+                const dataNews = {
+                  //TO-DO: below is incorrect
+                  title: topics[i],
+                  description: article.description,
+                  content: article.content
+                }
+                newContent.push(dataNews);
+              });
             } catch (error) {
               console.error(error);
             }
@@ -65,16 +75,8 @@ function Dashboard() {
         if (topics) {
           fetchData();
         }
-      }, [topics]);
-      console.log(fullContent)
-    /** {content.map((blob) => (
-                    blob['mainEntintyofPage'][0]['text'] ? 
-                    <p>{blob['mainEntintyofPage'][0]['text']}</p> : 
-                    <p></p>
-                    ))} */
-    
+    }, [topics]);
 
-    
     return (
         <main>
             <h1>Hi {email}</h1>
@@ -91,4 +93,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard; 
+export default Dashboard;
