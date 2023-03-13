@@ -5,11 +5,11 @@ import { Configuration, OpenAIApi } from "openai";
 
 const Summarization = () => {
   const [summary, setSummary] = useState("");
-  const subscriptionKey = "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";
+//   const subscriptionKey;
 
   useEffect(() => {
     const configuration = new Configuration({
-      apiKey: subscriptionKey,
+    //   apiKey: subscriptionKey,
     });
     const openai = new OpenAIApi(configuration);
 
