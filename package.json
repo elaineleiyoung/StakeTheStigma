@@ -16,6 +16,7 @@
     "framer-motion": "^10.0.1",
     "jssoup": "^0.0.15",
     "node-fetch": "^2.6.1",
+    "openai": "^3.2.1",
     "parse5-htmlparser2-tree-adapter": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
