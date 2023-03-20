@@ -3,7 +3,7 @@ in a separate file for organization purposes, but will combine into a single fil
 import React, { useEffect, useState } from "react";
 
 function OpenAIv2() {
-    // const API_KEY;
+    const API_KEY = process.env.OPENAI_API_KEY;
     async function getSummary(url) {
 
         const systemMessage = {

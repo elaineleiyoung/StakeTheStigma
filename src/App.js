@@ -1,9 +1,9 @@
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 import Login from './components/scripts/login';
-import Dashboard from './components/scripts/dashboard'
-import Survey from './components/scripts/survey'
-import Register from './components/scripts/register'
-import OpenAIv2 from './openAIv2';
+import Dashboard from './components/scripts/dashboard';
+import Survey from './components/scripts/survey';
+import Register from './components/scripts/register';
+import Summarization from './components/scripts/Summarization';
 import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
 // `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
 import chakraTheme from '@chakra-ui/theme'
@@ -29,7 +29,7 @@ function App() {
 <Dashboard /></ChakraBaseProvider>}/>
         <Route path="/survey" element = {<Survey />} />
         <Route path="/register" element = {<Register />} />
-        <Route path="/summarization" element = {<OpenAIv2 />} />
+        <Route path="/summarization" element = {<Summarization />} />
       </Routes>
     </Router>
   );
