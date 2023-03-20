@@ -61,8 +61,8 @@ function Dashboard() {
                 const dataNews = {
                   //TO-DO: below is incorrect
                   title: topics[i],
-                  description: article.description,
-                  content: article.content
+                  url: article.url,
+                  content: article
                 }
                 newContent.push(dataNews);
               });

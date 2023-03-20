@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
-import Login from './components/scripts/login';
+import Login from './components/scripts/Login';
 import Dashboard from './components/scripts/dashboard';
 import Survey from './components/scripts/survey';
 import Register from './components/scripts/register';

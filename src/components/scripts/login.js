@@ -16,10 +16,11 @@ function Login() {
     return (
         <main>
             <h1 className = {styles.logo}>Stake The Stigma</h1>
+            <h2 className = {styles.subtitle}>UNCENSORING THE CENSORED NEWS</h2>
             <nav>
                 <button className={styles.guest} onClick = {addUserHandler}>Guest User</button>
-                <button>
-                    <Link to = {"/register"} style={{ textDecoration: 'none' }}>
+                <button className={styles.register}>
+                    <Link to = {"/register"} >
                         Register/Login
                     </Link>
                 </button>

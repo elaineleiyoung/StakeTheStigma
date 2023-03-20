@@ -31,6 +31,6 @@ export const getNewsArticles = async (topic) => {
     //TO-DO: integrate with dashboard correctly
     return {
       'url': articleUrls,
-    //   'article': article // Add scraped article to response
+      // 'article': article // Add scraped article to response
     };
 }

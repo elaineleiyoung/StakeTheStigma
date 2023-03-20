@@ -1,21 +1,36 @@
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+main{
+  background: linear-gradient(250.33deg, #F4B1FF 8.56%, #BEFFE8 89.7%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border: none; /* added to remove border */
+}
   
   .logo {
-    font-size: 2rem;
+    font-size: 4rem;
+    letter-spacing: 0.25rem;
     font-weight: bold;
-    margin-bottom: 2rem;
+    position: fixed;
+    top: 25%;
+    font-family: 'SF Pro', sans-serif;
+  }
+  .subtitle{
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    position: fixed;
+    padding-top: 0;
+    top: 40%;
+    font-family: 'SF Pro', sans-serif;
   }
   
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    bottom: 30%;
     width: 100%;
     max-width: 400px;
   }
@@ -34,12 +49,7 @@ main {
     transform: translateY(-2px);
   }
   
-  .guest {
-    background-color: #c9c9c9;
-    color: #333;
-  }
-  
-  .contributor {
+  .contributor, .guest , .register {
     background-color: #333;
     color: #fff;
   }
@@ -49,9 +59,6 @@ main {
     text-decoration: none;
   }
   
-  .logo {
-    font-family: 'SF Pro', sans-serif;
-  }
 .articleContainer {
     display: flex;
     flex-wrap: wrap;
@@ -59,6 +66,5 @@ main {
     gap: 10px;
 }
 .submit{
-
   font-size: 25px;
 }
