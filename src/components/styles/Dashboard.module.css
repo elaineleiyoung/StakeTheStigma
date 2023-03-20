@@ -5,7 +5,6 @@ main{
     height: 100vh;
     border: none; /* added to remove border */
     font-family: 'SF Pro', sans-serif;
-    overflow: hidden;
   }
 
   .logo {
@@ -21,7 +20,7 @@ main{
     letter-spacing: 0.25rem;
     position: relative;
     left: 5%;
-    top: 10%;
+    top: 8%;
   }
 
   .articleContainer {
