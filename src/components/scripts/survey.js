@@ -75,7 +75,23 @@ function handleSubmit() {
           clicked={selectedTopics.includes("periods")}
         />
       </div>
-      <Button className={styles.submit} component={Link} color="primary" onClick={handleSubmit}>
+      <Button className={styles.submit} component={Link} onClick={handleSubmit} 
+        sx={ {
+          fontFamily: 'sans-serif',
+          fontSize: 20,
+          letterSpacing: 3,
+          fontWeight: 'bold',
+          color: 'white',
+          margin: 1.5,
+          width: 250,
+          height: 50,
+          borderRadius: 3,
+          backgroundColor: "#759CD8",
+          '&:hover': 
+            {backgroundColor: 'grey', 
+              color: 'black'},
+          
+        }}>
           Submit
       </Button>
     </main>
@@ -87,7 +103,22 @@ function StyledChip(props) {
   return (
     <Chip
       {...rest}
-      sx={clicked ? { backgroundColor: "#31ff00" } : { backgroundColor: "red" }}
+      sx={ {
+        fontFamily: 'sans-serif',
+        letterSpacing: 1,
+        color: 
+          clicked
+          ? 'black'
+          : 'white',
+        margin: 1.5,
+        width: 200,
+        height: 50,
+        backgroundColor:
+          clicked
+            ? "white"
+            : "#759CD8"
+        
+      }}
     />
   );
 }

@@ -66,5 +66,6 @@ main{
     gap: 10px;
 }
 .submit{
-  font-size: 25px;
+  position: fixed;
+  bottom: -15%;
 }
