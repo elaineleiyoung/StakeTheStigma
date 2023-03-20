@@ -65,13 +65,7 @@ main{
     color: #fff;
     text-decoration: none;
   }
-  
-.articleContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 10px;
-}
+
 .submit{
   position: fixed;
   bottom: -15%;
