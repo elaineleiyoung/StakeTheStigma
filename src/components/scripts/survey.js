@@ -52,7 +52,7 @@ function handleSubmit() {
   return (
     <main>
       <h1 className={styles.logo}>Survey Page</h1>
-      <p>Choose your topics: {message}</p>
+      <p className={styles.topics}>Choose your topics: {message}</p>
       <div >
         <StyledChip
           label="Menopause"
