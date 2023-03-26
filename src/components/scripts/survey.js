@@ -86,7 +86,7 @@ function handleSubmit() {
           width: 250,
           height: 50,
           borderRadius: 3,
-          backgroundColor: "#759CD8",
+          backgroundColor: "black",
           '&:hover': 
             {backgroundColor: 'grey', 
               color: 'black'},
@@ -116,7 +116,10 @@ function StyledChip(props) {
         backgroundColor:
           clicked
             ? "white"
-            : "#759CD8"
+            : "black",
+        '&:hover': 
+        {backgroundColor: 'grey', 
+          color: 'black'},
         
       }}
     />
