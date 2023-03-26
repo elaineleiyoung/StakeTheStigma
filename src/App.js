@@ -1,7 +1,8 @@
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 import Login from './components/scripts/login';
 import Survey from './components/scripts/survey';
-import Articles from "./api.js" //import your signUp page
+import Articles from "./api.js" //import your signUp page;
+import Register from "./components/scripts/Register";
 function App() {
   return (
     <Router>
@@ -9,6 +10,7 @@ function App() {
         <Route path="/" element = {<Login />} />
         <Route path="/survey" element = {<Survey />} />
         <Route path="/articles" element = {<Articles />}/>
+        <Route path="/register" element = {<Register />} />
       </Routes>
     </Router>
   );

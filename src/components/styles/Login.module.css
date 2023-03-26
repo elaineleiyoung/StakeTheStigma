@@ -1,14 +1,28 @@
-html, body {
-    height: 100%;
+
+.sheesh{
+  display: flex;
+  height: 100vh;
+  width: 100vh;
+  justify-content: flex-end;
 }
 
 .logo {
-    width: 100%;
-    top: 20%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    font-size: 36px;
+  font-size: 3.5rem;
+  color: #59515e;
+  font-weight: bold;
+  font-family: sans-serif;
+  align-self: center;
+}
+
+.logo2 {
+  font-size: 1.7rem;
+  color: #59515e;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 nav {
@@ -16,20 +30,28 @@ nav {
     top: 50%;
     position: absolute;
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 nav > button {
-    margin: 16px;
-    width: 100px;
-    height: 100px;
-    transition: 1s;
-    background-color: orange;
-}
-
-nav > button:hover {
-    width: 115px;
-    height: 115px;
+    display: inline-block;
+    background-color: black;
+    border-radius: 100px;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 20px;
+    width: auto;
+    transition: all 0.5s;
     cursor: pointer;
-    transition: 1s;
-}
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: hotpink;
+  }
+
+
+
+

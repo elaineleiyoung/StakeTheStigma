@@ -1,4 +1,4 @@
-import styles from "../styles/Login.module.css";
+import styles from "../styles/Login.module.css"
 import { db } from "../../firebase";
 import { doc, setDoc, collection, addDoc } from "firebase/firestore"; 
 import { Link, useNavigate, useLocation} from 'react-router-dom'
