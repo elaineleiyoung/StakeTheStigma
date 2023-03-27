@@ -11,22 +11,22 @@ export const getNewsArticles = async (topic) => {
     const articleUrls = responseJson.articles.slice(0, 1).map((article) => article.url);// takes the first 5 url's
 
     // Call scrapeArticle function to scrape article
-    const scrapedArticles = [];
-    async function scrapeArticles() {
-    for (const url of articleUrls) {
-        try {
-        const article = await scrapeArticle('https://www.forbes.com/sites/richardnieva/2023/03/10/google-peacetime-ceo-sundar-pichai/?sh=6a508d4c4ab1'); //hard coded article url for debugging purposes
-        // const article = await scrapeArticle(url);
-        scrapedArticles.push(article);
-        } catch (error) {
-        console.error(`Error scraping article at ${url}: ${error}`);
-        }
-    }
-    }
+    // const scrapedArticles = [];
+    // async function scrapeArticles() {
+    // for (const url of articleUrls) {
+    //     try {
+    //     const article = await scrapeArticle('https://www.forbes.com/sites/richardnieva/2023/03/10/google-peacetime-ceo-sundar-pichai/?sh=6a508d4c4ab1'); //hard coded article url for debugging purposes
+    //     // const article = await scrapeArticle(url);
+    //     scrapedArticles.push(article);
+    //     } catch (error) {
+    //     console.error(`Error scraping article at ${url}: ${error}`);
+    //     }
+    // }
+    // }
 
-    scrapeArticles()
-    .then(() => console.log(scrapedArticles))
-    .catch((error) => console.error(`Error scraping articles: ${error}`));
+    // scrapeArticles()
+    // .then(() => console.log(scrapedArticles))
+    // .catch((error) => console.error(`Error scraping articles: ${error}`));
 
     //TO-DO: integrate with dashboard correctly
     return {

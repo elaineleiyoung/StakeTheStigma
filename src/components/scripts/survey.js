@@ -7,12 +7,16 @@ import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import DoneIcon from "@mui/icons-material/Done";
 import { Link } from 'react-router-dom';
-
-
+import {getNewsArticles} from '../../newsApi'
+import {OpenAI} from '../../openAI';
+import { useEffect } from 'react'
 
 function Survey() {
-  
+  const [url, setUrl] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
+  // useEffect(() => {
+  //   console.log(url);
+  // }, [url]);
 
   function handleTopicClick(topic) {
     if (selectedTopics.includes(topic)) {
@@ -22,17 +26,18 @@ function Survey() {
     }
   }
 
-  function handleSubmit() {
+  const handleSubmit = async(event) => {
     // Send API call to Firebase with selectedTopics array
     // Example API call using fetch:
-    fetch("https://your-firebase-endpoint-url.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ topics: selectedTopics }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    event.preventDefault();
+    for (let i = 0; i < selectedTopics.length; i++) {
+      try{
+        const link = await getNewsArticles(selectedTopics[i]);
+        setUrl(...url, link.url[0]);
+      }catch (error){
+        console.error(`Error scraping article ${error}`);
+      }
+    }
   }
 
   return (
@@ -86,7 +91,7 @@ function Survey() {
           clicked={selectedTopics.includes("menopause")}
         />
         
-        <Button component={Link} to="/dashboard" color="primary" onClick={handleSubmit}  
+        <Button component={Link}  color="primary" onClick={handleSubmit}  
         style=
 
         {{ 
