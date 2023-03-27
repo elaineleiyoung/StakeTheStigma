@@ -8,7 +8,7 @@ export const getNewsArticles = async (topic) => {
     const response = await fetch(url);
     const responseJson = await response.json();
 
-    const articleUrls = responseJson.articles.slice(0, 5).map((article) => article.url);// takes the first 5 url's
+    const articleUrls = responseJson.articles.slice(0, 1).map((article) => article.url);// takes the first 5 url's
 
     // Call scrapeArticle function to scrape article
     const scrapedArticles = [];
@@ -31,6 +31,6 @@ export const getNewsArticles = async (topic) => {
     //TO-DO: integrate with dashboard correctly
     return {
       'url': articleUrls,
-    //   'article': article // Add scraped article to response
+      // 'article': article // Add scraped article to response
     };
 }

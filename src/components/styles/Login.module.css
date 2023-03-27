@@ -1,64 +1,70 @@
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
+
+.sheesh{
+  display: flex;
+  height: 100vh;
+  width: 100vh;
+  justify-content: flex-end;
+}
+
+.logo {
+  font-size: 3.5rem;
+  color: #59515e;
+  font-weight: bold;
+  font-family: sans-serif;
+  align-self: center;
+}
+
+.logo2 {
+  font-size: 1.7rem;
+  color: #59515e;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
   .logo {
-    font-size: 2rem;
+    font-size: 4rem;
+    letter-spacing: 0.25rem;
     font-weight: bold;
-    margin-bottom: 2rem;
+    position: relative;
+    top: -20%;
+    font-family: 'SF Pro', sans-serif;
+  }
+  .subtitle{
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    position: relative;
+    padding-top: 0;
+    bottom: 20%;
+    font-family: 'SF Pro', sans-serif;
   }
   
   nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  button:hover {
-    transform: translateY(-2px);
-  }
-  
-  .guest {
-    background-color: #c9c9c9;
-    color: #333;
-  }
-  
-  .contributor {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  button a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .logo {
-    font-family: 'SF Pro', sans-serif;
-  }
-.articleContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 10px;
 }
-.submit{
 
-  font-size: 25px;
-}
+nav > button {
+    display: inline-block;
+    background-color: black;
+    border-radius: 100px;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 20px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: hotpink;
+  }
+
+
+
+

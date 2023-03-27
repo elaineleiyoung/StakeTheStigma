@@ -1,4 +1,4 @@
-import styles from "../styles/Login.module.css";
+import styles from "../styles/Dashboard.module.css";
 import { db } from "../../firebase";
 import { doc, setDoc, collection, addDoc } from "firebase/firestore"; 
 import { Link, useNavigate, useLocation} from 'react-router-dom'
@@ -61,8 +61,8 @@ function Dashboard() {
                 const dataNews = {
                   //TO-DO: below is incorrect
                   title: topics[i],
-                  description: article.description,
-                  content: article.content
+                  url: article.url,
+                  content: article
                 }
                 newContent.push(dataNews);
               });
@@ -79,9 +79,12 @@ function Dashboard() {
 
     return (
         <main>
-            <h1>Hi {email}</h1>
-            <h1>Your topics are</h1>
-            {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+            <h1 className = {styles.logo}>Stake the Stigma </h1>
+            <div className = {styles.topics}>
+              <h1>Hi {email}</h1>
+              <h1>Your topics are</h1>
+              {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+            </div>
             <div>
             </div>
             <div className={styles.articleContainer}>
