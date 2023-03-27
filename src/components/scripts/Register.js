@@ -15,7 +15,7 @@ function Register() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then(auth => {
-            navigate("/survey");
+            navigate("/");
         })
         .catch(error => alert(error.message))
     }
@@ -27,7 +27,7 @@ function Register() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((auth) => {
             if (auth) {
-                navigate("/survey");
+                navigate("/");
             }
         })
         .catch(error => alert(error.message))
