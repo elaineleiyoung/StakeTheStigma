@@ -2,12 +2,14 @@ body{
   background: #FFF5C4 ;
   background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
 }
+
 .sheesh{
   display: flex;
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   justify-content: flex-end;
 }
+
 input {
   border: 0;
   outline: 0;
@@ -19,6 +21,8 @@ input, select, textarea{
 }
 
 .logo {
+  width: 20rem;
+  margin-right: 20%;
   font-size: 3.5rem;
   color: #fff;
   font-weight: bold;
@@ -51,12 +55,34 @@ input, select, textarea{
 
 
 form{
+  position: relative;
+  left: 25rem;
   align-self: flex-end;
 }
-.signInBtn, .createAccBtn {
+
+.signInBtn {
+  position: relative;
+  height: 2.5rem;
+  top: 3rem;
   display: inline-block;
   padding: 10px 20px;
-  margin-top: 1em;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.createAccBtn {
+  top: 25rem;
+  right: 3.5rem;
+  position: relative;
+  height: 2.5rem;
+  padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
@@ -70,9 +96,14 @@ form{
 }
 
 .message{
+  /* background-color: red; */
+  top: 21.5rem;
+  right: 12rem;
+  position: relative;
   font-family: sans-serif;
   font-weight: bold;
   color:white;
+  left: 15rem;;
   
 }
     
@@ -81,3 +112,4 @@ form{
   color:black;
   
 }
+
