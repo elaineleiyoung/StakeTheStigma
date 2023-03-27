@@ -1,0 +1,83 @@
+body{
+  background: #FFF5C4 ;
+  background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
+}
+.sheesh{
+  display: flex;
+  height: 100vh;
+  width: 100vh;
+  justify-content: flex-end;
+}
+input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid white;
+}
+input, select, textarea{
+  color: white;
+}
+
+.logo {
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: bold;
+  font-family: sans-serif;
+  align-self: center;
+}
+
+.logo2 {
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.userInput > h4 {
+  font-size: 12px;
+}
+
+
+form{
+  align-self: flex-end;
+}
+.signInBtn, .createAccBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 1em;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.message{
+  font-family: sans-serif;
+  font-weight: bold;
+  color:white;
+  
+}
+    
+.signInBtn:hover, .createAccBtn:hover {
+  background-color: lightgrey;
+  color:black;
+  
+}
