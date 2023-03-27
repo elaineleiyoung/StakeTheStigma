@@ -8,10 +8,7 @@ const Article = ({ topic }) => {
     const [description,setDescription] = useState(topic.description)
     const [content, setContent] = useState(topic.content)
     console.log(content)
-    function removeHtmlTags(text) {
-        const regex = /(<([^>]+)>)/gi;
-        return text.replace(regex, "");
-    }
+
     return (
         <main>
             <div>
@@ -47,15 +44,7 @@ const Article = ({ topic }) => {
           <ModalHeader>{topic.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          {content.map((blob)=> {
-    console.log(blob); // Add this line to log the blob
-    return (
-      <React.Fragment>
-        <Heading>{blob['headline']}</Heading>
-        <Text>{removeHtmlTags(blob['mainEntityOfPage'][0]['text'])}</Text>
-      </React.Fragment>
-    );
-  })}
+        <Text>{content}</Text>
           </ModalBody>
 
           <ModalFooter>

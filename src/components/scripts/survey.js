@@ -8,15 +8,16 @@ import Button from '@mui/material/Button';
 import DoneIcon from "@mui/icons-material/Done";
 import { Link } from 'react-router-dom';
 import {getNewsArticles} from '../../newsApi'
-import {OpenAI} from '../../openAI';
+import {OpenAI} from '../../openAI'
 import { useEffect } from 'react'
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 function Survey() {
-  const [url, setUrl] = useState([]);
+  const [urlList, setUrl] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
-  // useEffect(() => {
-  //   console.log(url);
-  // }, [url]);
+  const navigate = useNavigate();
+  const promises = [];
 
   function handleTopicClick(topic) {
     if (selectedTopics.includes(topic)) {
@@ -26,19 +27,57 @@ function Survey() {
     }
   }
 
-  const handleSubmit = async(event) => {
-    // Send API call to Firebase with selectedTopics array
-    // Example API call using fetch:
-    event.preventDefault();
-    for (let i = 0; i < selectedTopics.length; i++) {
-      try{
-        const link = await getNewsArticles(selectedTopics[i]);
-        setUrl(...url, link.url[0]);
-      }catch (error){
-        console.error(`Error scraping article ${error}`);
-      }
+  const handleSubmit = async (event) => {
+    const auth = getAuth();
+    if (auth.currentUser) {
+      // add topics to user's thing
+  
+      // Send API call to Firebase with selectedTopics array
+      // Example API call using fetch:
+      event.preventDefault();
+      const promises = selectedTopics.map(async (topic) => {
+        try {
+          const link = await getNewsArticles(topic);
+          console.log(link.url[0])
+          const summary = await OpenAI(link.url[0]);
+          urlList.push(link.url[0]); // add url to urlList array
+          //add article to firebase
+          const articlesRef = collection(db, "articles");
+          const newArticleRef = doc(articlesRef);
+  
+          // set the data for the new document
+          await setDoc(newArticleRef, {
+            url: link.url[0],
+            summary: summary.text,
+            likes: 0,
+            title: topic
+          });
+        } catch (error) {
+          console.error(`Error scraping article ${error}`);
+        }
+      });
+  
+      // Wait for all promises to resolve
+      await Promise.all(promises);
+  
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      console.log(urlList)
+      // Add topics array to user profile in Firestore
+      setDoc(userRef, { topics: selectedTopics, links: urlList }, { merge: true })
+        .then(() => {
+          navigate("/dashboard", { state: { uuid: auth.currentUser.uid} });
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else {
+      // If the user is not authenticated, prompt them to log in
+      alert("Please log in to add articles.");
+      navigate("/login");
     }
-  }
+  };
+  
+  
 
   return (
     <main>

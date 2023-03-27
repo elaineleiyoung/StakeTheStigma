@@ -16,7 +16,7 @@ function Register() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then(auth => {
-            navigate("/dashboard");
+            navigate("/survey");
         })
         .catch(error => alert(error.message))
     }
