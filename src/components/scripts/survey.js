@@ -86,7 +86,7 @@ function Survey() {
           clicked={selectedTopics.includes("menopause")}
         />
         
-        <Button component={Link} to="/articles" color="primary" onClick={handleSubmit}  
+        <Button component={Link} to="/dashboard" color="primary" onClick={handleSubmit}  
         style=
 
         {{ 

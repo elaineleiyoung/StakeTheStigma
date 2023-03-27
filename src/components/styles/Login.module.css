@@ -24,11 +24,24 @@
   left: 50%;
   transform: translateX(-50%);
 }
-
-nav {
-    width: 100%;
-    top: 50%;
-    position: absolute;
+  .logo {
+    font-size: 4rem;
+    letter-spacing: 0.25rem;
+    font-weight: bold;
+    position: relative;
+    top: -20%;
+    font-family: 'SF Pro', sans-serif;
+  }
+  .subtitle{
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    position: relative;
+    padding-top: 0;
+    bottom: 20%;
+    font-family: 'SF Pro', sans-serif;
+  }
+  
+  nav {
     display: flex;
     align-items: center;
 }

@@ -15,20 +15,17 @@ function Login() {
     
     return (
         <main>
-            <div className = {styles.sheesh}>
-            <h1 className = {styles.logo}>Stake The Stigma.</h1>
-            <h2 className={styles.logo2}>_UNCENSORING CENSORED NEWS_</h2>
-           
+            <h1 className = {styles.logo}>Stake The Stigma</h1>
+            <h2 className = {styles.subtitle}>UNCENSORING THE CENSORED NEWS</h2>
             <nav>
-                <button className={styles.button} onClick = {addUserHandler}>Guest</button>
-                <button className={styles.button}>
-                    <Link to = {"/register"} style={{ textDecoration: 'none' }}>
+                <button className={styles.guest} onClick = {addUserHandler}>Guest User</button>
+                <button className={styles.register}>
+                    <Link to = {"/register"} >
                         Register/Login
                     </Link>
                 </button>
-                <button className={styles.button}>Contributor</button>
+                <button className={styles.contributor}>Contributor</button>
             </nav>
-            </div>
         </main>
     );
 }
