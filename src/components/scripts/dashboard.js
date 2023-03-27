@@ -59,7 +59,8 @@ function Dashboard() {
               const article = {
                 title: doc.data().title,
                 description: doc.data().title,
-                content: doc.data().summary
+                content: doc.data().summary,
+                likes: doc.data().likes
               }
               newContent.push(article);;
             });

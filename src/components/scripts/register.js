@@ -3,24 +3,33 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";
-
+import { db } from "../../firebase";
+import { doc, setDoc, collection, addDoc, arrayUnion, getDoc } from "firebase/firestore"; 
 function Register() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const signIn = e => {
+    const signIn = async (e) => {
         e.preventDefault();
-
+      
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-        .then(auth => {
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          const userRef = doc(db, "users", auth.currentUser.uid);
+          const docSnap = await getDoc(userRef);
+          console.log(docSnap.data())
+          if (docSnap.exists() && docSnap.data().topics) {
+            navigate("/dashboard");
+          } else {
             navigate("/survey");
-        })
-        .catch(error => alert(error.message))
-    }
-
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+      
     const createAccount = e => {
         e.preventDefault();
         
