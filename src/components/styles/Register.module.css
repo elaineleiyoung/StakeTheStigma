@@ -2,12 +2,14 @@ body{
   background: #FFF5C4 ;
   background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
 }
+
 .sheesh{
   display: flex;
   height: 100vh;
   width: 100vh;
   justify-content: flex-end;
 }
+
 input {
   border: 0;
   outline: 0;
