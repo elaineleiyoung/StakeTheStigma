@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter, Image, Stack, Heading, Divider, ButtonGroup, Button, Text, Card, CardHeader, CardBody, CardFooter, useDisclosure } from '@chakra-ui/react'
 
 const Article = ({ topic }) => {
-    console.log(topic)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [title, setTitle] = useState(topic.title)
     const [description,setDescription] = useState(topic.description)
     const [content, setContent] = useState(topic.content)
-    console.log(content)
 
     return (
         <main>

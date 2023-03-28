@@ -31,35 +31,9 @@ function Survey() {
     const auth = getAuth();
     if (auth.currentUser) {
       // add topics to user's thing
-  
       // Send API call to Firebase with selectedTopics array
       // Example API call using fetch:
       event.preventDefault();
-      const promises = selectedTopics.map(async (topic) => {
-        try {
-          const link = await getNewsArticles(topic);
-          console.log(link.url[0])
-          const summary = await OpenAI(link.url[0]);
-          urlList.push(link.url[0]); // add url to urlList array
-          //add article to firebase
-          const articlesRef = collection(db, "articles");
-          const newArticleRef = doc(articlesRef);
-  
-          // set the data for the new document
-          await setDoc(newArticleRef, {
-            url: link.url[0],
-            summary: summary.text,
-            likes: 0,
-            title: topic
-          });
-        } catch (error) {
-          console.error(`Error scraping article ${error}`);
-        }
-      });
-  
-      // Wait for all promises to resolve
-      await Promise.all(promises);
-  
       const userRef = doc(db, "users", auth.currentUser.uid);
       console.log(urlList)
       // Add topics array to user profile in Firestore
@@ -96,8 +70,8 @@ function Survey() {
         />
         <StyledChip
           label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv_vaccination")}
-          clicked={selectedTopics.includes("hpv_vaccination")}
+          onClick={() => handleTopicClick("hpv")}
+          clicked={selectedTopics.includes("hpv")}
         />
         <StyledChip
           label="Polycystic ovary syndrome (PCOS)"
@@ -111,18 +85,18 @@ function Survey() {
         />
         <StyledChip
           label="Ovarian and Cervical Cancer"
-          onClick={() => handleTopicClick("Ovarian and Cervical Cancer")}
-          clicked={selectedTopics.includes("Ovarian and Cervical Cancer")}
+          onClick={() => handleTopicClick("ovarian_cancer")}
+          clicked={selectedTopics.includes("ovarian_cancer")}
         />
         <StyledChip
           label="Postpartum Depression"
-          onClick={() => handleTopicClick("postpartum depression")}
-          clicked={selectedTopics.includes("postpartum depression")}
+          onClick={() => handleTopicClick("postpartum")}
+          clicked={selectedTopics.includes("postpartum")}
         />
         <StyledChip
           label="Breast Cancer"
-          onClick={() => handleTopicClick("Breast Cancer")}
-          clicked={selectedTopics.includes("Breast Cancer")}
+          onClick={() => handleTopicClick("breast_cancer")}
+          clicked={selectedTopics.includes("breast_cancer")}
         />
         <StyledChip
           label="Menopause"

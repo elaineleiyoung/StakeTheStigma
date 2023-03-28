@@ -26,7 +26,7 @@ export const OpenAI = async (url) => {
       const data = await response.json();
       return {'text': data.choices[0].text};
   } catch (error) {
-      console.log("Ran out of tokens for today! Try tomorrow!");
+      console.log("Ran out of tokens for today! Try tomorrow!" , error);
       return {'text': ""};
   }
 }

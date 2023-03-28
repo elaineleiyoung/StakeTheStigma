@@ -18,7 +18,7 @@ function Dashboard() {
     const [description,setDescription] = useState(null)
     const [content, setContent] = useState([])
     const [email, setEmail] = useState(null)
-    const [topics, setTopics] = useState(null)
+    const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
     const [fullContent, setFullContent] = useState([])
     
@@ -48,34 +48,33 @@ function Dashboard() {
       const fetchArticles = async () => {
         const newContent = [];
       
-        for (const link of links) {
-          console.log(link)
+        for (const topic of topics) {
+          console.log(topic)
           try {
-            const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
+            const q = query(collection(db, "articles"), where("topic", "==", topic), limit(1));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
               console.log(doc.data())
               const article = {
                 title: doc.data().title,
-                description: doc.data().title,
-                content: doc.data().summary,
+                description: doc.data().url,
+                content: doc.data().content,
                 likes: doc.data().likes
               }
               newContent.push(article);;
             });
           } catch (error) {
-            console.error(`Error fetching articles for ${link}`, error);
+            console.error(`Error fetching articles for ${topic}`, error);
           }
         }
-  
         setFullContent(newContent);
       };
   
-      if (links.length) {
+      if (topics.length) {
         fetchArticles();
       }
-    }, [links]);
+    }, [topics]);
   
 
     return (
