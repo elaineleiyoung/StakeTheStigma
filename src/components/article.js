@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter, Image, Stack, Heading, Divider, ButtonGroup, Button, Text, Card, CardHeader, CardBody, CardFooter, useDisclosure } from '@chakra-ui/react'
 
+
 const Article = ({ topic }) => {
-    console.log(topic)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [title, setTitle] = useState(topic.title)
     const [description,setDescription] = useState(topic.description)
     const [content, setContent] = useState(topic.content)
-    console.log(content)
-    function removeHtmlTags(text) {
-        const regex = /(<([^>]+)>)/gi;
-        return text.replace(regex, "");
-    }
+
+
     return (
         <main>
             <div>
@@ -20,7 +17,7 @@ const Article = ({ topic }) => {
     <Image
       src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
       alt='Green double couch with wooden legs'
-      borderRadius='lg'
+      borderRadius='xl'
     />
     <Stack mt='6' spacing='3'>
       <Heading size='md'>{title}</Heading>
@@ -28,7 +25,7 @@ const Article = ({ topic }) => {
         {description}
       </Text>
       <Text color='blue.600' fontSize='2xl'>
-        Lorem
+        Stake The Stigma
       </Text>
     </Stack>
   </CardBody>
@@ -47,15 +44,7 @@ const Article = ({ topic }) => {
           <ModalHeader>{topic.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          {content.map((blob)=> {
-    console.log(blob); // Add this line to log the blob
-    return (
-      <React.Fragment>
-        <Heading>{blob['headline']}</Heading>
-        <Text>{removeHtmlTags(blob['mainEntityOfPage'][0]['text'])}</Text>
-      </React.Fragment>
-    );
-  })}
+        <Text>{content}</Text>
           </ModalBody>
 
           <ModalFooter>

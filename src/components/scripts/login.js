@@ -17,22 +17,22 @@ function Login() {
     
     return (
         <main className={styles.buttonContainer}>
-            <h1 className = {styles.logo}>Stake The Stigma</h1>
-            <h2 className = {styles.logo2}>UNCENSORING CENSORED NEWS.</h2>
-                <div style={{ textAlign: "left", marginBottom: "20px", marginLeft: "20px" }}>
-                    <button className={styles.login} onClick = {addUserHandler} >
-                        <Link to = {"/survey"} color= "inherit" style={{textDecoration:'none'}}>
-                            Guest
-                        </Link>
-                    </button>
-                    <button1 className={styles.login}>
-                        <Link to = {"/register"} style={{textDecoration:'none'}}>
-                            Register/Login
-                        </Link>
-                    </button1>
-                </div>
+            <h1 className={styles.logo}>Stake The Stigma</h1>
+            <h2 className={styles.logo2}>UNCENSORING CENSORED NEWS.</h2>
+            <div className={styles.buttonWrapper}>
+                <button className={styles.Login} onClick={addUserHandler}>
+                    <Link to={"/survey"} style={{textDecoration:'none', color: '#3A448C'}}>
+                        Guest
+                    </Link>
+                </button>
+                <button1 className={styles.Login1}>
+                    <Link to={"/register"} style={{textDecoration:'none', color: '#3A448C'}}>
+                        Register/Login
+                    </Link>
+                </button1>
+            </div>
         </main>
     );
 }
 
-export default Login; 
+export default Login;

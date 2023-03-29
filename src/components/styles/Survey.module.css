@@ -1,13 +1,13 @@
+body{
+  background-color: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-  }
-
-  body{
-    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
   }
 
   

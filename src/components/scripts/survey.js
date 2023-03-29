@@ -7,12 +7,17 @@ import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import DoneIcon from "@mui/icons-material/Done";
 import { Link } from 'react-router-dom';
-
-
+import {getNewsArticles} from '../../newsApi'
+import {OpenAI} from '../../openAI'
+import { useEffect } from 'react'
+import { getAuth } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 function Survey() {
-  
+  const [urlList, setUrl] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
+  const navigate = useNavigate();
+  const promises = [];
 
   function handleTopicClick(topic) {
     if (selectedTopics.includes(topic)) {
@@ -22,18 +27,31 @@ function Survey() {
     }
   }
 
-  function handleSubmit() {
-    // Send API call to Firebase with selectedTopics array
-    // Example API call using fetch:
-    fetch("https://your-firebase-endpoint-url.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ topics: selectedTopics }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  }
+  const handleSubmit = async (event) => {
+    const auth = getAuth();
+    if (auth.currentUser) {
+      // add topics to user's thing
+      // Send API call to Firebase with selectedTopics array
+      // Example API call using fetch:
+      event.preventDefault();
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      console.log(urlList)
+      // Add topics array to user profile in Firestore
+      setDoc(userRef, { topics: selectedTopics, links: urlList }, { merge: true })
+        .then(() => {
+          navigate("/dashboard", { state: { uuid: auth.currentUser.uid} });
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else {
+      // If the user is not authenticated, prompt them to log in
+      alert("Please log in to add articles.");
+      navigate("/login");
+    }
+  };
+  
+  
 
   return (
     <main>
@@ -52,8 +70,8 @@ function Survey() {
         />
         <StyledChip
           label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv_vaccination")}
-          clicked={selectedTopics.includes("hpv_vaccination")}
+          onClick={() => handleTopicClick("hpv")}
+          clicked={selectedTopics.includes("hpv")}
         />
         <StyledChip
           label="Polycystic ovary syndrome (PCOS)"
@@ -67,18 +85,18 @@ function Survey() {
         />
         <StyledChip
           label="Ovarian and Cervical Cancer"
-          onClick={() => handleTopicClick("Ovarian and Cervical Cancer")}
-          clicked={selectedTopics.includes("Ovarian and Cervical Cancer")}
+          onClick={() => handleTopicClick("ovarian_cancer")}
+          clicked={selectedTopics.includes("ovarian_cancer")}
         />
         <StyledChip
           label="Postpartum Depression"
-          onClick={() => handleTopicClick("postpartum depression")}
-          clicked={selectedTopics.includes("postpartum depression")}
+          onClick={() => handleTopicClick("postpartum")}
+          clicked={selectedTopics.includes("postpartum")}
         />
         <StyledChip
           label="Breast Cancer"
-          onClick={() => handleTopicClick("Breast Cancer")}
-          clicked={selectedTopics.includes("Breast Cancer")}
+          onClick={() => handleTopicClick("breast_cancer")}
+          clicked={selectedTopics.includes("breast_cancer")}
         />
         <StyledChip
           label="Menopause"
@@ -86,7 +104,7 @@ function Survey() {
           clicked={selectedTopics.includes("menopause")}
         />
         
-        <Button component={Link} to="/dashboard" color="primary" onClick={handleSubmit}  
+        <Button component={Link}  color="primary" onClick={handleSubmit}  
         style=
 
         {{ 

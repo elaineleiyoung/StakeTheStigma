@@ -3,6 +3,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";
+import { db } from "../../firebase";
+import { doc, setDoc, collection, addDoc, arrayUnion, getDoc } from "firebase/firestore"; 
+/*Material UI */
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+import Click from "../UI/click";
+
+
+
 
 function Register() {
 
@@ -10,17 +20,25 @@ function Register() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const signIn = e => {
+    const signIn = async (e) => {
         e.preventDefault();
-
+      
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-        .then(auth => {
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          const userRef = doc(db, "users", auth.currentUser.uid);
+          const docSnap = await getDoc(userRef);
+          console.log(docSnap.data())
+          if (docSnap.exists() && docSnap.data().topics) {
             navigate("/dashboard");
-        })
-        .catch(error => alert(error.message))
-    }
-
+          } else {
+            navigate("/survey");
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+      
     const createAccount = e => {
         e.preventDefault();
         
@@ -43,19 +61,28 @@ function Register() {
             <div style={{ display: "flex", justifyContent: "center", marginTop: "25vh", marginLeft: "100px" }}>
                 <form>
                     <div className = {styles.emailInput}>
-                        <h4 className= {styles.logo3}> Email</h4>
-                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
+                        <TextField 
+                            id="standard-basic" label="Email" variant="standard" 
+                        />
                     </div>
                     <div className = {styles.passwordInput}>
-                        <h4 className= {styles.logo3}> Password</h4>
-                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} className = {styles.password} />
+                        <TextField 
+                            id="standard-basic" label="Email" variant="standard" 
+                        />
                     </div>
 
                     <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>
-                        <Link to = {"/dashboard"} color= "inherit" style={{textDecoration:'none'}}>
+                        <Link to = {"/dashboard"} color= "pink" style={{textDecoration:'none'}}>
                             Sign In
                         </Link>
                     </button>
+
+                    <button onClick = {signIn} className = {Click}>
+                        <Link to = {"/dashboard"} style={{textDecoration:'none'}}>
+                            yomama
+                        </Link>
+                    </button>
+                    
                 </form>
 
                 <p className = {styles.message}>Don't have an account? Create one here!</p>

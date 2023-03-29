@@ -1,6 +1,6 @@
 
 body{
-  background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+  background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
 }
 
 .sheesh{
@@ -22,16 +22,24 @@ input, select, textarea{
 }
 
 .logo {
-  font-size: 3.5rem;
-  color: #fff;
-  font-weight: bold;
+  position: relative;
   align-self: center;
-  font-family: sans-serif;
+  left: -7%;
+
+  width: 400px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 90px;
+  line-height: 117px;
+
+  color: #3A448C;
 }
 
 .logo2 {
-  font-size: 3.2rem;
-  color: #fff;
+  font-size: 115rem;
+  color:#3A448C;
   font-weight: bold;
   font-family: sans-serif;
   position: absolute;
@@ -60,38 +68,49 @@ form{
 }
 
 .signInBtn {
-  position: relative;
-  height: 2.5rem;
-  top: 3rem;
-  display: inline-block;
-  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+
+  position: absolute;
+
+
+  background: #3A448C;
+  border-radius: 999px;
+
   font-size: 16px;
   font-weight: bold;
+  color: #FFFFFF;
   text-transform: uppercase;
   font-family: sans-serif;
-  color: #fff;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
+
 .createAccBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 15px;
+  
   top: 25rem;
   right: 3.5rem;
+
   position: relative;
   height: 2.5rem;
-  padding: 10px 20px;
+  
+  color: #3A448C;
+  background-color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   font-family: sans-serif;
-  color: #fff;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
 }
 
 .message{
@@ -111,4 +130,3 @@ form{
   color:black;
   
 }
-

@@ -22,59 +22,66 @@
   font-family: sans-serif;
   position: absolute;
   top: 5%;
-  left: 2%;
+  left: 3%;
 }
 
 .logo2 {
   margin-top: -200px;
-  font-size: 8rem;
+  font-size: 110px;
   color: white;
   font-weight: bold;
   font-family: sans-serif;
   position: absolute;
-  bottom: 10%;
+  bottom: 20%;
   left: 35%;
   transform: translateX(-50%);
 }
 
+.buttonWrapper {
+  position: absolute;
+  bottom: 10%;
+  left: 20%;
+  transform: translateX(-50%);
+}
+
 button {
-    display: inline-block;
-    border: none;
-    background-color: white;
-    border-radius: 100px;
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    padding: 20px 40px;
-    width: auto;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 20px;
-  }
+  display: inline-block;
+  border: none;
+  background-color: white;
+  border-radius: 100px;
+  color: #3A448C;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 20px 60px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
 
-  button:hover {
-    background-color:lightgray;
-  }
+button:hover {
+  background-color: lightgray;
+}
 
-  button1 {
-    display: inline-block;
-    border: none;
-    display: inline-block;
-    background-color: rgba(43, 46, 74, .12); 
-    border-radius: 100px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    padding: 20px 40px;
-    width: auto;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 10px;
-    bottom: 0;
-  }
+button1 {
+  display: inline-block;
+  border: none;
+  background-color: rgba(43,46,74,0.12);
+  border-radius: 100px;
+  color: #3A448C;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 20px 60px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
 
-  button1:hover {
-    background-color:lightgray;
-  }
+button1:hover {
+  background-color:white;
+}
