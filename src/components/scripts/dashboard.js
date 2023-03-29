@@ -55,14 +55,13 @@ function Dashboard() {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
-              console.log(doc.data())
               const article = {
                 title: doc.data().title,
                 description: doc.data().url,
                 content: doc.data().content,
                 likes: doc.data().likes
               }
-              newContent.push(article);;
+              newContent.push(article);
             });
           } catch (error) {
             console.error(`Error fetching articles for ${topic}`, error);
@@ -75,7 +74,8 @@ function Dashboard() {
         fetchArticles();
       }
     }, [topics]);
-  
+    
+    console.log(fullContent)
 
     return (
         <main>
@@ -91,7 +91,11 @@ function Dashboard() {
             </div>
             <div className={styles.articleContainer}>
                 {fullContent && fullContent.map((topic)=>{
-                    return <Article topic={topic}/>
+                    {console.log(topic)}
+                    return <Article title={topic.title} 
+                    description={topic.description} 
+                    content={topic.content} 
+                    likes={topic.likes}/>
                 })}
             </div>
         </main>

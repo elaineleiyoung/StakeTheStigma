@@ -25,8 +25,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element = {<Login />} />
-        <Route path="/dashboard" element = {<ChakraBaseProvider theme={theme}>
-<Dashboard /></ChakraBaseProvider>}/>
+        <Route path="/dashboard" element = {<Dashboard />}/>
         <Route path="/survey" element = {<Survey />} />
         <Route path="/register" element = {<Register />} />
         <Route path="/summarization" element = {<OpenAI />} />
