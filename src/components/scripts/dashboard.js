@@ -79,7 +79,10 @@ function Dashboard() {
 
     return (
         <main>
-            <h1 className = {styles.logo}>Stake the Stigma </h1>
+            
+            <style>
+              <h1 className = {styles.logo} >Stake the Stigma </h1>
+            </style>
             <div className = {styles.topics}>
               <h1>Hi {email}</h1>
               <h1>Your topics are</h1>

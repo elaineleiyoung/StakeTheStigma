@@ -1,57 +1,80 @@
-
 .sheesh{
   display: flex;
   height: 100vh;
   width: 100vh;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .logo {
-  font-size: 8rem;
-  color: #59515e;
-  font-weight: bold;
-  font-family: sans-serif;
-  align-self: center;
-}
-
-.logo2 {
-  margin-top: -300px;
   font-size: 1.7rem;
-  color: #59515e;
+  color: white;
   font-weight: bold;
   font-family: sans-serif;
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  top: 5%;
+  left: 2%;
+}
+
+.logo2 {
+  margin-top: -200px;
+  font-size: 8rem;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 10%;
+  left: 35%;
   transform: translateX(-50%);
 }
 
-  nav {
-    display: flex;
-    align-items: center;
-}
-
-nav > button {
-    border: none;
+button {
     display: inline-block;
-    background-color: #59515e;
+    border: none;
+    background-color: white;
     border-radius: 100px;
     color: #ffffff;
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    font-size: 28px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 20px 40px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  button:hover {
+    background-color:lightgray;
+  }
+
+  button1 {
+    display: inline-block;
+    border: none;
+    display: inline-block;
+    background-color: rgba(43, 46, 74, .12); 
+    border-radius: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 20px 40px;
     width: auto;
     transition: all 0.5s;
     cursor: pointer;
     margin: 10px;
+    bottom: 0;
   }
 
-  button:hover {
-    background-color: hotpink;
-    color: white;
+  button1:hover {
+    background-color:lightgray;
   }
-
-
-
-

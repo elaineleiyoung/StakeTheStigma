@@ -36,7 +36,7 @@ function Register() {
 
     return (
         <div className = {styles.sheesh}>
-             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+             <h1 className = {styles.logo}> STAKE THE STIGMA.</h1>
              <h2 className={styles.logo2}>_UNCENSORING CENSORED NEWS_</h2>
         
         <section className = {styles.layout}>

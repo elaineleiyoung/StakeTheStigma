@@ -115,7 +115,7 @@ function StyledChip(props) {
     <Chip
       {...rest}
       sx={[
-        clicked ? { backgroundColor: "rgba(0, 0, 0, 0.5)", color: "white" } : { backgroundColor: "rgba(255, 255, 255, 0.2)", color: "white" },
+        clicked ? { backgroundColor: "#000000", color: "white" } : { backgroundColor: "#59515e", color: "white" },
         { margin: 1 },
         
       ]}

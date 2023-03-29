@@ -16,21 +16,21 @@ function Login() {
     }
     
     return (
-        <main>
+        <main className={styles.buttonContainer}>
             <h1 className = {styles.logo}>Stake The Stigma</h1>
-            <h2 className = {styles.logo2}>UNCENSORING THE CENSORED NEWS.</h2>
-            <nav>
-                <button className={styles.register} onClick = {addUserHandler} >
-                    <Link to = {"/survey"} color= "inherit" style={{textDecoration:'none'}}>
-                        Guest
-                    </Link>
-                </button>
-                <button className={styles.register}>
-                    <Link to = {"/register"} style={{textDecoration:'none'}}>
-                        Register/Login
-                    </Link>
-                </button>
-            </nav>
+            <h2 className = {styles.logo2}>UNCENSORING CENSORED NEWS.</h2>
+                <div style={{ textAlign: "left", marginBottom: "20px", marginLeft: "20px" }}>
+                    <button className={styles.login} onClick = {addUserHandler} >
+                        <Link to = {"/survey"} color= "inherit" style={{textDecoration:'none'}}>
+                            Guest
+                        </Link>
+                    </button>
+                    <button1 className={styles.login}>
+                        <Link to = {"/register"} style={{textDecoration:'none'}}>
+                            Register/Login
+                        </Link>
+                    </button1>
+                </div>
         </main>
     );
 }
