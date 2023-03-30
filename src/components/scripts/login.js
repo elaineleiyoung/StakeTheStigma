@@ -16,23 +16,23 @@ function Login() {
     }
     
     return (
-        <main>
-            <h1 className = {styles.logo}>Stake The Stigma</h1>
-            <h2 className = {styles.logo2}>UNCENSORING THE CENSORED NEWS.</h2>
-            <nav>
-                <button className={styles.register} onClick = {addUserHandler} >
-                    <Link to = {"/survey"} color= "inherit" style={{textDecoration:'none'}}>
+        <main className={styles.buttonContainer}>
+            <h1 className={styles.logo}>Stake The Stigma</h1>
+            <h2 className={styles.logo2}>Destigmatizing Women's Health.</h2>
+            <div className={styles.buttonWrapper}>
+                <button className={styles.Login} onClick={addUserHandler}>
+                    <Link to={"/survey"} style={{textDecoration:'none', color: '#3A448C'}}>
                         Guest
                     </Link>
                 </button>
-                <button className={styles.register}>
-                    <Link to = {"/register"} style={{textDecoration:'none'}}>
+                <button1 className={styles.Login1}>
+                    <Link to={"/register"} style={{textDecoration:'none', color: '#3A448C'}}>
                         Register/Login
                     </Link>
-                </button>
-            </nav>
+                </button1>
+            </div>
         </main>
     );
 }
 
-export default Login; 
+export default Login;

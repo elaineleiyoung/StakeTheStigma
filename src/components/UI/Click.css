@@ -1,0 +1,12 @@
+.click-button {
+    background-color: #3A448C;
+    color: white;
+    padding: 8px 16px;
+    border: pink;
+    border-radius: 100px;
+}
+
+.click-button:hover {
+    background-color: white;
+    color: #3A448C;
+}

@@ -55,13 +55,14 @@ function Dashboard() {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
+              console.log(doc.data())
               const article = {
                 title: doc.data().title,
                 description: doc.data().url,
                 content: doc.data().content,
                 likes: doc.data().likes
               }
-              newContent.push(article);
+              newContent.push(article);;
             });
           } catch (error) {
             console.error(`Error fetching articles for ${topic}`, error);
@@ -79,7 +80,9 @@ function Dashboard() {
 
     return (
         <main>
-            <h1 className = {styles.logo}>Stake the Stigma </h1>
+          <div> 
+            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+          
             <div className = {styles.topics}>
               <h1>Hi {email}</h1>
               <h1>Your topics are</h1>
@@ -97,6 +100,7 @@ function Dashboard() {
                     content={topic.content} 
                     likes={topic.likes}/>
                 })}
+            </div>
             </div>
         </main>
     );
