@@ -37,7 +37,7 @@ function Survey() {
       const userRef = doc(db, "users", auth.currentUser.uid);
       console.log(urlList)
       // Add topics array to user profile in Firestore
-      setDoc(userRef, { topics: selectedTopics, links: urlList }, { merge: true })
+      setDoc(userRef, { email: auth.currentUser.email, topics: selectedTopics, links: urlList }, { merge: true })
         .then(() => {
           navigate("/dashboard", { state: { uuid: auth.currentUser.uid} });
         })
