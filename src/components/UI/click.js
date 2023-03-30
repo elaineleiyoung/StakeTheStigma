@@ -1,7 +1,5 @@
-import styles from "../styles/Login.module.css";
-import { getFirestore, doc, updateDoc } from "firebase/firestore";
-
 import React, { useState } from 'react';
+import './Click.css';
 
 function Click(props) {
   const [isClicked, setIsClicked] = useState(false);
@@ -11,17 +9,17 @@ function Click(props) {
 
   const clickStyle = {
     backgroundColor: isClicked ? 'white' : '#3A448C',
-    color: isClicked ? '#3A448C' : 'white',
-    padding: '8px 16px',
+    color: 'white',
+    padding: '7px 10px',
     border: 'none',
-    borderRadius: '50px',
+    borderRadius: '100px',
     cursor: 'pointer',
     margin: '4px',
   };
 
   return (
-    <button style={clickStyle} onClick={handleClick}>
-      {props.label}
+    <button className="click-button" style={clickStyle} onClick={handleClick}>
+        {props.label}
     </button>
   );
 }

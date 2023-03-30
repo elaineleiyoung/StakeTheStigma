@@ -1,7 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body{
-  background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
-}
 
 .sheesh{
   display: flex;
@@ -28,20 +26,20 @@ input, select, textarea{
 
   width: 400px;
 
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;;
   font-style: normal;
   font-weight: 700;
   font-size: 90px;
   line-height: 117px;
 
-  color: #3A448C;
+  color: white;
 }
 
 .logo2 {
   font-size: 115rem;
   color:#3A448C;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -52,7 +50,7 @@ input, select, textarea{
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 3rem;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #fff;
 }
 
@@ -95,7 +93,7 @@ form{
   padding: 7px 15px;
   
   top: 25rem;
-  right: 3.5rem;
+  left: 0rem;
 
   position: relative;
   height: 2.5rem;

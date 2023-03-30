@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body{
-  background-color: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+  background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
 }
 
 main {
@@ -14,9 +16,9 @@ main {
   .logo {
     margin-top: -300px;
     font-size: 3.5rem;
-		color: #59515e;
+		color: white;
 		font-weight: bold;
-		font-family: sans-serif;
+		font-family: 'Montserrat', sans-serif;
 		align-self: center;
     text-align: center;
 }
@@ -24,9 +26,9 @@ main {
   .logo2 {
     margin-top: -300px;
     font-size: 1.7rem;
-    color: #59515e;
+    color: white;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -37,8 +39,8 @@ main {
     font-size: 2rem;
     font-weight: bold;
     margin-top: 5rem;
-    color: #59515e;
-    font-family: sans-serif;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
   }
 

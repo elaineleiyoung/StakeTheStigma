@@ -10,7 +10,7 @@ function SurveyButton(props) {
   };
 
   const buttonStyle = {
-    backgroundColor: isClicked ? 'red' : 'blue',
+    backgroundColor: isClicked ? 'white' : 'pink',
     color: 'white',
     padding: '8px 16px',
     border: 'none',

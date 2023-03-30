@@ -18,7 +18,7 @@ function Login() {
     return (
         <main className={styles.buttonContainer}>
             <h1 className={styles.logo}>Stake The Stigma</h1>
-            <h2 className={styles.logo2}>UNCENSORING CENSORED NEWS.</h2>
+            <h2 className={styles.logo2}>Destigmatizing Women's Health.</h2>
             <div className={styles.buttonWrapper}>
                 <button className={styles.Login} onClick={addUserHandler}>
                     <Link to={"/survey"} style={{textDecoration:'none', color: '#3A448C'}}>

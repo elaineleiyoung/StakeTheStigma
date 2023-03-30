@@ -79,10 +79,9 @@ function Dashboard() {
 
     return (
         <main>
-            
-            <style>
-              <h1 className = {styles.logo} >Stake the Stigma </h1>
-            </style>
+          <div> 
+            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+          
             <div className = {styles.topics}>
               <h1>Hi {email}</h1>
               <h1>Your topics are</h1>
@@ -96,6 +95,7 @@ function Dashboard() {
                 {fullContent && fullContent.map((topic)=>{
                     return <Article topic={topic}/>
                 })}
+            </div>
             </div>
         </main>
     );

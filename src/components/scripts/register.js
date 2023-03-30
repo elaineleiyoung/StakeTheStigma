@@ -9,7 +9,8 @@ import { doc, setDoc, collection, addDoc, arrayUnion, getDoc } from "firebase/fi
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import Click from "../UI/click";
+import React from 'react';
+import Click from '../UI/Click';
 
 
 
@@ -70,16 +71,9 @@ function Register() {
                             id="standard-basic" label="Email" variant="standard" 
                         />
                     </div>
-
                     <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>
                         <Link to = {"/dashboard"} color= "pink" style={{textDecoration:'none'}}>
                             Sign In
-                        </Link>
-                    </button>
-
-                    <button onClick = {signIn} className = {Click}>
-                        <Link to = {"/dashboard"} style={{textDecoration:'none'}}>
-                            yomama
                         </Link>
                     </button>
                     
