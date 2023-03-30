@@ -57,7 +57,7 @@ function Survey() {
     <main>
       <div>
             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
-            <h2 className={styles.logo2}>_UNCENSORING CENSORED NEWS_</h2>
+            <h2 className={styles.logo2}>-Destigmatizing Women's Health-</h2>
      
       <p className={styles.message}>What are you interested in?</p>
       
@@ -110,7 +110,7 @@ function Survey() {
         {{ 
           display: "block", 
           width: "fit-content", 
-          backgroundColor: 'black', 
+          backgroundColor: 'rbga(0,0,0,.2)', 
           color: 'white', 
           borderRadius: "20px",
           width: "fit-content",
@@ -118,7 +118,6 @@ function Survey() {
           margin: "0 auto",
           fontWeight: "bold",
           }}>
-
         Start my Dashboard
         </Button>
       </div>
@@ -133,7 +132,7 @@ function StyledChip(props) {
     <Chip
       {...rest}
       sx={[
-        clicked ? { backgroundColor: "rgba(0, 0, 0, 0.5)", color: "white" } : { backgroundColor: "rgba(255, 255, 255, 0.2)", color: "white" },
+        clicked ? { backgroundColor: "#000000", color: "white" } : { backgroundColor: "#59515e", color: "white" },
         { margin: 1 },
         
       ]}
