@@ -1,14 +1,11 @@
-main{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    border: none; /* added to remove border */
-    font-family: 'SF Pro', sans-serif;
-    background: #FFF5C4 ;
-    background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
-  }
-  
-
+.text{
+font-family:Arial, Helvetica, sans-serif
+}
+/* this might fuck with geneva's css */ 
+body, #root {
+  margin: 0;
+  padding: 0;
+}
   .logo {
     font-size: 2rem;
     letter-spacing: 0.25rem;

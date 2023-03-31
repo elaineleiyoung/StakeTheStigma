@@ -3,6 +3,7 @@ import Login from './components/scripts/login';
 import Dashboard from './components/scripts/dashboard';
 import Survey from './components/scripts/survey';
 import Register from './components/scripts/register';
+import Search from './components/scripts/search'
 import { OpenAI } from './openAI'
 import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
 // `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
@@ -29,6 +30,7 @@ function App() {
         <Route path="/survey" element = {<Survey />} />
         <Route path="/register" element = {<Register />} />
         <Route path="/summarization" element = {<OpenAI />} />
+        <Route path="/search" element = {<Search />} />
       </Routes>
     </Router>
   );
