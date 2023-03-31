@@ -143,13 +143,14 @@ function Dashboard() {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
+              console.log(doc.data())
               const article = {
                 title: doc.data().title,
                 description: doc.data().url,
                 content: doc.data().content,
                 likes: doc.data().likes
               }
-              newContent.push(article);
+              newContent.push(article);;
             });
           } catch (error) {
             console.error(`Error fetching articles for ${topic}`, error);
@@ -165,6 +166,7 @@ function Dashboard() {
 
 
     return (
+<<<<<<< HEAD
       <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" style={{ backgroundColor: 'transparent', boxShadow: 'none' }} sx={{flexGrow: 1}}>
               <Toolbar>
@@ -258,6 +260,33 @@ function Dashboard() {
           </Box>
       </Box>
   );
+=======
+        <main>
+          <div> 
+            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+          
+            <div className = {styles.topics}>
+              <h1>Hi {email}</h1>
+              <h1>Your topics are</h1>
+              {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+              <h1>Your links are</h1>
+              {links?links.map((link)=><Text>{link}</Text>):null}
+            </div>
+            <div>
+            </div>
+            <div className={styles.articleContainer}>
+                {fullContent && fullContent.map((topic)=>{
+                    {console.log(topic)}
+                    return <Article title={topic.title} 
+                    description={topic.description} 
+                    content={topic.content} 
+                    likes={topic.likes}/>
+                })}
+            </div>
+            </div>
+        </main>
+    );
+>>>>>>> origin/master
 }
 
 export default Dashboard;

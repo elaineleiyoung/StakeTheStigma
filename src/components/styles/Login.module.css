@@ -1,57 +1,95 @@
+/*regular montserrat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/*bold montserrat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
 .sheesh{
   display: flex;
   height: 100vh;
   width: 100vh;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .logo {
-  font-size: 8rem;
-  color: #59515e;
+  font-size: 1.7rem;
+  color: white;
   font-weight: bold;
-  font-family: sans-serif;
-  align-self: center;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  top: 5%;
+  left: 3%;
 }
 
 .logo2 {
-  margin-top: -300px;
-  font-size: 1.7rem;
-  color: #59515e;
+  margin-top: -200px;
+  font-size: 115px;
+  color: white;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  bottom: 15%;
+  left: 35%;
   transform: translateX(-50%);
 }
 
-  nav {
-    display: flex;
-    align-items: center;
+.buttonWrapper {
+  position: absolute;
+  bottom: 10%;
+  left: 20%;
+  transform: translateX(-50%);
 }
 
-nav > button {
-    border: none;
-    display: inline-block;
-    background-color: #59515e;
-    border-radius: 100px;
-    color: #ffffff;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 28px;
-    padding: 20px;
-    width: auto;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 10px;
-  }
+button {
+  display: inline-block;
+  border: none;
+  background-color: white;
+  border-radius: 100px;
+  color: #3A448C;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 15px 60px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+  left: 12%;
+}
 
-  button:hover {
-    background-color: hotpink;
-    color: white;
-  }
+button:hover {
+  background-color: lightgray;
+}
 
+button1 {
+  display: inline-block;
+  border: none;
+  background-color: rgba(43,46,74,0.12);
+  border-radius: 100px;
+  color: #3A448C;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 15px 60px;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px;
+}
 
-
-
+button1:hover {
+  background-color:white;
+}

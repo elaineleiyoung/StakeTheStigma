@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .text{
 font-family:Arial, Helvetica, sans-serif
 }
@@ -6,6 +7,18 @@ body, #root {
   margin: 0;
   padding: 0;
 }
+=======
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: none; /* added to remove border */
+    font-family: 'SF Pro', sans-serif;
+    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+  }
+  
+
+>>>>>>> origin/master
   .logo {
     font-size: 2rem;
     letter-spacing: 0.25rem;

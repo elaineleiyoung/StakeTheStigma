@@ -38,8 +38,21 @@ export default function Article(props) {
   const [description, setDescription] = useState(props.description);
   const [content, setContent] = useState(props.content);
   const [open, setOpen] = React.useState(false);
+  const [liked, setLiked] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  //sets an article to true or false based on whether user liked that article. Can figure out how we can implement this into the database later. 
+  function likeHandler() {
+    if (liked) {
+      setLiked(false);
+      console.log(liked);
+    }
+    else {
+      setLiked(true);
+      console.log(liked);
+    }
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -62,6 +75,12 @@ export default function Article(props) {
       <CardActions>
         <Button size="small" color="primary">
           Share
+        </Button>
+        <Button size="small" color="primary" onClick = {likeHandler}>
+          Like
+        </Button>
+        <Button size="small" color="primary">
+          Comment
         </Button>
       </CardActions>
       <Modal

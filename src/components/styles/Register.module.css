@@ -1,7 +1,5 @@
-body{
-  background: #FFF5C4 ;
-  background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 
 .sheesh{
   display: flex;
@@ -16,25 +14,32 @@ input {
   background: transparent;
   border-bottom: 2px solid white;
 }
+
 input, select, textarea{
   color: white;
 }
 
 .logo {
-  width: 20rem;
-  margin-right: 20%;
-  font-size: 3.5rem;
-  color: #fff;
-  font-weight: bold;
-  font-family: sans-serif;
+  position: relative;
   align-self: center;
+  left: -7%;
+
+  width: 400px;
+
+  font-family: 'Montserrat', sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 90px;
+  line-height: 117px;
+
+  color: white;
 }
 
 .logo2 {
-  font-size: 1.7rem;
-  color: #fff;
+  font-size: 115rem;
+  color:#3A448C;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -45,7 +50,7 @@ input, select, textarea{
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 3rem;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #fff;
 }
 
@@ -61,38 +66,49 @@ form{
 }
 
 .signInBtn {
-  position: relative;
-  height: 2.5rem;
-  top: 3rem;
-  display: inline-block;
-  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+
+  position: absolute;
+
+
+  background: #3A448C;
+  border-radius: 999px;
+
   font-size: 16px;
   font-weight: bold;
+  color: #FFFFFF;
   text-transform: uppercase;
   font-family: sans-serif;
-  color: #fff;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
+
 .createAccBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 15px;
+  
   top: 25rem;
-  right: 3.5rem;
+  left: 0rem;
+
   position: relative;
   height: 2.5rem;
-  padding: 10px 20px;
+  
+  color: #3A448C;
+  background-color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   font-family: sans-serif;
-  color: #fff;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
 }
 
 .message{
@@ -112,4 +128,3 @@ form{
   color:black;
   
 }
-
