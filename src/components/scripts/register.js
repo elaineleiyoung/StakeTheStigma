@@ -47,7 +47,7 @@ function Register() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((auth) => {
             if (auth) {
-                navigate("/");
+                navigate("/survey");
             }
         })
         .catch(error => alert(error.message))
@@ -55,37 +55,53 @@ function Register() {
 
     return (
         <div className = {styles.sheesh}>
-             <h1 className = {styles.logo}> STAKE THE STIGMA.</h1>
-             <h2 className={styles.logo2}>_UNCENSORING CENSORED NEWS_</h2>
-        
-        <section className = {styles.layout}>
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "25vh", marginLeft: "100px" }}>
-                <form>
-                    <div className = {styles.emailInput}>
-                        <TextField 
-                            id="standard-basic" label="Email" variant="standard" 
-                        />
-                    </div>
-                    <div className = {styles.passwordInput}>
-                        <TextField 
-                            id="standard-basic" label="Email" variant="standard" 
-                        />
-                    </div>
-                    <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>
-                        <Link to = {"/dashboard"} color= "pink" style={{textDecoration:'none'}}>
-                            Sign In
-                        </Link>
-                    </button>
-                    
-                </form>
+            <h1 className = {styles.logo}> Stake The Stigma.</h1>
+            <h2 className = {styles.logo2}> Destigmatizing Women's Health.</h2>
+            <div className = {styles.yurd}>
 
-                <p className = {styles.message}>Don't have an account? Create one here!</p>
-                <button className = {styles.createAccBtn} onClick = {createAccount}>Create your account</button>
+            <TextField 
+                id="standard-basic" 
+                label="Email" 
+                onChange={e => setEmail(e.target.value)} 
+                required 
+                variant="standard"
+                margin="normal" />
+
+            <TextField 
+                id="standard-basic" 
+                label="Password" 
+                onChange={e => setPassword(e.target.value)} 
+                required 
+                variant="standard"
+                margin="normal"/>
+
+            <button type = "submit" onClick = {signIn} margin = "20px" className = {styles.signInBtn}>
+                    <Link to = {"/dashboard"} style={{textDecoration:'none'}}>
+                        Log In
+                    </Link>
+            </button>
+
+            <hr style={{ 
+                    backgroundColor: 'white', 
+                    height: '1px', 
+                    width: '50%', 
+                    margin: '10px auto',
+            }} />
+
+            <button className = {styles.createAccBtn} onClick = {createAccount}>
+                Create An Account
+            </button>
+
+            <p className = {styles.message}>
+                Forgot Password?
+            </p>
+            
             </div>
-        </section>
         </div>
+
         
     );
+
 }
 
 export default Register;

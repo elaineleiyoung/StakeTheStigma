@@ -166,101 +166,6 @@ function Dashboard() {
 
 
     return (
-<<<<<<< HEAD
-      <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" style={{ backgroundColor: 'transparent', boxShadow: 'none' }} sx={{flexGrow: 1}}>
-              <Toolbar>
-                  <IconButton
-                      size="large"
-                      edge="start"
-                      color="inherit"
-                      aria-label="open drawer"
-                      sx={{ mr: 2 }}
-                  >
-                      <MenuIcon />
-                  </IconButton>
-                  <Typography
-                      variant="h6"
-                      noWrap
-                      component="div"
-                      sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                  >
-                      MUI
-                  </Typography>
-                  <Box sx={{ marginLeft: 'auto' }}>
-  <Button
-    variant="outlined"
-    size="small"
-    startIcon={<SearchIcon />}
-    onClick={handleSearchClick}
-  >
-    Search
-  </Button>
-</Box>
-              </Toolbar>
-          </AppBar>
-          <Modal
-  open={searchOpen}
-  onClose={handleSearchClose}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
-  sx={{ padding:'0px' }}
->
-  <Box sx={{ ...style, overflowY: 'auto', maxHeight: '100vh' }}>
-  <form style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit}>
-      <TextField
-        variant="outlined"
-        size="small"
-        placeholder="Search..."
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-          'aria-label': 'search',
-        }}
-        value={inputValue}
-        onChange={e=>handleInputChange(e)}
-        onClick={handleSearchClick}
-        sx={{ width: '100%', height: '100%', mx: 2, border: 'none' }}
-      />
-    </form>
-  </Box>
-</Modal>
-          <Box sx={{ p: 2 }}>
-              <Typography variant="h5" component="h1" mb={2}>
-                  Hi {email}
-              </Typography>
-              <Typography variant="h6" component="h2" mb={2}>
-                  Your topics are:
-              </Typography>
-              {topics ? (
-                  <Box>
-                      {topics.map((topic) => (
-                          <Typography variant="body1" component="p" key={topic} mb={1}>
-                              {topic}
-                          </Typography>
-                      ))}
-                  </Box>
-              ) : null}
-          </Box>
-          <Box className={styles.articleContainer} sx={{ p: 2 }}>
-              {fullContent && fullContent.map((topic) => {
-                  console.log(topic);
-                  return (
-                      <Article 
-                          title={topic.title}
-                          description={topic.description}
-                          content={topic.content}
-                          likes={topic.likes}
-                      />
-                  );
-              })}
-          </Box>
-      </Box>
-  );
-=======
         <main>
           <div> 
             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
@@ -286,7 +191,6 @@ function Dashboard() {
             </div>
         </main>
     );
->>>>>>> origin/master
 }
 
 export default Dashboard;
