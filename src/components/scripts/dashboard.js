@@ -24,6 +24,7 @@ import {
   TextField, 
   InputAdornment 
 } from '@mui/material'
+import Sidebar from '../UI/Sidebar';
 
 const style = {
   position: 'absolute',
@@ -166,10 +167,11 @@ function Dashboard() {
 
 
     return (
+      <div>
+        <Sidebar />
         <main>
           <div> 
             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
-          
             <div className = {styles.topics}>
               <h1>Hi {email}</h1>
               <h1>Your topics are</h1>
@@ -190,6 +192,7 @@ function Dashboard() {
             </div>
             </div>
         </main>
+      </div>
     );
 }
 
