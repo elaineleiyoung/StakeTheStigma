@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import React from 'react';
-import Click from '../UI/click';
+import Click from '../UI/Click';
 
 
 
