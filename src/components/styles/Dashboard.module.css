@@ -7,7 +7,7 @@ main{
     height: 100vh;
     border: none; /* added to remove border */
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+    background-color: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
   }
 
   .sheesh{
