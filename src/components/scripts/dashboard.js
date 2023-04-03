@@ -11,7 +11,7 @@ import { styled, alpha } from '@mui/material/styles';
 
 import InputBase from '@mui/material/InputBase';
 /*MUI Imports */
-import Sidebar from './sidebar';
+import Navbar from './Navbar'
 
 
 
@@ -166,7 +166,7 @@ function Dashboard() {
 
     return (
       <main>
-        <Sidebar className={styles.sideBar}/>
+        <Navbar />
       <div className={styles.sheesh}>
         <div className={styles.header}>
           <h1 className = {styles.logo}> Stake The Stigma.</h1>
@@ -195,7 +195,7 @@ function Dashboard() {
         <div className={styles.container}>
         {/* testing purposes */}
         <p className= {styles.message}>Hi {email}</p>
-          <h1>Your topics are</h1>
+          <h2>Your topics are</h2>
           {topics?topics.map((topic)=><Text>{topic}</Text>):null}
           <h1>Your links are</h1>
         <div className = {styles.topics}>
