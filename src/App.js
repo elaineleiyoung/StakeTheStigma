@@ -8,7 +8,6 @@ import { OpenAI } from './openAI'
 import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
 // `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
 import chakraTheme from '@chakra-ui/theme'
-import Sidebar from './components/scripts/sidebar';
 
 const { Button, Card, Heading, Divider, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter, } = chakraTheme.components
 
@@ -32,7 +31,6 @@ function App() {
         <Route path="/register" element = {<Register />} />
         <Route path="/summarization" element = {<OpenAI />} />
         <Route path="/search" element = {<Search />} />
-        <Route path="/sidebar" element = {<Sidebar />} />
       </Routes>
     </Router>
   );

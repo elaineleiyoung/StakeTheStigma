@@ -3,6 +3,7 @@
 /*bold montserrat*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
+
 .sheesh{
   display: flex;
   height: 100vh;
@@ -19,6 +20,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  background:linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7); 
 }
 
 .logo {

@@ -7,7 +7,7 @@ main{
     height: 100vh;
     border: none; /* added to remove border */
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+    background-color: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
   }
 
   .sheesh{
@@ -41,7 +41,7 @@ main{
   }
 
   .sideBar {
-    position: absolute; /* or "fixed" if you want it to be fixed in the viewport */
+    position: fixed; /* or "fixed" if you want it to be fixed in the viewport */
     left: 0;
   }
 
@@ -76,7 +76,7 @@ main{
     letter-spacing: 0.25rem;
     position: relative;
     left: 5%;
-    top: 8%;
+    top: 2%;
   }
 
   .articleContainer {
