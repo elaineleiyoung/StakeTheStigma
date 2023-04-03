@@ -8,6 +8,7 @@
   height: 100vh;
   width: 100vh;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .buttonContainer {
@@ -34,6 +35,7 @@
 .logo2 {
   margin-top: -200px;
   font-size: 115px;
+  line-height: 1;
   color: white;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;

@@ -2,28 +2,19 @@ import styles from "../styles/Dashboard.module.css";
 import { db } from "../../firebase";
 import { doc, setDoc, collection, addDoc, where,query, getDocs, limit} from "firebase/firestore"; 
 import { Link, useNavigate, useLocation} from 'react-router-dom'
-import { getNhsArticles } from "../../nhsApi";
-import { getNewsArticles } from "../../newsApi";
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
 import { Text} from '@chakra-ui/react'
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import { Modal, Backdrop, Fade } from '@mui/material';
-import {Button} from '@mui/material'
-import {
-  TextField, 
-  InputAdornment 
-} from '@mui/material'
+/*MUI Imports */
+import Sidebar from './sidebar';
+
+
+
 
 const style = {
   position: 'absolute',
@@ -38,6 +29,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
 
 function Dashboard() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -63,12 +55,14 @@ function Dashboard() {
     const handleInputChange = (event) => {
       setInputValue(event.target.value);
     };
+
     const handleSubmit = (event) =>{
       event.preventDefault()
       console.log(inputValue)
       navigate('/search', { state:
         {query: inputValue}});
     }
+
     const Search = styled('div')(({ theme }) => ({
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
@@ -110,6 +104,8 @@ function Dashboard() {
         },
       },
     }));
+    
+    
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -165,33 +161,63 @@ function Dashboard() {
     }, [topics]);
 
 
+    
+
     return (
-        <main>
-          <div> 
-            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
-          
-            <div className = {styles.topics}>
-              <h1>Hi {email}</h1>
-              <h1>Your topics are</h1>
-              {topics?topics.map((topic)=><Text>{topic}</Text>):null}
-              <h1>Your links are</h1>
-              {links?links.map((link)=><Text>{link}</Text>):null}
-            </div>
+      <main>
+        <Sidebar className={styles.sideBar}/>
+      <div className={styles.sheesh}>
+        <div className={styles.header}>
+          <h1 className = {styles.logo}> Stake The Stigma.</h1>
+          <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
             <div>
+
+              {/* <SearchIcon sx={{
+                color: 'white',
+                fontSize: '50px',
+                position: 'absolute',
+                top: '30px',
+                right: '100px',
+                
+                
+                }}/>
+              <MenuIcon sx={{
+                color: 'white',
+                fontSize: '50px',
+                position: 'absolute',
+                top: '30px',
+                right: '30px',
+                }}/> */}
+                
             </div>
-            <div className={styles.articleContainer}>
-                {fullContent && fullContent.map((topic)=>{
-                    {console.log(topic)}
-                    return <Article title={topic.title} 
-                    description={topic.description} 
-                    content={topic.content} 
-                    likes={topic.likes}/>
-                })}
-            </div>
-            </div>
-        </main>
+        </div>
+        <div className={styles.container}>
+        {/* testing purposes */}
+        <p className= {styles.message}>Hi {email}</p>
+          <h1>Your topics are</h1>
+          {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+          <h1>Your links are</h1>
+        <div className = {styles.topics}>
+          {links?links.map((link)=><Text>{link}</Text>):null}
+        </div>
+
+        <div>
+        </div>
+        <div className={styles.articleContainer}>
+            {fullContent && fullContent.map((topic)=>{
+                {console.log(topic)}
+                return <Article title={topic.title} 
+                description={topic.description} 
+                content={topic.content} 
+                likes={topic.likes}/>
+            })}
+        </div>
+        </div>
+        </div>
+    </main>
     );
 }
+
 
 export default Dashboard;
 
