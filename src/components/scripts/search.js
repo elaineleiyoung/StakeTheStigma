@@ -71,65 +71,32 @@ setFullContent(newContent);
 };
 
 useEffect(() => {
-
-fetch(
-
-`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=5`
-
-)
-
-.then((response) => response.json())
-
-.then((data) => setLinks(data['items'])) //google supports title of article data['items']: title, link
-
-.catch((error) => console.error(error));
-
+  fetch(
+  `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=5`
+  ).then((response) => response.json()).then((data) => setLinks(data['items'])).catch((error) => console.error(error));
 }, [squery]);
-
 return (
-
-<div>
-
-{links.map((link, index) => (
-
-<h1 key={index}>{link.link}</h1>
-
-))}
-
-<button onClick={handleClick}>Click me for load OpenAI Summarization</button>
-
-<button onClick={displaySearchResults}>Click me to load search results as articles</button>
-
-<Box className={styles.articleContainer} sx={{ p: 2 }}>
-
-{fullContent && fullContent.map((topic) => {
-
-console.log(topic);
-
-return (
-
-<Article
-
-title={topic.title}
-
-description={topic.description}
-
-content={topic.content}
-
-likes={topic.likes}
-
-/>
-
+    <div>
+      {links.map((link, index) => (
+        <h1 key={index}>{link.link}</h1>
+      ))}
+      <button onClick={handleClick}>Click me for load OpenAI Summarization</button>
+      <button onClick={displaySearchResults}>Click me to load search results as articles</button>
+      <Box className={styles.articleContainer} sx={{ p: 2 }}>
+        {fullContent && fullContent.map((topic) => {
+          console.log(topic);
+          return (
+            <Article
+              title={topic.title}
+              description={topic.description}
+              content={topic.content}
+              likes={topic.likes}
+            />
+          );
+        })}
+      </Box>
+    </div>
 );
-
-})}
-
-</Box>
-
-</div>
-
-);
-
 }
 
 export default Search;
