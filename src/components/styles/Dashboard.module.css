@@ -1,37 +1,15 @@
-main{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    border: none; /* added to remove border */
-    font-family: 'SF Pro', sans-serif;
-    background: #FFF5C4 ;
-    background-image: radial-gradient(circle, #FFF5C4 0%, #EC6299 100%);
-  }
-  
-
-  .logo {
-    font-size: 2rem;
-    letter-spacing: 0.25rem;
-    font-weight: bold;
-    position: relative;
-    left: 5%;
-    top: 5%;
-  }
-  
-  .topics {
-    font-size: 1rem;
-    letter-spacing: 0.25rem;
-    position: relative;
-    left: 5%;
-    top: 8%;
-  }
-
-  .articleContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    padding-top:8%;
-    padding-left: 5%;
-    gap: 20px;
+.text{
+font-family:Arial, Helvetica, sans-serif
 }
+/* this might fuck with geneva's css */ 
+body, #root {
+  margin: 0;
+  padding: 0;
+}
+main{
+    
+    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+  }
+  
+
     
