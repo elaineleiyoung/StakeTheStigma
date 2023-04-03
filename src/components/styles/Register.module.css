@@ -1,57 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-
+/*Container for entire page*/
 .sheesh{
   display: flex;
+  align-items: center;
   height: 100vh;
   width: 100%;
-  justify-content: flex-end;
 }
+/*Container for Logo.*/
 
-input {
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 2px solid white;
-}
-
-input, select, textarea{
-  color: white;
+/*Container for input fields etc.*/
+.yurd{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  flex-direction: column;
+  
 }
 
 .logo {
-  position: relative;
-  align-self: center;
-  left: -7%;
-
+  text-align: left; 
+  margin: 20px;
   width: 400px;
-
-  font-family: 'Montserrat', sans-serif;;
-  font-style: normal;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 90px;
-  line-height: 117px;
-
+  line-height: 115px;
   color: white;
 }
 
-.logo2 {
-  font-size: 115rem;
-  color:#3A448C;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+.logo2{
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  bottom:0;
+  left: 30%;
 
-.logo3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 3rem;
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 575;
+  font-size: 35px;
+  line-height: 49px;
+
+  color: white;
 }
 
 .userInput > h4 {
@@ -67,59 +63,46 @@ form{
 
 .signInBtn {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 7px 10px;
 
-  position: absolute;
-
-
-  background: #3A448C;
+  background: white;
   border-radius: 999px;
-
+  padding: 10px 60px;
   font-size: 16px;
   font-weight: bold;
+  text-decoration: none;
   color: #FFFFFF;
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .createAccBtn {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 7px 15px;
-  
-  top: 25rem;
-  left: 0rem;
-
-  position: relative;
-  height: 2.5rem;
-  
-  color: #3A448C;
-  background-color: white;
-  border: none;
+  padding: 7px 10px;
+  background: #3A448C;
   border-radius: 999px;
-  cursor: pointer;
-
+  padding: 10px 60px;
   font-size: 16px;
   font-weight: bold;
+  text-decoration: none;
+  color: #FFFFFF;
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
 
 }
 
 .message{
   /* background-color: red; */
-  top: 21.5rem;
-  right: 12rem;
-  position: relative;
-  font-family: sans-serif;
-  font-weight: bold;
-  color:white;
-  left: 15rem;;
+  position: absolute;
+  bottom: 20%;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+
+  color:#3A448C;
   
 }
     

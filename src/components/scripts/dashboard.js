@@ -2,28 +2,19 @@ import styles from "../styles/Dashboard.module.css";
 import { db } from "../../firebase";
 import { doc, setDoc, collection, addDoc, where,query, getDocs, limit} from "firebase/firestore"; 
 import { Link, useNavigate, useLocation} from 'react-router-dom'
-import { getNhsArticles } from "../../nhsApi";
-import { getNewsArticles } from "../../newsApi";
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
 import { Text} from '@chakra-ui/react'
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import { Modal, Backdrop, Fade } from '@mui/material';
-import {Button} from '@mui/material'
-import {
-  TextField, 
-  InputAdornment 
-} from '@mui/material'
+/*MUI Imports */
+import Sidebar from './sidebar';
+
+
+
 
 const style = {
   position: 'absolute',
@@ -38,6 +29,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
 
 function Dashboard() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -63,12 +55,14 @@ function Dashboard() {
     const handleInputChange = (event) => {
       setInputValue(event.target.value);
     };
+
     const handleSubmit = (event) =>{
       event.preventDefault()
       console.log(inputValue)
       navigate('/search', { state:
         {query: inputValue}});
     }
+
     const Search = styled('div')(({ theme }) => ({
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
@@ -110,6 +104,8 @@ function Dashboard() {
         },
       },
     }));
+    
+    
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -166,102 +162,64 @@ function Dashboard() {
     }, [topics]);
 
 
+    
+
     return (
-      <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" style={{ backgroundColor: 'transparent', boxShadow: 'none' }} sx={{flexGrow: 1}}>
-              <Toolbar>
-                  <IconButton
-                      size="large"
-                      edge="start"
-                      color="inherit"
-                      aria-label="open drawer"
-                      sx={{ mr: 2 }}
-                  >
-                      <MenuIcon />
-                  </IconButton>
-                  <Typography
-                      variant="h6"
-                      noWrap
-                      component="div"
-                      sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                  >
-                      MUI
-                  </Typography>
-                  <Box sx={{ marginLeft: 'auto' }}>
-  <Button
-    variant="outlined"
-    size="small"
-    startIcon={<SearchIcon />}
-    onClick={handleSearchClick}
-  >
-    Search
-  </Button>
-</Box>
-              </Toolbar>
-          </AppBar>
-          <Modal
-  open={searchOpen}
-  onClose={handleSearchClose}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
-  sx={{ padding:'0px' }}
->
-  <Box sx={{ ...style, overflowY: 'auto', maxHeight: '100vh' }}>
-  <form style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} onSubmit={handleSubmit}>
-      <TextField
-        variant="outlined"
-        size="small"
-        placeholder="Search..."
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-          'aria-label': 'search',
-        }}
-        value={inputValue}
-        onChange={e=>handleInputChange(e)}
-        onClick={handleSearchClick}
-        sx={{ width: '100%', height: '100%', mx: 2, border: 'none' }}
-      />
-    </form>
-  </Box>
-</Modal>
-          <Box sx={{ p: 2 }}>
-              <Typography variant="h5" component="h1" mb={2}>
-                  Hi {email}
-              </Typography>
-              <Typography variant="h6" component="h2" mb={2}>
-                  Your topics are:
-              </Typography>
-              {topics ? (
-                  <Box>
-                      {topics.map((topic) => (
-                          <Typography variant="body1" component="p" key={topic} mb={1}>
-                              {topic}
-                          </Typography>
-                      ))}
-                  </Box>
-              ) : null}
-          </Box>
-          <Box className={styles.articleContainer} sx={{ p: 2 }}>
-              {fullContent && fullContent.map((topic) => {
-                  console.log(topic);
-                  return (
-                      <Article 
-                          id= {topic.id}
-                          title={topic.title}
-                          description={topic.description}
-                          content={topic.content}
-                          likes={topic.likes}
-                      />
-                  );
-              })}
-          </Box>
-      </Box>
-  );
+      <main>
+        <Sidebar className={styles.sideBar}/>
+      <div className={styles.sheesh}>
+        <div className={styles.header}>
+          <h1 className = {styles.logo}> Stake The Stigma.</h1>
+          <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
+            <div>
+
+              {/* <SearchIcon sx={{
+                color: 'white',
+                fontSize: '50px',
+                position: 'absolute',
+                top: '30px',
+                right: '100px',
+                
+                
+                }}/>
+              <MenuIcon sx={{
+                color: 'white',
+                fontSize: '50px',
+                position: 'absolute',
+                top: '30px',
+                right: '30px',
+                }}/> */}
+                
+            </div>
+        </div>
+        <div className={styles.container}>
+        {/* testing purposes */}
+        <p className= {styles.message}>Hi {email}</p>
+          <h1>Your topics are</h1>
+          {topics?topics.map((topic)=><Text>{topic}</Text>):null}
+          <h1>Your links are</h1>
+        <div className = {styles.topics}>
+          {links?links.map((link)=><Text>{link}</Text>):null}
+        </div>
+
+        <div>
+        </div>
+        <div className={styles.articleContainer}>
+            {fullContent && fullContent.map((topic)=>{
+                {console.log(topic)}
+                return <Article id={topic.id}
+                title={topic.title} 
+                description={topic.description} 
+                content={topic.content} 
+                likes={topic.likes}/>
+            })}
+        </div>
+        </div>
+        </div>
+    </main>
+    );
 }
+
 
 export default Dashboard;
 
