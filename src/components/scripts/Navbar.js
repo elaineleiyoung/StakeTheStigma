@@ -17,6 +17,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import styles from "../styles/Dashboard.module.css";
+
 
 const drawerWidth = 250;
 
@@ -78,8 +80,12 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
 
   return (
+    <body>
+    <h1 className = {styles.logo}> Stake The Stigma.</h1>
+    <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} >
@@ -133,5 +139,6 @@ export default function PersistentDrawerLeft() {
         <DrawerHeader />
       </Main>
     </Box>
+    </body>
   );
 }

@@ -25,14 +25,14 @@ function Dashboard() {
     const [links, setLinks] = useState([])
     const [fullContent, setFullContent] = useState([])
     const [searchInput, setSearchInput] = useState("");
-
+    
     const handleSubmit = (event) =>{
       event.preventDefault()
       console.log(searchInput)
       navigate('/search', { state:
         {query: searchInput}});
     }
-    
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -99,21 +99,12 @@ function Dashboard() {
     });
     } */
 
+
     return (
-      <main>
-        <Navbar />
-        <form onSubmit={handleSubmit}>
-        <input
-            type="text"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput} 
-            width="200px"/>
-        </form>
-      <div className={styles.sheesh}>
+      <main className={styles.Dashboard}>
         <div className={styles.header}>
-          <h1 className = {styles.logo}> Stake The Stigma.</h1>
-          <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
+        <Navbar />
+        
         </div>
         {/*
         <p className= {styles.message}>Hi {email}</p>
@@ -123,8 +114,15 @@ function Dashboard() {
         <div className = {styles.topics}>
           {links?links.map((link)=><Text>{link}</Text>):null}
         </div>*/}
-
-        <div>
+      <div className={styles.sheesh}>
+        <form onSubmit={handleSubmit}>
+        <input
+            type="text"
+            placeholder="Search here"
+            onChange={handleChange}
+            value={searchInput} 
+            width="200px"/>
+        </form>
         <div className={styles.articleContainer}>
             {fullContent && fullContent.map((topic)=>{
                 {console.log(topic)}
@@ -136,7 +134,7 @@ function Dashboard() {
             })}
         </div>
         </div>
-        </div>
+        
     </main>
     );
 }

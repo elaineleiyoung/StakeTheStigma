@@ -59,20 +59,19 @@ function Register() {
             <h2 className = {styles.logo2}> Destigmatizing Women's Health.</h2>
             <div className = {styles.yurd}>
 
+
             <TextField 
-                id="standard-basic" 
+                id="outlined-basic" 
                 label="Email" 
                 onChange={e => setEmail(e.target.value)} 
                 required 
-                variant="standard"
-                margin="normal" />
+                variant="outlined" />
 
             <TextField 
-                id="standard-basic" 
+                id="outlined-basic" 
                 label="Password" 
                 onChange={e => setPassword(e.target.value)} 
                 required 
-                variant="standard"
                 margin="normal"/>
 
             <button type = "submit" onClick = {signIn} margin = "20px" className = {styles.signInBtn}>
