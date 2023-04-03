@@ -14,11 +14,12 @@ import { getAuth } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
 function Survey() {
+  // Defining our variables that we will use for this page
   const [urlList, setUrl] = useState([]);
   const [selectedTopics, setSelectedTopics] = useState([]);
   const navigate = useNavigate();
-  const promises = [];
 
+  // Sets an array that is updated when a user selecets/deselects a topic button
   function handleTopicClick(topic) {
     if (selectedTopics.includes(topic)) {
       setSelectedTopics(selectedTopics.filter((t) => t !== topic));
@@ -27,6 +28,7 @@ function Survey() {
     }
   }
 
+  // On submit, we set the user's topics field in firebase to be the topics that they chose
   const handleSubmit = async (event) => {
     const auth = getAuth();
     if (auth.currentUser) {

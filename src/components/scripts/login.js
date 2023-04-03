@@ -1,13 +1,11 @@
 import styles from "../styles/Login.module.css";
 import { db } from "../../firebase";
-import { doc, setDoc, collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore"; 
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
 import * as React from 'react';
-import Button from '@mui/material/Button';
 
 function Login() {
-
+    // Guest user functionality (still needs to be implemented)
     const addUserHandler = () => {
         addDoc(collection(db, "guestUsers"), {
             name: "idk"

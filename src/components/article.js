@@ -11,17 +11,6 @@ import { doc, FieldValue, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Comment from "./comment";
 
-/*const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};*/
 const style = {
   position: 'absolute',
   top: '30%',
@@ -36,8 +25,8 @@ const style = {
   p: 4,
 };
 
-
 export default function Article(props) {
+  // props passed in from the dashboard page 
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [content, setContent] = useState(props.content);
@@ -65,7 +54,7 @@ export default function Article(props) {
       console.log(props.likes)
     }
   }
-
+//Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea onClick={handleOpen}>
