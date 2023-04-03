@@ -13,34 +13,8 @@ import InputBase from '@mui/material/InputBase';
 /*MUI Imports */
 import Navbar from './Navbar'
 
-
-
-
-const style = {
-  position: 'absolute',
-  top: '30%',
-  left: '50%',
-  transform: 'translate(-50%, -30%)',
-  width: '80%',
-  height: 'auto',
-  maxWidth: '600px',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-
 function Dashboard() {
-  const [searchOpen, setSearchOpen] = useState(false);
 
-  const handleSearchClick = () => {
-    setSearchOpen(true);
-  }
-
-  const handleSearchClose = () => {
-    setSearchOpen(false);
-  }
     const auth = getAuth();
     const firestore = getFirestore();
     const navigate = useNavigate()
@@ -50,11 +24,7 @@ function Dashboard() {
     const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
     const [fullContent, setFullContent] = useState([])
-    const [inputValue, setInputValue] = useState('');
-
-    const handleInputChange = (event) => {
-      setInputValue(event.target.value);
-    };
+    const [searchInput, setSearchInput] = useState("");
 
     const handleSubmit = (event) =>{
       event.preventDefault()
@@ -62,49 +32,6 @@ function Dashboard() {
       navigate('/search', { state:
         {query: searchInput}});
     }
-
-    const Search = styled('div')(({ theme }) => ({
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    }));
-    
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-      padding: theme.spacing(0, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }));
-    
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-      color: 'inherit',
-      '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-          width: '12ch',
-          '&:focus': {
-            width: '20ch',
-          },
-        },
-      },
-    }));
-    
     
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -161,9 +88,6 @@ function Dashboard() {
       }
     }, [topics]);
 
-
-    const searchBar = () => {}
-    const [searchInput, setSearchInput] = useState("");
     const handleChange = (e) => {
       e.preventDefault();
       setSearchInput(e.target.value);
