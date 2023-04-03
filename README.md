@@ -74,7 +74,7 @@ React frontend, Firebase Backend.
  <h3>Survey page before starting dashboard: </h3>
  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
  <h3>Dashboard design (WIP):</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot4.png"/>
+ <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://user-images.githubusercontent.com/95207937/229644131-4f00d931-4969-4eb7-bfc5-023c359310bd.png">
  <h3>Search function implementation:</h3>
  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
 </p>
