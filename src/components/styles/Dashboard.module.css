@@ -1,7 +1,7 @@
 /*regular montserrat*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body{
+main{
     display: flex;
     flex-direction: column;
     border: none; /* added to remove border */

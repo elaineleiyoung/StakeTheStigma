@@ -95,34 +95,13 @@ function Dashboard() {
       e.preventDefault();
       setSearchInput(e.target.value);
     };
-}
+
 
 
 
     return (
       <main className={styles.Dashboard}>
-        <div className={styles.header}>
-        <Navbar />
-            {/*
-            </div>
-            <p className= {styles.message}>Hi {email}</p>
-              <h2>Your topics are</h2>
-              {topics?topics.map((topic)=><Text>{topic}</Text>):null}
-              <h1>Your links are</h1>
-            <div className = {styles.topics}>
-              {links?links.map((link)=><Text>{link}</Text>):null}
-            </div>*/}
-        </div>
-      <div className={styles.sheesh}>
-        <form onSubmit={handleSubmit}>
-        <input
-            type="text"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput} 
-            width="200px"/>
-        </form>
-      <div className={styles.sheesh}>
+
         <div className={styles.header}>
         <Navbar />
         
@@ -154,10 +133,10 @@ function Dashboard() {
             })}
         </div>
         </div>
-        
     </main>
     );
-
+  }
+  
 
 
 export default Dashboard;
