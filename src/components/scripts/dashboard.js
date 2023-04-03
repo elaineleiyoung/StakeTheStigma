@@ -162,48 +162,43 @@ function Dashboard() {
     }, [topics]);
 
 
+    const searchBar = () => {}
+    const [searchInput, setSearchInput] = useState("");
+    const handleChange = (e) => {
+      e.preventDefault();
+      setSearchInput(e.target.value);
+    };
     
+   /*  if (searchInput.length > 0) {
+        countries.filter((country) => {
+        return country.name.match(searchInput);
+    });
+    } */
 
     return (
       <main>
         <Navbar />
+        <input
+            type="text"
+            placeholder="Search here"
+            onChange={handleChange}
+            value={searchInput} 
+            width="200px"/>
       <div className={styles.sheesh}>
         <div className={styles.header}>
           <h1 className = {styles.logo}> Stake The Stigma.</h1>
           <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
-            <div>
-
-              {/* <SearchIcon sx={{
-                color: 'white',
-                fontSize: '50px',
-                position: 'absolute',
-                top: '30px',
-                right: '100px',
-                
-                
-                }}/>
-              <MenuIcon sx={{
-                color: 'white',
-                fontSize: '50px',
-                position: 'absolute',
-                top: '30px',
-                right: '30px',
-                }}/> */}
-                
-            </div>
         </div>
-        <div className={styles.container}>
-        {/* testing purposes */}
+        {/*
         <p className= {styles.message}>Hi {email}</p>
           <h2>Your topics are</h2>
           {topics?topics.map((topic)=><Text>{topic}</Text>):null}
           <h1>Your links are</h1>
         <div className = {styles.topics}>
           {links?links.map((link)=><Text>{link}</Text>):null}
-        </div>
+        </div>*/}
 
         <div>
-        </div>
         <div className={styles.articleContainer}>
             {fullContent && fullContent.map((topic)=>{
                 {console.log(topic)}
