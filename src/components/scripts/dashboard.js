@@ -58,9 +58,9 @@ function Dashboard() {
 
     const handleSubmit = (event) =>{
       event.preventDefault()
-      console.log(inputValue)
+      console.log(searchInput)
       navigate('/search', { state:
-        {query: inputValue}});
+        {query: searchInput}});
     }
 
     const Search = styled('div')(({ theme }) => ({
@@ -178,12 +178,14 @@ function Dashboard() {
     return (
       <main>
         <Navbar />
+        <form onSubmit={handleSubmit}>
         <input
             type="text"
             placeholder="Search here"
             onChange={handleChange}
             value={searchInput} 
             width="200px"/>
+        </form>
       <div className={styles.sheesh}>
         <div className={styles.header}>
           <h1 className = {styles.logo}> Stake The Stigma.</h1>
