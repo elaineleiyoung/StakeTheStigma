@@ -11,10 +11,10 @@ Stake the Stigma aims to destigmatize women's health topics by providing a perso
 
 ## Installation: npm and Firebase 
  
-### Install dependencies:
-## `npm i`
-### Install firebase:
-## `npm install firebase` 
+ Install dependencies:
+### `npm i`
+ Install firebase:
+### `npm install firebase` 
 
 
 ## Running the App:
