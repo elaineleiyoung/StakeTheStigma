@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import {useState} from 'react'
 import { doc, FieldValue, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import Comment from "./comment";
 
 /*const style = {
   position: 'absolute',
@@ -90,9 +91,6 @@ export default function Article(props) {
         <Button size="small" color="primary" onClick = {likeHandler}>
           {!liked ? <h3>Like</h3> : <h3>Dislike</h3>}
         </Button>
-        <Button size="small" color="primary">
-          Comment
-        </Button>
       </CardActions>
       <Modal
         open={open}
@@ -106,6 +104,9 @@ export default function Article(props) {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {content}
+          </Typography>
+          <Typography>
+            <Comment />
           </Typography>
         </Box>
       </Modal>
