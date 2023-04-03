@@ -3,11 +3,14 @@ import { getAuth } from "firebase/auth";
 import { useState } from 'react';
 
 function Comment() {
+    // This has not been integrated with Firebase
+    // Defining variables used within this file
     const auth = getAuth();
     const currentUser = auth.currentUser.email;
     const [comment, setComment] = useState("");
     const [responses, setResponses] = useState([]);
 
+    // When a comment is submitted we'll just console.log to see if we've collected all comments for a post
     const handleSubmit = (event) => {
         event.preventDefault();
         const comments = [...responses, comment];
@@ -16,6 +19,7 @@ function Comment() {
         console.log(responses);
     };
 
+    // Clears all the repsonses 
     const clearResponses = () => {
         setResponses([]);
     }

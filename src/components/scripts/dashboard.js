@@ -1,31 +1,31 @@
 import styles from "../styles/Dashboard.module.css";
 import { db } from "../../firebase";
-import { doc, setDoc, collection, addDoc, where, query, getDocs, limit} from "firebase/firestore"; 
-import { Link, useNavigate, useLocation} from 'react-router-dom'
+import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
+import {useNavigate} from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
-import { Text} from '@chakra-ui/react'
-import { styled, alpha } from '@mui/material/styles';
-
-import InputBase from '@mui/material/InputBase';
-/*MUI Imports */
 import Navbar from './Navbar'
 
 function Dashboard() {
-
+    //defining our variables that will be used within the dashboard
+    // auth, firestore are just to initialize our Firebase for pulling user data and database functions
     const auth = getAuth();
     const firestore = getFirestore();
+    // navigate is used to go to search page while passing parameters
     const navigate = useNavigate()
-    const [description,setDescription] = useState(null)
-    const [content, setContent] = useState([])
+    // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
+    // a user's topics and links to iterate over
     const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
+    // used to pass data down to Article components
     const [fullContent, setFullContent] = useState([])
+    // used as to pass query to search page
     const [searchInput, setSearchInput] = useState("");
 
+    // on submit, we navigate to the search page and feed it the searchInput
     const handleSubmit = (event) =>{
       event.preventDefault()
       console.log(searchInput)
@@ -33,6 +33,7 @@ function Dashboard() {
         {query: searchInput}});
     }
     
+    // on page load, we grab the current user's information and populate our variables
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -55,10 +56,12 @@ function Dashboard() {
         return unsubscribe;
       }, [auth, firestore]);
 
+    // When topics array has been filled from the previous useEffect, then we will begin querying articles from the database 
+    // based off of their links
+    // We create an object, which holds an article's content, id, title, descritpion, and likes
     useEffect(() => {
       const fetchArticles = async () => {
         const newContent = [];
-      
         for (const topic of topics) {
           console.log(topic)
           try {
@@ -88,16 +91,12 @@ function Dashboard() {
       }
     }, [topics]);
 
+    // When the input in the search field is changed, the update will be reflected in our variable
     const handleChange = (e) => {
       e.preventDefault();
       setSearchInput(e.target.value);
     };
-    
-   /*  if (searchInput.length > 0) {
-        countries.filter((country) => {
-        return country.name.match(searchInput);
-    });
-    } */
+
 
     return (
       <main>
@@ -115,19 +114,9 @@ function Dashboard() {
           <h1 className = {styles.logo}> Stake The Stigma.</h1>
           <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
         </div>
-        {/*
-        <p className= {styles.message}>Hi {email}</p>
-          <h2>Your topics are</h2>
-          {topics?topics.map((topic)=><Text>{topic}</Text>):null}
-          <h1>Your links are</h1>
-        <div className = {styles.topics}>
-          {links?links.map((link)=><Text>{link}</Text>):null}
-        </div>*/}
-
         <div>
         <div className={styles.articleContainer}>
             {fullContent && fullContent.map((topic)=>{
-                {console.log(topic)}
                 return <Article id={topic.id}
                 title={topic.title} 
                 description={topic.description} 
