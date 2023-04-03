@@ -1,6 +1,6 @@
 # StakeTheStigma
 ## Project Description:  
-Stake the Stigma is a project that aims to destigmatize women's health topics by providing a personalized dashboard experience which allows users to access and search for specific articles and insights for women's health topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
+Stake the Stigma aims to destigmatize women's health topics by providing a personalized dashboard experience which allows users to access and search for specific articles and insights for women's health topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
 ## Table of contents
 
 - [Installation](#installation-npm-and-firebase)
