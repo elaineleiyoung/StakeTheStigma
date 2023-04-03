@@ -1,15 +1,25 @@
 # StakeTheStigma
 ## Project Description:  
-Dashboard to display articles and insights about stigmatized topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
-## Table of Contents (optional):  
-## How to install and run:  
-### Need to install firebase  
-npm install firebase  
-# Getting Started with Create React App
+Stake the Stigma is a project aimed at destigmatizing women's health topics by providing a personalized dashboard experience for users. The goal of this project is to make it easier for people to access and search for specific articles and insights related to women's health topics. By doing so, the project aims to increase awareness and communication about important but often underrepresented subjects in society.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The personalized dashboard experience allows users to customize their experience based on their preferences and interests. Users can choose specific topics or areas of interest, and the dashboard will then display articles and insights related to those topics. Users can also search for specific articles or keywords to find the resources related to those searches.
+## Table of contents
 
-## Available Scripts
+- [Installation](#installation-npm-and-firebase)
+- [Running the app](#running-the-app)
+- [Built with](#built-with)
+- [Snapshots](#snapshots)
+- [About us](#about-us)
+
+## Installation: npm and Firebase 
+ 
+ Install dependencies:
+### `npm i`
+ Install firebase:
+### `npm install firebase` 
+
+
+## Running the App:
 
 In the project directory, you can run:
 
@@ -52,28 +62,40 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Built with:  
+React frontend, Firebase Backend. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Snapshots:
+<p align="middle">
+ <h3>Dashboard Home Page:</h3>
+  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot1.png"/>
+ <h3>Login page:</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot2.png"/>
+ <h3>Survey page before starting dashboard: </h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
+ <h3>Dashboard design (WIP):</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot4.png"/>
+ <h3>Search function implementation:</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
+</p>
 
-### Analyzing the Bundle Size
+## About us: 
+<a href="https://github.com/gigialc">
+  <img src="https://github.com/gigialc.png?size=70">
+</a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<a href="https://github.com/elaineleiyoung">
+  <img src="https://github.com/elaineleiyoung.png?size=70">
+</a>
 
-### Making a Progressive Web App
+<a href="https://github.com/gnvy">
+  <img src="https://github.com/gnvy.png?size=70">
+</a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<a href="https://github.com/IvanYangg">
+  <img src="https://github.com/IvanYangg.png?size=70">
+</a>
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-## How to use project:  
-## Credits:  
+<a href="https://github.com/jamxiao2025">
+  <img src="https://github.com/jamxiao2025.png?size=70">
+</a>
