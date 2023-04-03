@@ -1,15 +1,23 @@
 # StakeTheStigma
 ## Project Description:  
 Dashboard to display articles and insights about stigmatized topics. This project focuses on increasing awareness and communication about important but underrepresented subjects in society. 
-## Table of Contents (optional):  
-## How to install and run:  
+## Table of contents
+
+- [Installation](#installation-npm-and-firebase)
+- [Running the app](#running-the-app)
+- [Built with](#built-with)
+- [Snapshots](#snapshots)
+- [About us](#about-us)
+
+## Installation: npm and Firebase  
+
 ### Need to install firebase  
 npm install firebase  
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running the App:
 
 In the project directory, you can run:
 
@@ -75,5 +83,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-## How to use project:  
-## Credits:  
+
+## Built with:  
+React frontend, Firebase Backend. 
+
+## Snapshots:
+insert images here
+
+## About us: 
