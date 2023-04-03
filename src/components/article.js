@@ -7,6 +7,9 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import {useState} from 'react'
+import { doc, FieldValue, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
 /*const style = {
   position: 'absolute',
   top: '50%',
@@ -46,11 +49,19 @@ export default function Article(props) {
   function likeHandler() {
     if (liked) {
       setLiked(false);
-      console.log(liked);
+      const docRef = doc(db, "articles", props.id);
+      updateDoc(docRef, {
+        likes: props.likes
+      });
+      console.log(props.likes)
     }
     else {
       setLiked(true);
-      console.log(liked);
+      const docRef = doc(db, "articles", props.id);
+      updateDoc(docRef, {
+        likes: props.likes + 1
+      });
+      console.log(props.likes)
     }
   }
 
@@ -77,7 +88,7 @@ export default function Article(props) {
           Share
         </Button>
         <Button size="small" color="primary" onClick = {likeHandler}>
-          Like
+          {!liked ? <h3>Like</h3> : <h3>Dislike</h3>}
         </Button>
         <Button size="small" color="primary">
           Comment

@@ -56,6 +56,7 @@ function Dashboard() {
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
               const article = {
+                id: doc.id,
                 title: doc.data().title,
                 description: doc.data().url,
                 content: doc.data().content,
@@ -92,7 +93,7 @@ function Dashboard() {
             <div className={styles.articleContainer}>
                 {fullContent && fullContent.map((topic)=>{
                     {console.log(topic)}
-                    return <Article title={topic.title} 
+                    return <Article id = {topic.id} title={topic.title} 
                     description={topic.description} 
                     content={topic.content} 
                     likes={topic.likes}/>
