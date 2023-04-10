@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -21,7 +22,6 @@ import styles from "../styles/Dashboard.module.css";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import Face3RoundedIcon from '@mui/icons-material/Face3Rounded';
-import { Link } from 'react-router-dom';
 
 
 const drawerWidth = 250;
@@ -125,7 +125,20 @@ export default function PersistentDrawerLeft() {
       </ListItem>
     </List>
   );
-  
+
+  const ContributorSection = () => (
+    <List>
+      <ListItem key="Contribute" disablePadding component={Link} to={`../contributor`} style={{ textDecoration: 'none', color: 'black' }}>
+        <ListItemButton> 
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Contribute" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+
 
   return (
     <body>
@@ -167,6 +180,7 @@ export default function PersistentDrawerLeft() {
           <ProfileSection />
           <LikedArticlesSection />
           <InsightsSection />
+          <ContributorSection />
         <Divider />
       </Drawer>
       <Main open={open}>
