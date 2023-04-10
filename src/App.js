@@ -3,24 +3,10 @@ import Login from './components/scripts/login';
 import Dashboard from './components/scripts/dashboard';
 import Survey from './components/scripts/survey';
 import Register from './components/scripts/register';
-import Search from './components/scripts/search'
+import Account from './components/scripts/account';
+import Search from './components/scripts/search';
+import FormComponent from './FormContributor.js';
 import { OpenAI } from './openAI'
-import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
-// `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
-import chakraTheme from '@chakra-ui/theme'
-import FormComponent from './FormContributor'
-
-const { Button, Card, Heading, Divider, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter, } = chakraTheme.components
-
-const theme = extendBaseTheme({
-  components: {
-    Button,
-    Card,
-    Heading,
-    Divider,
-    Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody,ModalFooter,
-  },
-})
 
 function App() {
   return (
@@ -33,6 +19,7 @@ function App() {
         <Route path="/summarization" element = {<OpenAI />} />
         <Route path="/search" element = {<Search />} />
         <Route path="/contributor" element = {<FormComponent />} />
+        <Route path="/account" element = {<Account />} />
       </Routes>
     </Router>
   );

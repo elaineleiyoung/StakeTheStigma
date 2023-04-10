@@ -18,9 +18,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import styles from "../styles/Dashboard.module.css";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
+import Face3RoundedIcon from '@mui/icons-material/Face3Rounded';
+
 
 const drawerWidth = 250;
-
+// Creating our reusable navbar component
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
@@ -29,13 +34,13 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: `-${drawerWidth}px`,
+    marginLeft: `-${500}px`,   //issue here 
     ...(open && {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      marginLeft: 0,
+
     }),
   }),
 );
@@ -80,7 +85,63 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const ProfileSection = () => (
+    <List>
+      <Link to="/account" style={{textDecoration:'none'}}>
+      <ListItem key="Profile" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <AccountBoxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItemButton>
+      </ListItem>
+      </Link>
+    </List>
+  );
+
+  const LikedArticlesSection = () => (
+    <List>
+      <ListItem key="Liked Articles" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <ThumbUpRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Liked Articles" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+
+  const InsightsSection = () => (
+    <List>
+      <ListItem key="Insights" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Insights" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+
+  const ContributorSection = () => (
+    <List>
+      <ListItem key="Contribute" disablePadding component={Link} to={`../contributor`} style={{ textDecoration: 'none', color: 'black' }}>
+        <ListItemButton> 
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Contribute" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+
+
   return (
+    <body>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} >
@@ -115,24 +176,17 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
-          {['Profile', 'Saved Articles', 'Insights', 'Contributor'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} to={`/${text.toLowerCase()}`}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Divider /> 
+          <ProfileSection />
+          <LikedArticlesSection />
+          <InsightsSection />
+          <ContributorSection />
         <Divider />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
       </Main>
     </Box>
+    </body>
   );
 }
