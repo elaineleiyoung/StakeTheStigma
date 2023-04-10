@@ -1,6 +1,7 @@
 import styles from "../../src/components/styles/Comment.module.css";
 import { getAuth } from "firebase/auth";
 import { useState } from 'react';
+import SendIcon from '@mui/icons-material/Send';
 
 function Comment() {
     // This has not been integrated with Firebase
@@ -26,13 +27,11 @@ function Comment() {
 
     return(
         <section>
-            <h1>
-                Comment Section: 
-            </h1>
+            <h1 className= {styles.title}> Comments </h1>
             <div className = {styles.formWrapper}>
                 <form onSubmit={handleSubmit}>
                     <textarea placeholder = "Leave a comment..." id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
-                    <button type="submit">Comment</button>
+                    <button type="submit"><SendIcon /></button>
                 </form>
             </div>
             <div className = {styles.responses}>

@@ -18,6 +18,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import styles from "../styles/Dashboard.module.css";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
+import Face3RoundedIcon from '@mui/icons-material/Face3Rounded';
+import { Link } from 'react-router-dom';
 
 
 const drawerWidth = 250;
@@ -80,12 +84,51 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const ProfileSection = () => (
+    <List>
+      <Link to="/account" style={{textDecoration:'none'}}>
+      <ListItem key="Profile" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <AccountBoxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItemButton>
+      </ListItem>
+      </Link>
+    </List>
+  );
+
+  const LikedArticlesSection = () => (
+    <List>
+      <ListItem key="Liked Articles" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <ThumbUpRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Liked Articles" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+
+  const InsightsSection = () => (
+    <List>
+      <ListItem key="Insights" disablePadding>
+        <ListItemButton>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Insights" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
   
 
   return (
     <body>
-    <h1 className = {styles.logo}> Stake The Stigma.</h1>
-    <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} >
@@ -120,19 +163,10 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
-          {['Profile', 'Saved Articles', 'Insights'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Divider /> 
+          <ProfileSection />
+          <LikedArticlesSection />
+          <InsightsSection />
         <Divider />
       </Drawer>
       <Main open={open}>

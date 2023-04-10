@@ -6,7 +6,7 @@ main{
     flex-direction: column;
     border: none; /* added to remove border */
     font-family: 'Montserrat', sans-serif;
-    background: transparent;
+    background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
   }
 
   .sheesh{
@@ -14,6 +14,7 @@ main{
     height: 80%;
     width: 100%;
     justify-content: space-between;
+
   }
 
   .header {
@@ -22,7 +23,7 @@ main{
     position: fixed;
     height: 120px;
     width: 100%; 
-    background-color: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+    
   }
   
   .icons {
@@ -92,8 +93,10 @@ main{
     padding-top: 8%;
     padding-left: 5%;
     gap: 20px;
+    background-color: pink;
   }
-    
+  
+
 body {
 	background: #048;
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;

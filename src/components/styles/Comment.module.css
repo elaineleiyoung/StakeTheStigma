@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+}
+
 section {
     display: flex;
     flex-direction: column;

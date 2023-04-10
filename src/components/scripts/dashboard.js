@@ -1,12 +1,15 @@
 import styles from "../styles/Dashboard.module.css";
 import { db } from "../../firebase";
 import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
 import Navbar from './Navbar'
+import SearchIcon from '@mui/icons-material/Search';
+import { InputAdornment, TextField } from '@mui/material';
+
 
 function Dashboard() {
     //defining our variables that will be used within the dashboard
@@ -101,10 +104,19 @@ function Dashboard() {
 
     return (
       <main className={styles.Dashboard}>
-
-        <div className={styles.header}>
-        <Navbar />
         
+        <div className={styles.header}>
+        <h1 className = {styles.logo}> Stake The Stigma.</h1>
+        <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
+        <form onSubmit={handleSubmit}>
+        <input
+            type="text"
+            placeholder="Search here"
+            onChange={handleChange}
+            value={searchInput} 
+            width="200px"/>
+        </form>
+        <Navbar />
         </div>
         {/*
         <p className= {styles.message}>Hi {email}</p>
@@ -114,15 +126,6 @@ function Dashboard() {
         <div className = {styles.topics}>
           {links?links.map((link)=><Text>{link}</Text>):null}
         </div>*/}
-      <div className={styles.sheesh}>
-        <form onSubmit={handleSubmit}>
-        <input
-            type="text"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput} 
-            width="200px"/>
-        </form>
         <div className={styles.articleContainer}>
             {fullContent && fullContent.map((topic)=>{
                 return <Article id={topic.id}
@@ -131,7 +134,6 @@ function Dashboard() {
                 content={topic.content} 
                 likes={topic.likes}/>
             })}
-        </div>
         </div>
     </main>
     );

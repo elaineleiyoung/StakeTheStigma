@@ -10,6 +10,9 @@ import {useState} from 'react'
 import { doc, FieldValue, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Comment from "./comment";
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 
 const style = {
   position: 'absolute',
@@ -24,6 +27,8 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
+
 
 export default function Article(props) {
   // props passed in from the dashboard page 
@@ -74,11 +79,11 @@ export default function Article(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Button>
+          <ShareRoundedIcon />
         </Button>
-        <Button size="small" color="primary" onClick = {likeHandler}>
-          {!liked ? <h3>Like</h3> : <h3>Dislike</h3>}
+        <Button onClick = {likeHandler}>
+          {!liked ? <h3><FavoriteBorderRoundedIcon /></h3> : <h3><FavoriteRoundedIcon /></h3>}
         </Button>
       </CardActions>
       <Modal
