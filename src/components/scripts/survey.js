@@ -19,11 +19,13 @@ function Survey() {
   const navigate = useNavigate();
 
   // Sets an array that is updated when a user selecets/deselects a topic button
-  function handleTopicClick(topic) {
+  function handleTopicClick(topic, link) {
     if (selectedTopics.includes(topic)) {
       setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+      setUrl(urlList.filter((t) => link !== link));
     } else {
       setSelectedTopics([...selectedTopics, topic]);
+      setUrl([...urlList, link]);
     }
   }
 
@@ -66,42 +68,42 @@ function Survey() {
       
         <StyledChip className= {styles.chips}
           label="Menstruation"
-          onClick={() => handleTopicClick("menstruation")}
+          onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
           clicked={selectedTopics.includes("menstruation")}
         />
         <StyledChip
           label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv")}
+          onClick={() => handleTopicClick("hpv","https://www.cdc.gov/std/hpv/stdfact-hpv.htm#:~:text=What%20is%20HPV%3F,including%20genital%20warts%20and%20cancers.")}
           clicked={selectedTopics.includes("hpv")}
         />
         <StyledChip
           label="Polycystic ovary syndrome (PCOS)"
-          onClick={() => handleTopicClick("pcos")}
+          onClick={() => handleTopicClick("pcos","https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/")}
           clicked={selectedTopics.includes("pcos")}
         />
         <StyledChip
           label="Pregnancy"
-          onClick={() => handleTopicClick("pregnancy")}
+          onClick={() => handleTopicClick("pregnancy", "https://www.cdc.gov/pregnancy/index.html")}
           clicked={selectedTopics.includes("pregnancy")}
         />
         <StyledChip
           label="Ovarian and Cervical Cancer"
-          onClick={() => handleTopicClick("ovarian_cancer")}
+          onClick={() => handleTopicClick("ovarian_cancer","https://www.nhs.uk/conditions/ovarian-cancer/")}
           clicked={selectedTopics.includes("ovarian_cancer")}
         />
         <StyledChip
           label="Postpartum Depression"
-          onClick={() => handleTopicClick("postpartum")}
+          onClick={() => handleTopicClick("postpartum","https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617")}
           clicked={selectedTopics.includes("postpartum")}
         />
         <StyledChip
           label="Breast Cancer"
-          onClick={() => handleTopicClick("breast_cancer")}
+          onClick={() => handleTopicClick("breast_cancer","https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm")}
           clicked={selectedTopics.includes("breast_cancer")}
         />
         <StyledChip
           label="Menopause"
-          onClick={() => handleTopicClick("menopause")}
+          onClick={() => handleTopicClick("menopause","https://www.nia.nih.gov/health/what-menopause")}
           clicked={selectedTopics.includes("menopause")}
         />
         

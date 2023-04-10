@@ -58,6 +58,7 @@ function Dashboard() {
     // When topics array has been filled from the previous useEffect, then we will begin querying articles from the database 
     // based off of their links
     // We create an object, which holds an article's content, id, title, descritpion, and likes
+    /*
     useEffect(() => {
       const fetchArticles = async () => {
         const newContent = [];
@@ -74,7 +75,8 @@ function Dashboard() {
                 title: doc.data().title,
                 description: doc.data().url,
                 content: doc.data().content,
-                likes: doc.data().likes
+                userLikes: [],
+                likes: doc.data().userLikes.length,
               }
               newContent.push(article);;
             });
@@ -89,6 +91,40 @@ function Dashboard() {
         fetchArticles();
       }
     }, [topics]);
+    */
+    useEffect(() => {
+      const fetchArticles = async () => {
+        const newContent = [];
+        for (const link of links) {
+          console.log(link)
+          try {
+            const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.data())
+              const article = {
+                id: doc.id,
+                title: doc.data().title,
+                description: doc.data().url,
+                content: doc.data().content,
+                userLikes: [],
+                likes: doc.data().userLikes.length,
+              }
+              newContent.push(article);;
+            });
+          } catch (error) {
+            console.error(`Error fetching articles for ${link}`, error);
+          }
+        }
+        setFullContent(newContent);
+      };
+  
+      if (topics.length) {
+        fetchArticles();
+      }
+    }, [topics]);
+
 
     // When the input in the search field is changed, the update will be reflected in our variable
     const handleChange = (e) => {
@@ -129,7 +165,7 @@ function Dashboard() {
                 title={topic.title} 
                 description={topic.description} 
                 content={topic.content} 
-                likes={topic.likes}/>
+                userLikes={topic.userLikes} likes={topic.likes}/>
             })}
         </div>
         </div>
