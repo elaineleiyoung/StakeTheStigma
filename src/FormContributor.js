@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import './formComponent.css'
+import styles from "./components/styles/Register.module.css";
 
 function FormComponent() {
   const [title, setTitle] = useState('');
@@ -31,6 +32,8 @@ function FormComponent() {
   };
 
   return (
+    <div>
+    <h1 className = {styles.logo}> Stake The Stigma.</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
       <input type="text" id="title" value={title} onChange={(event) => setTitle(event.target.value)} />
@@ -44,8 +47,9 @@ function FormComponent() {
       <label htmlFor="content">Content</label>
       <textarea id="content" value={content} onChange={(event) => setContent(event.target.value)} />
 
-      <button type="submit">Submit</button>
+      <button className="submit" type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 
