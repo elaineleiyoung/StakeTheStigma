@@ -93,7 +93,7 @@ main{
     padding-top: 8%;
     padding-left: 5%;
     gap: 20px;
-    background-color: pink;
+    z-index: 1;
   }
   
 

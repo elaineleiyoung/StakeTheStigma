@@ -1,6 +1,5 @@
 import styles from "../../src/components/styles/Comment.module.css";
 import { getAuth } from "firebase/auth";
-import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
 import { doc, FieldValue, setDoc, updateDoc, collection, getDoc, arrayUnion } from "firebase/firestore";

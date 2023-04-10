@@ -14,6 +14,8 @@ import Comment from "./comment";
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 const style = {
   position: 'absolute',
@@ -38,6 +40,7 @@ export default function Article(props) {
   const [content, setContent] = useState(props.content);
   const [open, setOpen] = React.useState(false);
   const [liked, setLiked] = useState(false);
+  const [saved, setSaved] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const auth = getAuth();
@@ -51,6 +54,7 @@ export default function Article(props) {
       // Send API call to Firebase with selectedTopics array
       // Example API call using fetch:
       const userRef = doc(db, "users", auth.currentUser.uid);
+      
       // Add topics array to user profile in Firestore
       setDoc(userRef, { email: auth.currentUser.email, links: arrayUnion(props.description) }, { merge: true })
         .then(() => {
@@ -58,9 +62,18 @@ export default function Article(props) {
         .catch((error) => {
           alert(error.message);
         });
+      
+    }
+    // rough front end here not yet connected with back*** next sprint
+    if (saved) {
+      setSaved(false);
+    }
+    else {
+      setSaved(true);
     }
   }
 
+  
   //sets an article to true or false based on whether user liked that article, makes calls to database to reflect changes, could be more efficient however?
   async function likeHandler() {
     if (liked) {
@@ -93,7 +106,7 @@ export default function Article(props) {
           component="img"
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          alt="Female Health<3"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -111,8 +124,8 @@ export default function Article(props) {
         <Button onClick = {likeHandler}>
           {!liked ? <h3><FavoriteBorderRoundedIcon /></h3> : <h3><FavoriteRoundedIcon /></h3>}
         </Button>
-        <Button size="small" color="primary" onClick = {saveHandler}>
-          {!liked ? <h3>Save</h3> : <h3>Save</h3>}
+        <Button onClick = {saveHandler}>
+          {!saved ? <h3><BookmarkBorderIcon /></h3> : <h3><BookmarkIcon/></h3>}
         </Button>
       </CardActions>
       <Modal
