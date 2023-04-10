@@ -14,7 +14,7 @@ function Search() {
   const location = useLocation()
   const squery = location.state.query
   console.log(squery)
-  const API_KEY = process.env.REACT_APP_API_KEY
+  const API_KEY = process.env.GOOGLE_APP_API_KEY;
   // parameter for my Google PSE
   const cx = 'd5445a74cd13a432b'  
   const [links, setLinks] = useState([])
@@ -36,7 +36,8 @@ function Search() {
         url: data.link,
         topic: "N/A",
         content: content.text,
-        likes: 0
+        likes: 0,
+        userLikes: []
       })
       console.log(docRef.id)
       }
@@ -76,7 +77,7 @@ function Search() {
   // This response will be stored as a list of items, which has fields link, title, summary, etc. 
   useEffect(() => {
     fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=5`
+    `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=1`
     ).then((response) => response.json()).then((data) => setLinks(data['items'])).catch((error) => console.error(error));
   }, [squery]);
 
