@@ -21,10 +21,11 @@ import styles from "../styles/Dashboard.module.css";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
 import Face3RoundedIcon from '@mui/icons-material/Face3Rounded';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Link } from 'react-router-dom';
 
 
-const drawerWidth = 250;
+const drawerWidth = 300;
 // Creating our reusable navbar component
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -34,7 +35,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: `-${500}px`,   //issue here 
+    marginLeft: `-${600}px`,   //issue here 
     ...(open && {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
@@ -102,12 +103,12 @@ export default function PersistentDrawerLeft() {
 
   const LikedArticlesSection = () => (
     <List>
-      <ListItem key="Liked Articles" disablePadding>
+      <ListItem key="Saved Articles" disablePadding>
         <ListItemButton>
           <ListItemIcon>
-            <ThumbUpRoundedIcon />
+            <BookmarkIcon />
           </ListItemIcon>
-          <ListItemText primary="Liked Articles" />
+          <ListItemText primary="Saved Articles" />
         </ListItemButton>
       </ListItem>
     </List>

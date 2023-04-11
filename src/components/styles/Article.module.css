@@ -1,0 +1,8 @@
+/*regular montserrat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.articleTitle{
+    font-family: 'Montserrat', sans-serif;
+    color:blue;
+
+}

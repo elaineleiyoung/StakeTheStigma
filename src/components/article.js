@@ -16,6 +16,7 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import styles from "../../src/components/styles/Article.module.css";
 
 const style = {
   position: 'absolute',
@@ -134,8 +135,8 @@ export default function Article(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={{ ...style, overflowY: 'auto', maxHeight: '90vh' }}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box sx={{ ...style, overflowY: 'auto', maxHeight: '90vh', maxWidth:'150vh', borderRadius:'px' }}>
+          <Typography className={styles.Article}>
             {title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>

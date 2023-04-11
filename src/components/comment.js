@@ -56,9 +56,7 @@ function Comment(props) {
     return(
         <section>
             <h1 className= {styles.title}> Comments </h1>
-            <h1>
-                Comments: 
-            </h1>
+
             <div className = {styles.formWrapper}>
                 <form onSubmit={handleSubmit}>
                     <textarea placeholder = "Leave a comment..." id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
