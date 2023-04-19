@@ -48,6 +48,27 @@ export default function Article(props) {
   const currentUser = auth.currentUser.email;
   const [shared, setShared] = useState(false);
 
+  //sharing articles
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: description,
+      })
+        .then(() => {
+          console.log('Article shared successfully');
+          setShared(true);
+        })
+        .catch((error) => {
+          console.error('Error sharing article:', error);
+          setShared(false);
+        });
+    } else {
+      console.log('Web Share API not supported');
+      setShared(false);
+    }
+  };
+
   //Saving articles
   async function saveHandler(){
     const auth = getAuth();
@@ -103,7 +124,7 @@ export default function Article(props) {
   }
 //Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
   return (
-    <Card sx={{ maxWidth: 345, borderRadius:2, boxShadow:0}}>
+    <Card sx={{ width: 345, borderRadius:2, boxShadow:0}}>
       <CardActionArea onClick={handleOpen}>
         <CardMedia
           component="img"
@@ -115,13 +136,14 @@ export default function Article(props) {
           <Typography gutterBottom variant="h5" component="div" className="custom-h5">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             {description}
-          </Typography>
+          </Typography> */}
+          <a href={description} >source</a>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button>
+      <Button onClick={handleShare}>
           <ShareRoundedIcon />
         </Button>
 

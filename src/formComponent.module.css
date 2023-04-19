@@ -1,0 +1,44 @@
+h1 {
+    position: absolute;
+    top: 20%;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem; /* add margin-top */
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  textarea,
+  input {
+    width: 25rem;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  
+  textarea {
+    height: 10rem;
+  }
+  button{
+      margin-top:50px;
+  }
+  .logo {
+    text-align: left; 
+    margin: 20px;
+    width: 400px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 90px;
+    line-height: 115px;
+    color: white;
+  }
