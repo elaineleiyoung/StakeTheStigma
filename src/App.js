@@ -6,6 +6,7 @@ import Register from './components/scripts/register';
 import Account from './components/scripts/account';
 import Search from './components/scripts/search';
 import FormComponent from './FormContributor.js';
+import Insights from "./components/scripts/insights";
 import { OpenAI } from './openAI'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/search" element = {<Search />} />
         <Route path="/contributor" element = {<FormComponent />} />
         <Route path="/account" element = {<Account />} />
+        <Route path="/insights" element = {<Insights />} />
       </Routes>
     </Router>
   );

@@ -98,6 +98,7 @@ main.Dashboard{
     background-color:#F7F7F8;
     position: fixed;
     overflow: auto;
+    z-index:1;
     
   }
   
