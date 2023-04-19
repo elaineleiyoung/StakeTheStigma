@@ -17,7 +17,7 @@ main{
     text-transform: uppercase;
     position: absolute;
     right: 3%;
-    top: -12px;
+    top: -3px;
   }
 
 .slogan {
@@ -29,6 +29,19 @@ main{
 
     color: #FFFFFF;
 
-    top: 35px;
+    top: 38px;
     right: 3%;
   }
+
+  .contRight{
+    position: absolute; /* Make sure position is set to absolute */
+    display: flex;
+    width: 60%;
+    height: 80%;
+    background-color: hotpink;
+    right: 15px;
+    bottom: 12%;
+    /* Add the following lines */
+    transform: translate(0, 10%);
+    justify-content: flex-end;
+}

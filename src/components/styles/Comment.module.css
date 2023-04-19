@@ -7,34 +7,30 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    border: 2px;
     height: auto;
+    margin-top: auto;
+    box-shadow: none;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.h1.Comment{
     position: relative;
-
-  }
-
-.title {
-    font-family: 'Montserrat', sans-serif;
-    
+    top: 0;
 }
+
 
 form > textarea {
     margin: -1em;
     border-radius: 12px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     align-items: center;
+    width: 50%px;
+    height: 50px;
 }
 
 .formWrapper {
     position: fixed;
     top: 600px;
-    background-color:pink;
 }
 
 .comment{

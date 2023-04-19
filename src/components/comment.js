@@ -4,6 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
 import { doc, FieldValue, setDoc, updateDoc, collection, getDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase";
+import { Button} from '@mui/material';
 
 function Comment(props) {
     // Defining variables used within this file
@@ -61,9 +62,9 @@ function Comment(props) {
 
     return(
         <section>
-            <h1 className= {styles.title}> Comments </h1>
+            <h1> Comments </h1>
             <div className = {styles.responses}>
-            {responses?responses.map((response) => <p><span>{response.user}</span>: {response.response}</p>): <h1>hi</h1>}
+                {responses?responses.map((response) => <p><span>{response.user}</span>: {response.response}</p>): <h1>hi</h1>}
             </div>
             <div className = {styles.formWrapper}>
                 <form onSubmit={handleSubmit} className= {styles.comment}>
@@ -71,9 +72,10 @@ function Comment(props) {
                         placeholder = "Leave a comment..." 
                         id="comment" 
                         value={comment} 
+                        className = {styles.textArea}
                         onChange={(e) => {setComment(e.target.value);
                                           setIsEmpty(false)}} />
-                    <button type="submit"><SendIcon /></button>
+                    <Button type="submit"><SendIcon /></Button>
                     {isEmpty && <p>Please enter a valid response</p>}
                 </form>
             </div>

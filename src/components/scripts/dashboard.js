@@ -139,8 +139,7 @@ function Dashboard() {
 
 
     return (
-      <main className={styles.Dashboard}>
-        
+      <main className={styles.Dashboard}> 
         <div className={styles.header}>
           <h1 className = {styles.logo}> Stake The Stigma.</h1>
           <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>

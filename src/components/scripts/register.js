@@ -1,44 +1,25 @@
 import styles from "../styles/Register.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore"; 
-/*Material UI */
-import TextField from '@mui/material/TextField';
-import React from 'react';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";
 
 function Register() {
-    // Defining our variables for our register page
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    
-    // Attempt to sign in a user using firebase auth
-    // If they already have a topics field, that means they have done the survey which means that 
-    // they should be directly navigated to the dashboard page
-    const signIn = async (e) => {
+
+    const signIn = e => {
         e.preventDefault();
-      
+
         const auth = getAuth();
-        try {
-          await signInWithEmailAndPassword(auth, email, password);
-          const userRef = doc(db, "users", auth.currentUser.uid);
-          const docSnap = await getDoc(userRef);
-          console.log(docSnap.data())
-          if (docSnap.exists() && docSnap.data().topics) {
-            navigate("/dashboard");
-          } else {
-            navigate("/survey");
-          }
-        } catch (error) {
-          alert(error.message);
-        }
-      };
-    
-    // Attempts to create an account using firebase auth 
-    // Since this a first time user, they will be directly navigated to survey page
+        signInWithEmailAndPassword(auth, email, password)
+        .then(auth => {
+            navigate("/");
+        })
+        .catch(error => alert(error.message))
+    }
+
     const createAccount = e => {
         e.preventDefault();
         
@@ -46,7 +27,7 @@ function Register() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((auth) => {
             if (auth) {
-                navigate("/survey");
+                navigate("/");
             }
         })
         .catch(error => alert(error.message))
@@ -54,48 +35,30 @@ function Register() {
 
     return (
         <div className = {styles.sheesh}>
-            <h1 className = {styles.logo}> Stake The Stigma.</h1>
-            <h2 className = {styles.logo2}> Destigmatizing Women's Health.</h2>
-            <div className = {styles.yurd}>
+             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+             <h2 className={styles.logo2}>_UNCENSOR CENSORED NEWS_</h2>
+        
+        <section className = {styles.layout}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "25vh", marginLeft: "100px" }}>
+                <form>
+                    <div className = {styles.emailInput}>
+                        <h4 className= {styles.logo3}> Email</h4>
+                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
+                    </div>
+                    <div className = {styles.passwordInput}>
+                        <h4 className= {styles.logo3}> Password</h4>
+                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} className = {styles.password} />
+                    </div>
 
+                    <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>Sign In</button>
+                </form>
 
-            <TextField 
-                id="outlined-basic" 
-                label="Email" 
-                onChange={e => setEmail(e.target.value)} 
-                required 
-                variant="outlined" />
-
-            <TextField 
-                id="outlined-basic" 
-                label="Password" 
-                onChange={e => setPassword(e.target.value)} 
-                required 
-                margin="normal"/>
-
-            <button type = "submit" onClick = {signIn} margin = "20px" className = {styles.signInBtn}>
-                    <Link to = {"/dashboard"} style={{textDecoration:'none'}}>
-                        Log In
-                    </Link>
-            </button>
-
-            <hr style={{ 
-                    backgroundColor: 'white', 
-                    height: '1px', 
-                    width: '50%', 
-                    margin: '10px auto',
-            }} />
-
-            <button className = {styles.createAccBtn} onClick = {createAccount}>
-                Create An Account
-            </button>
-
-            <p className = {styles.message}>
-                Forgot Password?
-            </p>
-            
+                <p className = {styles.message}>Don't have an account? Create one here!</p>
+                <button className = {styles.createAccBtn} onClick = {createAccount}>Create your account</button>
             </div>
-        </div> 
+        </section>
+        </div>
+        
     );
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import './formComponent.css'
-import styles from "./components/styles/Register.module.css";
+import styles from "./components/styles/formComponent.module.css";
 import Navbar from './components/scripts/Navbar'
 
 function FormComponent() {

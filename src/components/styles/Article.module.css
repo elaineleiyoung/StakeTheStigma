@@ -7,7 +7,6 @@
 
 .openContainer{
     display: flex;
-    background-color: brown;
     flex-direction: column;
 
 }
