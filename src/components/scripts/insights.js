@@ -63,9 +63,9 @@ function Insights() {
         setTotalNumTopics(numTopics);
     };
 
- /*    useEffect(() => {
+    useEffect(() => {
         getUsers();
-    }, [topics]); */
+    }, [topics]); 
 
     return(
         <section>
