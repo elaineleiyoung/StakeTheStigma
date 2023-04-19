@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import { doc, FieldValue, updateDoc, getDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
@@ -17,6 +17,9 @@ import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styles from "../../src/components/styles/Article.module.css";
+import ImageProvider from './ArticleImage/ImageContext';
+import CardImage from './ArticleImage/CardImage.js';
+
 
 //article style
 const style = {
@@ -39,6 +42,7 @@ export default function Article(props) {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [content, setContent] = useState(props.content);
+  const [topic, setTopic] = useState(props.topic)
   const [open, setOpen] = React.useState(false);
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -47,6 +51,13 @@ export default function Article(props) {
   const auth = getAuth();
   const currentUser = auth.currentUser.email;
   const [shared, setShared] = useState(false);
+
+  //image context switch
+  console.log(props.topic)
+
+  
+
+
 
   //sharing articles
   const handleShare = () => {
@@ -126,22 +137,16 @@ export default function Article(props) {
   return (
     <Card sx={{ width: 345, borderRadius:2, boxShadow:0}}>
       <CardActionArea onClick={handleOpen}>
-        <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="Female Health<3"
-        />
+      <ImageProvider topic={topic}> 
+          <CardImage />
+          </ImageProvider>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" className="custom-h5">
             {title}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography> */}
-          <a href={description} >source</a>
         </CardContent>
       </CardActionArea>
+      <a href={description} style={{textDecoration:"none", color: "grey", fontSize:"medium", paddingLeft:"10px"}}>Source</a>
       <CardActions>
       <Button onClick={handleShare}>
           <ShareRoundedIcon />

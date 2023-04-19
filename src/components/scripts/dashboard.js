@@ -113,6 +113,7 @@ function Dashboard() {
                 content: doc.data().content,
                 userLikes: [],
                 likes: doc.data().userLikes.length,
+                topics: doc.data().topic,
               }
               newContent.push(article);;
             });
@@ -136,8 +137,6 @@ function Dashboard() {
     };
 
 
-
-
     return (
       <main className={styles.Dashboard}>
         
@@ -154,21 +153,15 @@ function Dashboard() {
         </form>
         <Navbar />
         </div>
-        {/*
-        <p className= {styles.message}>Hi {email}</p>
-          <h2>Your topics are</h2>
-          {topics?topics.map((topic)=><Text>{topic}</Text>):null}
-          <h1>Your links are</h1>
-        <div className = {styles.topics}>
-          {links?links.map((link)=><Text>{link}</Text>):null}
-        </div>*/}
         <div className={styles.articleContainer}>
             {fullContent && fullContent.map((topic)=>{
                 return <Article id={topic.id}
                 title={topic.title} 
                 description={topic.description} 
                 content={topic.content} 
-                userLikes={topic.userLikes} likes={topic.likes}/>
+                userLikes={topic.userLikes} 
+                likes={topic.likes}
+                topic={topic.topics}/>
             })}
         </div>
     </main>
