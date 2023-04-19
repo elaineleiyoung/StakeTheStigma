@@ -12,6 +12,7 @@ function Comment(props) {
     const currentUser = auth.currentUser.email;
     const [comment, setComment] = useState("");
     const [responses, setResponses] = useState([]);
+    const [isEmpty, setIsEmpty] = useState(false);
     const [cx, setCx] = useState();
     
     useEffect(()=>{
@@ -26,6 +27,10 @@ function Comment(props) {
     // When a comment is submitted we'll push it to firebase
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (comment.trim() === '') {
+            setIsEmpty(true);
+            return;
+        }
         // Get a reference to the document to update
         const docRef = doc(db, "articles", props.id);
         // Set the updated data for the document
@@ -35,6 +40,7 @@ function Comment(props) {
         }, { merge: true });
         // setResponses([...responses, { user: currentUser, response: comment }]);
         // Clear the comment input
+        setIsEmpty(false);
         setComment("");
     };
 
@@ -56,15 +62,20 @@ function Comment(props) {
     return(
         <section>
             <h1 className= {styles.title}> Comments </h1>
-
-            <div className = {styles.formWrapper}>
-                <form onSubmit={handleSubmit}>
-                    <textarea placeholder = "Leave a comment..." id="comment" value={comment} onChange={(e) => setComment(e.target.value)} />
-                    <button type="submit"><SendIcon /></button>
-                </form>
-            </div>
             <div className = {styles.responses}>
             {responses?responses.map((response) => <p><span>{response.user}</span>: {response.response}</p>): <h1>hi</h1>}
+            </div>
+            <div className = {styles.formWrapper}>
+                <form onSubmit={handleSubmit} className= {styles.comment}>
+                    <textarea 
+                        placeholder = "Leave a comment..." 
+                        id="comment" 
+                        value={comment} 
+                        onChange={(e) => {setComment(e.target.value);
+                                          setIsEmpty(false)}} />
+                    <button type="submit"><SendIcon /></button>
+                    {isEmpty && <p>Please enter a valid response</p>}
+                </form>
             </div>
         </section>
     );

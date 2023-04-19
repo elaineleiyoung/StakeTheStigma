@@ -96,7 +96,10 @@ main{
     z-index: 1;
   }
   
-
+  .searchbar{
+    top:0;
+  }
+  
 body {
 	background: #048;
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;

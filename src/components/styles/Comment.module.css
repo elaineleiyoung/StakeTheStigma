@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-.title {
-    font-family: 'Montserrat', sans-serif;
-}
+
 
 section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: aqua;
+    height: auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+  }
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    
 }
 
 form > textarea {
@@ -22,7 +34,12 @@ form > textarea {
 .formWrapper {
     position: fixed;
     top: 600px;
-    margin-left: -40em;
+    background-color:pink;
+}
+
+.comment{
+    background-color: blue;
+    bottom: 0;
 }
 
 .responses {

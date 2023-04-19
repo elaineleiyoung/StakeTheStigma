@@ -113,7 +113,7 @@ function Survey() {
         {{ 
           display: "block", 
           width: "fit-content", 
-          backgroundColor: 'rbga(0,0,0,.2)', 
+          backgroundColor: 'white 20%',   //its just transparent now, TBF
           color: 'white', 
           borderRadius: "20px",
           width: "fit-content",

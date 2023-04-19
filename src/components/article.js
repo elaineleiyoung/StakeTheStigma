@@ -18,18 +18,18 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styles from "../../src/components/styles/Article.module.css";
 
+//article style
 const style = {
   position: 'absolute',
   top: '30%',
   left: '50%',
   transform: 'translate(-50%, -30%)',
   width: '80%',
-  height: 'auto',
+  height: '80%',
   maxWidth: '600px',
   bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
   p: 4,
+  borderRadius: 2,
 };
 
 
@@ -46,6 +46,7 @@ export default function Article(props) {
   const handleClose = () => setOpen(false);
   const auth = getAuth();
   const currentUser = auth.currentUser.email;
+  const [shared, setShared] = useState(false);
 
   //Saving articles
   async function saveHandler(){
@@ -74,6 +75,7 @@ export default function Article(props) {
     }
   }
 
+
   
   //sets an article to true or false based on whether user liked that article, makes calls to database to reflect changes, could be more efficient however?
   async function likeHandler() {
@@ -101,7 +103,7 @@ export default function Article(props) {
   }
 //Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, borderRadius:2, boxShadow:0}}>
       <CardActionArea onClick={handleOpen}>
         <CardMedia
           component="img"
@@ -110,7 +112,7 @@ export default function Article(props) {
           alt="Female Health<3"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" className="custom-h5">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -122,9 +124,11 @@ export default function Article(props) {
         <Button>
           <ShareRoundedIcon />
         </Button>
+
         <Button onClick = {likeHandler}>
           {!liked ? <h3><FavoriteBorderRoundedIcon /></h3> : <h3><FavoriteRoundedIcon /></h3>}
         </Button>
+
         <Button onClick = {saveHandler}>
           {!saved ? <h3><BookmarkBorderIcon /></h3> : <h3><BookmarkIcon/></h3>}
         </Button>
@@ -135,14 +139,14 @@ export default function Article(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={{ ...style, overflowY: 'auto', maxHeight: '90vh', maxWidth:'150vh', borderRadius:'px' }}>
+        <Box sx={{ ...style, overflowY: 'auto', maxHeight: '90vh', maxWidth:'150vh', className:'articleOpen'}}>
           <Typography className={styles.Article}>
             {title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {content}
           </Typography>
-          <Card>
+          <Card >
             <Comment id={props.id}/>
           </Card>
         </Box>
