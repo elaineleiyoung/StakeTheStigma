@@ -140,15 +140,17 @@ export default function Article(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={{ ...style, overflowY: 'auto', maxHeight: '90vh', maxWidth:'150vh', className:'articleOpen'}}>
-          <Typography className={styles.Article}>
-            {title}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {content}
-          </Typography>
-          <Card >
-            <Comment id={props.id}/>
-          </Card>
+          <div className={styles.openContainer}>
+            <Typography sx={{fontSize:'25px', fontWeight: 'bold'}}>
+              {title}
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {content}
+            </Typography>
+            <Card >
+              <Comment id={props.id}/>
+            </Card>
+          </div>
         </Box>
       </Modal>
     </Card>

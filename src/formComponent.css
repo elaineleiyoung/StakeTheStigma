@@ -2,7 +2,7 @@ h1 {
     top: 20%;
   }
   
-  form {
+  .form {
     display: flex;
     flex-direction: column;
     align-items: center;

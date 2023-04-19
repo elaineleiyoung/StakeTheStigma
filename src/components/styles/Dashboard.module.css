@@ -121,4 +121,9 @@ input[type="text"] {
   border: none;
   padding: 15px 60px;
   border-radius: 100px;
+  position: absolute;
+  align-items: center;
+  right: 60%;
+  top: 13%;
+
 }

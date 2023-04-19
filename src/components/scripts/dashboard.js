@@ -142,18 +142,19 @@ function Dashboard() {
       <main className={styles.Dashboard}>
         
         <div className={styles.header}>
-        <h1 className = {styles.logo}> Stake The Stigma.</h1>
-        <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
-        <form onSubmit={handleSubmit}>
-        <input
-            type="text"
-            placeholder="Search here"
-            onChange={handleChange}
-            value={searchInput} 
-            width="200px"/>
-        </form>
-        <Navbar />
-        </div>
+          <h1 className = {styles.logo}> Stake The Stigma.</h1>
+          <h2 className = {styles.slogan}> Destigmatizing Women's Health</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search here"
+                onChange={handleChange}
+                value={searchInput} 
+                width="200px"
+              />
+            </form>
+          </div>
+          <Navbar />
         {/*
         <p className= {styles.message}>Hi {email}</p>
           <h2>Your topics are</h2>

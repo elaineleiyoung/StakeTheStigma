@@ -4,3 +4,14 @@
 .articleOpen{
     border: none;
 }
+
+.openContainer{
+    display: flex;
+    background-color: brown;
+    flex-direction: column;
+
+}
+
+.title{
+    font-size: 20px;
+}
