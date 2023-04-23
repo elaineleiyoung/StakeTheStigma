@@ -62,11 +62,11 @@ function Insights() {
         setTotalTopics(totalTopicUserCount);
         setTotalNumTopics(numTopics);
     };
-
+/*
     useEffect(() => {
         getUsers();
     }, [topics]); 
-
+*/
     return(
         <section>
             <h1>Hello, {user.email}!</h1>

@@ -1,10 +1,11 @@
 /*regular montserrat*/
+/*
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 main.Dashboard{
     display: flex;
     flex-direction: column;
-    border: none; /* added to remove border */
+    border: none; 
     font-family: 'Montserrat', sans-serif;
   }
 
@@ -47,7 +48,7 @@ main.Dashboard{
   }
 
   .sideBar {
-    position: fixed; /* or "fixed" if you want it to be fixed in the viewport */
+    position: fixed; 
     left: 0;
   }
 
@@ -122,7 +123,7 @@ input[type="text"] {
   display: flex;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  width: 300px; /* adjust this value as needed */
+  width: 300px;
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   padding: 15px 60px;
@@ -133,3 +134,4 @@ input[type="text"] {
   top: 13%;
 
 }
+*/

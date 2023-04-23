@@ -7,18 +7,18 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Article from '../article'
-
- 
+import { trackPromise } from 'react-promise-tracker' 
 function Search() {
   // Defining variables used throughout this file
   const location = useLocation()
   const squery = location.state.query
   console.log(squery)
-  const API_KEY = process.env.GOOGLE_APP_API_KEY;
+  const API_KEY = 'AIzaSyBmN_FaKypjOKQQFrR91ClS76B0YG8bNZ0';
   // parameter for my Google PSE
   const cx = 'd5445a74cd13a432b'  
   const [links, setLinks] = useState([])
   const [fullContent, setFullContent] = useState([])
+  const newContent = [];
 
   // For testing purposes: when the generate summary button is clicked, we will check each link
   // 1) if its in our database already, do nothing
@@ -29,7 +29,7 @@ function Search() {
       const q = query(collection(db, "articles"), where("url", "==", data.link), limit(1))
       const querySnapshot = await getDocs(q)
       if (querySnapshot.size === 0) {
-        const content = await OpenAI(data.link)
+        const content = await trackPromise(OpenAI(data.link))
         console.log(content)
       const docRef = await addDoc(collection(db,"articles"),{
         title: data.title,
@@ -42,13 +42,6 @@ function Search() {
       console.log(docRef.id)
       }
     })
-  }
-
-  // When this button is clicked, we want to iterate through our list of links
-  // and create objects and populate them with the metadata for each link from our database
-  // our function above gaurantees that every link generated will be in the database 
-  const displaySearchResults = async () => {
-    const newContent = [];
     for (const piece of links) {
       console.log(piece)
       try {
@@ -69,7 +62,13 @@ function Search() {
         console.error(`Error fetching articles for ${piece}`, error);
       }
    }
-    setFullContent(newContent);
+  }
+
+  // When this button is clicked, we want to iterate through our list of links
+  // and create objects and populate them with the metadata for each link from our database
+  // our function above gaurantees that every link generated will be in the database 
+  const displaySearchResults = async () => {
+    console.log(fullContent)
   };
 
   // This function will run on page load. 
@@ -80,6 +79,9 @@ function Search() {
     `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=1`
     ).then((response) => response.json()).then((data) => setLinks(data['items'])).catch((error) => console.error(error));
   }, [squery]);
+  useEffect(()=>{
+    handleClick()
+  },[links])
 
   return (
       <div>

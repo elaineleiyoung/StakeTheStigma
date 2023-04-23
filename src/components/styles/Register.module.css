@@ -1,113 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-/*Container for entire page*/
-.sheesh{
-  display: flex;
-  align-items: center;
+.container{
   height: 100vh;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:  auto;
+  grid-template-areas:
+  ". . . "
+  "l . . "
+  "ll . r"
+  ". slogan . "
 }
-/*Container for Logo.*/
-
-/*Container for input fields etc.*/
-.yurd{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  flex-direction: column;
-  
+.logo1{
+  grid-area: l;
+  align-self: end;
+  justify-self: start;
 }
-
-.logo {
-  text-align: left; 
-  margin: 20px;
-  width: 400px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 90px;
-  line-height: 115px;
-  color: white;
-}
-
 .logo2{
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom:0;
-  left: 30%;
-
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 575;
-  font-size: 35px;
-  line-height: 49px;
-
-  color: white;
+  grid-area: ll;
+  align-self: center;
+  justify-self: left;
+  padding-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
 }
-
-.userInput > h4 {
-  font-size: 12px;
+.right{
+  grid-area: r;
+  align-self: center;
+  justify-self: center;
+  font-family: 'Montserrat', sans-serif;
 }
-
-
-.form{
-  position: relative;
-  left: 25rem;
-  align-self: flex-end;
-}
-
-.signInBtn {
-  display: flex;
-  padding: 7px 10px;
-
-  background: white;
-  border-radius: 999px;
-  padding: 10px 60px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
-}
-
-.createAccBtn {
-  display: flex;
-  padding: 7px 10px;
-  background: #3A448C;
-  border-radius: 999px;
-  padding: 10px 60px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
-
-}
-
-.message{
-  /* background-color: red; */
-  position: absolute;
-  bottom: 20%;
-
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 29px;
-
-  color:#3A448C;
-  
-}
-    
-.signInBtn:hover, .createAccBtn:hover {
-  background-color: lightgrey;
-  color:black;
-  
+.slogan{
+  grid-area: slogan;
+  align-self: center;
+  justify-self: center;
+  font-family: 'Montserrat', sans-serif;
 }

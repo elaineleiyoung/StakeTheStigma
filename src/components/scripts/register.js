@@ -2,6 +2,8 @@ import styles from "../styles/Register.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function Register() {
 
@@ -15,7 +17,7 @@ function Register() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then(auth => {
-            navigate("/");
+            navigate("/dashboard");
         })
         .catch(error => alert(error.message))
     }
@@ -34,29 +36,32 @@ function Register() {
     }
 
     return (
-        <div className = {styles.sheesh}>
-             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
-             <h2 className={styles.logo2}>_UNCENSOR CENSORED NEWS_</h2>
-        
-        <section className = {styles.layout}>
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "25vh", marginLeft: "100px" }}>
+        <div className={styles.container}>
+            <div className={styles.logo2}>
+             <h1>STAKE</h1>
+             <h1>THE STIGMA.</h1>
+             </div>
+            <div className={styles.right}>
                 <form>
-                    <div className = {styles.emailInput}>
-                        <h4 className= {styles.logo3}> Email</h4>
-                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
+                    <div>
+                        <h4> Email</h4>
+                        <TextField size="small"id="outlined-basic" label="Email" variant="outlined" onChange = {e => {setEmail(e.target.value)}}  />
                     </div>
-                    <div className = {styles.passwordInput}>
-                        <h4 className= {styles.logo3}> Password</h4>
-                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} className = {styles.password} />
+                    <div>
+                        <h4> Password</h4>
+                        <TextField size="small"id="outlined-basic" label="Password" variant="outlined" onChange = {e => {setPassword(e.target.value)}}  />
                     </div>
-
-                    <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>Sign In</button>
+                    <div style={{"padding-top":"20px"}}>
+                    <Button size="small"variant="outlined" onClick={signIn}>Sign In</Button>
+                    </div>
                 </form>
 
-                <p className = {styles.message}>Don't have an account? Create one here!</p>
-                <button className = {styles.createAccBtn} onClick = {createAccount}>Create your account</button>
+                <p>Don't have an account? Create one here!</p>
+                <Button size="small"variant="outlined" onClick={createAccount}>Create your account</Button>
             </div>
-        </section>
+            <div className={styles.slogan}>
+                <h2>_UNCENSOR CENSORED NEWS_</h2>
+            </div>
         </div>
         
     );

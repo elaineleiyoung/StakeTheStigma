@@ -1,10 +1,11 @@
 /*regular montserrat*/
+/*
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 main{
     display: flex;
     flex-direction: column;
-    border: none; /* added to remove border */
+    border: none; 
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
 }
@@ -34,14 +35,13 @@ main{
   }
 
   .contRight{
-    position: absolute; /* Make sure position is set to absolute */
+    position: absolute; 
     display: flex;
     width: 60%;
     height: 80%;
     background-color: hotpink;
     right: 15px;
     bottom: 12%;
-    /* Add the following lines */
     transform: translate(0, 10%);
     justify-content: flex-end;
-}
+}*/
