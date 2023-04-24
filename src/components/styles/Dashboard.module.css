@@ -1,8 +1,8 @@
-/*regular montserrat*/
-/*
+/* regular montserrat*/
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-main.Dashboard{
+/* main.Dashboard{
     display: flex;
     flex-direction: column;
     border: none; 
@@ -133,5 +133,4 @@ input[type="text"] {
   right: 60%;
   top: 13%;
 
-}
-*/
+} */

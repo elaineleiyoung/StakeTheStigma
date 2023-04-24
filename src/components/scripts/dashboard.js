@@ -27,6 +27,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Paper, Popover} from '@mui/material'
+import shadows from "@mui/material/styles/shadows";
+import { StylesProvider } from "@chakra-ui/react";
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -271,7 +273,7 @@ function Dashboard() {
       ))}
     </div>
           <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: 'purple'}}>
+      <AppBar position="static" sx={{ background: 'linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7)', shadow:'none', height:'100px'}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -310,16 +312,9 @@ function Dashboard() {
       </AppBar>
     </Box>
         <div >
-        <h1> Stake The Stigma.</h1>
-        <h2 > Destigmatizing Women's Health</h2>
-      
-
-        
-
+        {/* <h1> Stake The Stigma.</h1>
+        <h2 > Destigmatizing Women's Health</h2> */}
         </div>
-
-        <div >
-       
             {fullContent && fullContent.map((topic)=>{
                 return <Article id={topic.id}
                 title={topic.title} 
@@ -329,7 +324,6 @@ function Dashboard() {
                 likes={topic.likes}
                 topic={topic.topics}/>
             })}
-        </div>
     </main>
     );
   }
