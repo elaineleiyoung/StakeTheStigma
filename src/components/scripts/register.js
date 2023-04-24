@@ -44,6 +44,7 @@ function Register() {
             <div className={styles.logo2}>
              <h1>Stake The Stigma</h1>
              </div>
+             <h2 className={styles.logo3}>destigmatizing women's health</h2>
             <div className={styles.right}>
                 <form>
                     <div style={{"padding-top":"40px"}}>
@@ -53,16 +54,29 @@ function Register() {
                                     variant="outlined" 
                                     required
                                     onChange = {e => {setEmail(e.target.value)}}
-                                    sx={inputStyle}
+                                    sx={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                                        border:'2px solid #3A448C',
+                                        borderRadius: '999px',
+                                        width: '400px',
+                                    }}
                                      />
                     </div>
                     <div style={{"padding-top":"40px"}}>
                         <TextField size="small"
-                                    id="outlined-basic" 
+                                    // id="outlined-basic" 
                                     label="Password" 
-                                    variant="outlined" 
+                                    // variant="standard"
+                                    type="password"
                                     required
-                                    onChange = {e => {setPassword(e.target.value)}}  />
+                                    onChange = {e => {setPassword(e.target.value)}} 
+                                    sx={{
+                                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                                        border:'2px solid #3A448C',
+                                        borderRadius: '999px',
+                                        width: '400px',
+                                    }}
+                                    />
                     </div>
                     <div style={{"padding-top":"20px"}}>
                     <button className={styles.registerButton} onClick={signIn}>
@@ -70,12 +84,8 @@ function Register() {
                     </button>
                     </div>
                 </form>
-
-                <p>Don't have an account? Create one here!</p>
+                <p className={styles.registerCaption}>Don't have an account? Create one here!</p>
                 <button className={styles.registerButton} onClick={createAccount}>Create an account</button>
-            </div>
-            <div className={styles.slogan}>
-                <h2>_destigmatizing women's health_</h2>
             </div>
         </div>
         </body> 
