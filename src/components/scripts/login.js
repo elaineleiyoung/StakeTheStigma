@@ -18,12 +18,12 @@ function Login() {
             <h1 className={styles.logo}>Stake The Stigma</h1>
             <h2 className={styles.logo2}>Destigmatizing Women's Health.</h2>
             <div className={styles.buttonWrapper}>
-                <button className={styles.Login} onClick={addUserHandler}>
-                    <Link to={"/survey"} style={{textDecoration:'none', color: '#3A448C'}}>
+                <button className={styles.guestLogin} onClick={addUserHandler}>
+                    <Link to={"/survey"} style={{textDecoration:'none', color: 'white'}}>
                         Guest
                     </Link>
                 </button>
-                <button1 className={styles.Login1}>
+                <button1 className={styles.login}>
                     <Link to={"/register"} style={{textDecoration:'none', color: '#3A448C'}}>
                         Register/Login
                     </Link>

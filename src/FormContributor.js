@@ -55,7 +55,6 @@ function FormComponent() {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <header className="heading">
       <h1 className="logo"> Stake The Stigma.</h1>
       <h2 className="subtitle">Destigmatizing Women's Health</h2>
