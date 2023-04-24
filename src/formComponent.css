@@ -1,34 +1,100 @@
-/*
-h1 {
-    top: 20%;
+body{
+  overflow: hidden;
+}
+.heading{
+  position: relative; 
+  background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
+  margin-top: -10px;
+  margin-right: -10px;
+  margin-left: -10px;
+  padding-top: 10px;
+} 
+.logo{
+  position: relative;
+  width: 520px;
+  height: 80px;
+  left: 1025px;
+  top: -1rem;
+
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 42px;
+  color: white;
   }
+.subtitle{
+  position: absolute;
+  width: 879px;
+  height: 80px;
+  left: 520px;
+  top: 2.5rem;
   
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5rem; 
-  }
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  letter-spacing: 0.1rem;
+  line-height: 43px;
+  text-align: right;
   
-  label {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-  }
-  
-  textarea,
-  input {
-    width: 25rem;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid gray;
-  }
-  
-  textarea {
-    height: 10rem;
-  }
-  button{
-      margin-top:50px;
-  }*/
+  color: #FFFFFF;
+}
+.content{
+  position: relative;
+  left: 5rem;
+}
+
+.form-total{
+  padding-top: 10px;
+  padding-bottom: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: -5.5rem;
+  left: 15rem;  
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+}
+
+.form-title{
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+
+.seperator{
+  position: absolute;
+  width: 1447px;
+  height: 0px;
+  left: -3px;
+  top: 34rem;
+
+  border: 1px solid #C4C4C4;
+  transform: rotate(0.08deg);
+}
+
+.topics{
+  position: relative;
+  top: 2.5rem;
+  left:5rem;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+}
+
+.topics h1{
+  margin-left: 10px;
+}
+
+/* .other-topic{
+  position: sticky;
+  left: 25em;
+  top: 0.9rem;
+} */
+.submit{
+  top: 4rem;
+  left: 73rem;
+  padding: 10px;
+}
