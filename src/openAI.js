@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const OpenAI = async (url) => {
 
-    const apiKey = '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';
+    const apiKey = process.env.REACT_APP_OPEN_AI_KEY;
     const prompt = "Summarize this at a sophisticated level with all crucial details with around 300 words:\n\n" + url;
 
     const requestOptions = {

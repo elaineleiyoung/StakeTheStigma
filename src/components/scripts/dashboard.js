@@ -324,7 +324,7 @@ function Dashboard() {
                 likes={topic.likes}
                 topic={topic.topics}/>
             })}
-    </main>
+    </main>gif
     );
   }
   
