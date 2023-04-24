@@ -1,3 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.survey{
+  background: linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7);
+  height:100vh;
+  width:100vw;
+  overflow: hidden;
+}
+
+.logo{
+    font-size: 3.5rem;
+		color: white;
+		font-weight: bold;
+		font-family: 'Georgia';
+		align-self: center;
+    text-align: center;
+}
+.subtitle{
+  margin-top: -300px;
+  font-size: 1.7rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.message{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    position: relative;
+    left: 5%;
+    top: 4em;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.chipContainer{
+  position: relative;
+  left: 5%;
+  top: 10em;
+}
+.chips{
+  margin:10px;
+}
+
+.submit{
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  top: 2em;
+  left: 33%;
+
+}
 /*
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 

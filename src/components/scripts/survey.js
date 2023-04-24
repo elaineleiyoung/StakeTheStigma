@@ -57,14 +57,14 @@ function Survey() {
   
 
   return (
-    <main>
+    <main className={styles.survey}>
       <div>
-            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
-            <h2 className={styles.logo2}>-Destigmatizing Women's Health-</h2>
+            <h1 className = {styles.logo}>STAKE THE STIGMA</h1>
+            <h2 className={styles.subtitle}>-Destigmatizing Women's Health-</h2>
      
       <p className={styles.message}>What are you interested in?</p>
       
-      <div style={SurveyButton.containerStyle}>
+      <div style={SurveyButton.containerStyle} className={styles.chipContainer}>
       
         <StyledChip className= {styles.chips}
           label="Menstruation"
@@ -107,19 +107,19 @@ function Survey() {
           clicked={selectedTopics.includes("menopause")}
         />
 
-        <Button component={Link}  color="primary" onClick={handleSubmit}  
-        style=
-
+        <Button component={Link}  color="primary" onClick={handleSubmit} className={styles.submit} 
+        sx=
         {{ 
           display: "block", 
           width: "fit-content", 
+          height: "50px",
           backgroundColor: 'white 20%',   //its just transparent now, TBF
           color: 'white', 
           borderRadius: "20px",
           width: "fit-content",
           padding: "6px 12px",
-          margin: "0 auto",
           fontWeight: "bold",
+          fontSize: "25px",
           }}>
         Start my Dashboard
         </Button>
