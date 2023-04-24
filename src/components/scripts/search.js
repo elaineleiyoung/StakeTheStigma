@@ -1,115 +1,128 @@
-import styles from "../styles/Survey.module.css";
+import styles from "../styles/Search.module.css";
 import { db } from "../../firebase";
-import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
+import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import {OpenAI} from '../../openAI'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Article from '../article'
-import { trackPromise } from 'react-promise-tracker' 
+import { trackPromise } from 'react-promise-tracker'
 function Search() {
-  // Defining variables used throughout this file
-  const location = useLocation()
-  const squery = location.state.query
-  console.log(squery)
-  const API_KEY = 'AIzaSyBmN_FaKypjOKQQFrR91ClS76B0YG8bNZ0';
-  // parameter for my Google PSE
-  const cx = 'd5445a74cd13a432b'  
-  const [links, setLinks] = useState([])
-  const [fullContent, setFullContent] = useState([])
-  const newContent = [];
+  // Defining variables used throughout this file
+  const location = useLocation()
+  const squery = useMemo(() => location.state.query, [location.state.query])
+  console.log(squery)
+  const API_KEY = 'AIzaSyBmN_FaKypjOKQQFrR91ClS76B0YG8bNZ0';
+  // parameter for my Google PSE
+  const cx = 'd5445a74cd13a432b'  
+  const [links, setLinks] = useState([])
+  const [fullContent, setFullContent] = useState([])
+  const navigate = useNavigate()
 
-  // For testing purposes: when the generate summary button is clicked, we will check each link
-  // 1) if its in our database already, do nothing
-  // 2) if its not in our database, generate a summary for it and create an object for it in our database
-  const handleClick = async () => {
-    links.map(async (data) => {
-      console.log(data)
-      const q = query(collection(db, "articles"), where("url", "==", data.link), limit(1))
-      const querySnapshot = await getDocs(q)
-      if (querySnapshot.size === 0) {
-        const content = await trackPromise(OpenAI(data.link))
-        console.log(content)
-      const docRef = await addDoc(collection(db,"articles"),{
-        title: data.title,
-        url: data.link,
-        topic: "N/A",
-        content: content.text,
-        likes: 0,
-        userLikes: []
-      })
-      console.log(docRef.id)
-      }
-    })
-    for (const piece of links) {
-      console.log(piece)
-      try {
-        const q = query(collection(db, "articles"), where("url", "==", piece.link), limit(1));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-          console.log(doc.data())
-          const article = {
-            title: doc.data().title,
-            description: doc.data().url,
-            content: doc.data().content,
-            likes: doc.data().likes
-          }
-        newContent.push(article);;
-      });
-      } catch (error) {
-        console.error(`Error fetching articles for ${piece}`, error);
-      }
-   }
-  }
+  // For testing purposes: when the generate summary button is clicked, we will check each link
+  // 1) if its in our database already, do nothing
+  // 2) if its not in our database, generate a summary for it and create an object for it in our database
+  function handleBack(){
+    navigate('/dashboard')
+  }
+  const fetchLinks = async () => {
+    try {
+      const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=1`);
+      const data = await response.json();
+      setLinks(data['items']);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // When this button is clicked, we want to iterate through our list of links
-  // and create objects and populate them with the metadata for each link from our database
-  // our function above gaurantees that every link generated will be in the database 
-  const displaySearchResults = async () => {
-    console.log(fullContent)
-  };
+  const generateSummaries = async () => {
+    for (const data of links) {
+      console.log(data);
+      const q = query(collection(db, "articles"), where("url", "==", data.link), limit(1));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.size === 0) {
+        const content = await OpenAI(data.link);
+        console.log(content);
+        const docRef = await addDoc(collection(db, "articles"), {
+          title: data.title,
+          url: data.link,
+          topic: "N/A",
+          content: content.text,
+          likes: 0,
+          userLikes: []
+        });
+        console.log(docRef.id);
+      }
+    }
+    const articles = await getArticles();
+    setFullContent(articles);
+  };
 
-  // This function will run on page load. 
-  // Once it receives the query from props, it will make a call to google PSE API, and store the response in a variable
-  // This response will be stored as a list of items, which has fields link, title, summary, etc. 
-  useEffect(() => {
-    fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=1`
-    ).then((response) => response.json()).then((data) => setLinks(data['items'])).catch((error) => console.error(error));
-  }, [squery]);
-  useEffect(()=>{
-    handleClick()
-  },[links])
+  const getArticles = async () => {
+    const newContent = [];
+    for (const piece of links) {
+      console.log(piece);
+      try {
+        const q = query(collection(db, "articles"), where("url", "==", piece.link), limit(1));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          console.log(doc.data());
+          const article = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().url,
+            content: doc.data().content,
+            likes: doc.data().likes
+          }
+          newContent.push(article);
+        });
+      } catch (error) {
+        console.error(`Error fetching articles for ${piece}`, error);
+      }
+    }
+    return newContent;
+  };
 
-  return (
-      <div>
-        {links.map((link, index) => (
-          <h1 key={index}>{link.link}</h1>
-        ))}
-        <button onClick={handleClick}>Click me for load OpenAI Summarization</button>
-        <button onClick={displaySearchResults}>Click me to load search results as articles</button>
-        <Box className={styles.articleContainer} sx={{ p: 2 }}>
-          {fullContent && fullContent.map((topic) => {
-            console.log(topic);
-            return (
-              <Article
-                title={topic.title}
-                description={topic.description}
-                content={topic.content}
-                likes={topic.likes}
-              />
-            );
-          })}
-        </Box>
-      </div>
-    );
-  }
+  useEffect(() => {
+    fetchLinks();
+  }, [squery]);
+
+  useEffect(() => {
+    if (links.length > 0) {
+      trackPromise(generateSummaries());
+    }
+  }, [links]);
+
+
+  return (
+    <div>
+      <div className={styles.searchContainer}>
+        <h1 className={styles.heading}>Search Results for {squery}...</h1>
+        <button className={styles.back}onClick={handleBack}>back</button>
+      </div>
+        <Box className={styles.articleContainer} sx={{ p: 2 }}>
+          {fullContent && fullContent.map((topic) => {
+            console.log(topic);
+            return (
+              <Article
+                title={topic.title}
+                description={topic.description}
+                content={topic.content}
+                likes={topic.likes}
+                id={topic.id}
+              />
+            );
+          })}
+        </Box>
+        </div>
+    );
+  }
 
 export default Search;
 
-  
+  
 
 /*
 

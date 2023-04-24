@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+.searchContainer{
+        display: grid;
+        grid-template-columns: 1fr  1fr 1fr;
+        grid-template-rows:  auto;
+        grid-template-areas:
+        "text . . . . button "
+}
+.heading{
+    font-family: 'Montserrat', sans-serif;
+    grid-area: text
+
+}
+.back{
+    font-family: 'Montserrat', sans-serif;
+    grid-area: button;
+    border: none;
+    background: transparent;
+    align-self: center;
+    justify-self: start;
+    font-weight: bold
+}
