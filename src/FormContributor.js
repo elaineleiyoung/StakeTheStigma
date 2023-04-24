@@ -1,58 +1,158 @@
 import { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from './firebase';
+import { db } from "./firebase";
+import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
 import './formComponent.css'
 import styles from "./components/styles/formComponent.module.css";
-import Navbar from './components/scripts/Navbar'
+import Navbar from './components/scripts/Navbar';
+import {OpenAI} from './openAI';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Survey from './components/scripts/survey';
+import Chip from '@mui/material/Chip';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function FormComponent() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
-  const [topic, setTopic] = useState('');
-  const [content, setContent] = useState('');
+  const [selectedTopics, setSelectedTopics] = useState([]);
+
+  function handleTopicClick(topic, link) {
+    if (selectedTopics.includes(topic)) {
+      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+    } else {
+      setSelectedTopics([...selectedTopics, topic]);
+    }
+  }
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Add the new document to the "articles" collection
-    const docRef = await addDoc(collection(db, 'articles'), {
-      title,
-      url,
-      topic,
-      content,
-      likes: 0,
-    });
-
-    console.log('Document written with ID: ', docRef.id);
-
-    // Reset the form
-    setTitle('');
-    setUrl('');
-    setTopic('');
-    setContent('');
+    try {
+      const q = query(collection(db, "articles"), where("url", "==", url), limit(1))
+      const querySnapshot = await getDocs(q)
+      if (querySnapshot.size === 0) {
+        const content = await OpenAI(url);
+        console.log(content);
+        const docRef = await addDoc(collection(db, "articles"), {
+          title: title,
+          url: url,
+          topic: selectedTopics,
+          content: content.text,
+          likes: 0,
+          userLikes: []
+        });
+        console.log('Document written with ID: ', docRef.id);
+        // Reset the form
+        setTitle('');
+        setUrl('');
+      }
+    } catch (error) {
+      console.error(`Error fetching articles for ${url}`, error);
+    }
   };
 
   return (
     <div>
-    {/* <Navbar /> */}
-    <h1 className = {styles.logo}> Stake The Stigma.</h1>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input type="text" id="title" value={title} onChange={(event) => setTitle(event.target.value)} />
+      {/* <Navbar /> */}
+      <header className="heading">
+      <h1 className="logo"> Stake The Stigma.</h1>
+      <h2 className="subtitle">Destigmatizing Women's Health</h2>
+      </header>
+      <div className="content">
+      <AccountCircleIcon sx={{ fontSize: 175, marginLeft: '2px' }} />
+      <form  className="form-total" onSubmit={handleSubmit}>
+      <h1 >Contribute an article...</h1>
+        <TextField className="form-title" id="standard-basic" label="Article Title" variant="standard"
+                    value={title} onChange={(event) => setTitle(event.target.value)}
+                    sx={{ width: '40em', paddingTop: '10px', paddingBottom: '10px' }} 
+        />
+        <TextField className="form-link" id="outlined-multiline-flexible" label="Article URL" multiline maxRows={4} variant="standard"
+                    value={url} onChange={(event) => setUrl(event.target.value)}
+                    sx={{width:'40em'}}
+        />
+      </form>
+      </div>
 
-      <label htmlFor="url">URL</label>
-      <input type="text" id="url" value={url} onChange={(event) => setUrl(event.target.value)} />
+      <div className="seperator"></div> 
 
-      <label htmlFor="topic">Topic</label>
-      <input type="text" id="topic" value={topic} onChange={(event) => setTopic(event.target.value)} />
+      <div className="topics">
+      <h1>Topics:</h1>
+      <StyledChip className= {styles.chips}
+          label="Menstruation"
+          onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
+          clicked={selectedTopics.includes("menstruation")}
+        />
+        <StyledChip
+          label="HPV Vaccination"
+          onClick={() => handleTopicClick("hpv","https://www.cdc.gov/std/hpv/stdfact-hpv.htm#:~:text=What%20is%20HPV%3F,including%20genital%20warts%20and%20cancers.")}
+          clicked={selectedTopics.includes("hpv")}
+        />
+        <StyledChip
+          label="Polycystic ovary syndrome (PCOS)"
+          onClick={() => handleTopicClick("pcos","https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/")}
+          clicked={selectedTopics.includes("pcos")}
+        />
+        <StyledChip
+          label="Pregnancy"
+          onClick={() => handleTopicClick("pregnancy", "https://www.cdc.gov/pregnancy/index.html")}
+          clicked={selectedTopics.includes("pregnancy")}
+        />
+        <StyledChip
+          label="Ovarian and Cervical Cancer"
+          onClick={() => handleTopicClick("ovarian_cancer","https://www.nhs.uk/conditions/ovarian-cancer/")}
+          clicked={selectedTopics.includes("ovarian_cancer")}
+        />
+        <StyledChip
+          label="Postpartum Depression"
+          onClick={() => handleTopicClick("postpartum","https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617")}
+          clicked={selectedTopics.includes("postpartum")}
+        />
+        <StyledChip
+          label="Breast Cancer"
+          onClick={() => handleTopicClick("breast_cancer","https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm")}
+          clicked={selectedTopics.includes("breast_cancer")}
+        />
+        <StyledChip
+          label="Menopause"
+          onClick={() => handleTopicClick("menopause","https://www.nia.nih.gov/health/what-menopause")}
+          clicked={selectedTopics.includes("menopause")}
+        />
+        {/* <TextField className="other-topic" label="Other Topic" variant="outlined" sx={{width: '450px', marginTop: "10px", marginLeft: "10px"}}/> */}
+          
 
-      <label htmlFor="content">Content</label>
-      <textarea id="content" value={content} onChange={(event) => setContent(event.target.value)} />
-
-      <button className="submit" type="submit">Submit</button>
-    </form>
+    </div>
+    <Button className="submit" type="submit" variant='contained'
+                onClick={handleSubmit} sx={{
+                width:'200px', 
+                height: '50px',
+                borderRadius: '999px',
+                backgroundColor: '#3A448C', 
+                  '&:hover': {
+                  backgroundColor: "#A473E6",
+                  }
+                }}>
+          Submit
+    </Button>
     </div>
   );
 }
+
+function StyledChip(props) {
+  const { clicked, ...rest } = props;
+  return (
+    <Chip
+      variant="outlined"
+      {...rest}
+      sx={[
+        clicked ? { backgroundColor: "#59515e", color: "white" } : { backgroundColor: "white", color: "black" },
+        { margin: 1 },
+        
+      ]}
+    />
+  );
+}
+
 
 export default FormComponent;
