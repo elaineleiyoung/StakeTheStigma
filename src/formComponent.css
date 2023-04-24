@@ -1,3 +1,4 @@
+
 .heading{
   position: relative; 
   background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
@@ -20,6 +21,11 @@
   line-height: 42px;
   color: white;
   }
+.contribute{
+  margin-top: 20px;
+  color: #3A448C;
+  font-family: 'Montserrat';
+}
 .subtitle{
   position: absolute;
   width: 879px;
@@ -37,39 +43,61 @@
   
   color: #FFFFFF;
 }
-.content{
-  position: relative;
-  left: 5rem;
+.overall{
+  display: flex;
+  
 }
-
-.form-total{
-  padding-top: 10px;
-  padding-bottom: 15px;
+.contributorIcon{
+  margin-left: 50px;
+}
+.content{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   position: relative;
+  margin-left: 20px;
+  margin-right: 5rem;
+  height: 500px;
+  width: 15000px;
+
+}
+.contributeTitle{
+  color: #3A448C;
+  font-family: 'Montserrat';
+}
+.form-total{
   display: flex;
   flex-direction: column;
-  top: -5.5rem;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  top: 0rem;
   left: 15rem;  
   font-family: 'Montserrat';
   font-style: normal;
+  font-weight: 700;
+  margin: 10px;
+}
+.surveyLabel{
+  display: flex;
+  flex-direction: column;
+  top: 2.5rem;
+  left:5rem;  
+  color: #3A448C;
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
+.surveyLabel2{
+  top: 2.5rem;
+  left:5rem;  
+  color: #3A448C;
+  font-family: 'Montserrat';
   font-weight: 700;
 }
 
 .form-title{
   padding-top: 10px;
   padding-bottom: 100px;
-}
-
-
-.seperator{
-  position: absolute;
-  width: 1447px;
-  height: 0px;
-  left: -3px;
-  top: 34rem;
-
-  border: 1px solid #C4C4C4;
-  transform: rotate(0.08deg);
 }
 
 .topics{
@@ -83,6 +111,7 @@
 
 .topics h1{
   margin-left: 10px;
+  color: #3A448C;
 }
 
 /* .other-topic{
@@ -91,7 +120,25 @@
   top: 0.9rem;
 } */
 .submit{
-  top: 4rem;
-  left: 73rem;
+  display: flex;
+  left: 40%;
   padding: 10px;
+
+}
+
+.contributorInput{
+  margin-bottom: 20px;
+  width: 400px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: transparent;
+  border-color: #3A448C;
+}
+.contributorInput2{
+  margin-bottom: 20px;
+  width: 1000px;
+  height: 150px;
+  border-radius: 20px;
+  background-color: transparent;
+  border-color: #3A448C;
 }

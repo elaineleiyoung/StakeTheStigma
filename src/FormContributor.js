@@ -56,73 +56,65 @@ function FormComponent() {
   return (
     <div>
       <header className="heading">
-      <h1 className="logo"> Stake The Stigma.</h1>
-      <h2 className="subtitle">Destigmatizing Women's Health</h2>
+        <h1 className="logo"> Stake The Stigma.</h1>
+        <h2 className="subtitle">Destigmatizing Women's Health</h2>
       </header>
+      <div className= "overall"> 
+        <div className = "contributorIcon">
+          <AccountCircleIcon sx={{ fontSize: 125, marginLeft: '2px' }} />
+        </div>
       <div className="content">
-      <AccountCircleIcon sx={{ fontSize: 175, marginLeft: '2px' }} />
-      <form  className="form-total" onSubmit={handleSubmit}>
-      <h1 >Contribute an article...</h1>
-        <TextField className="form-title" id="standard-basic" label="Article Title" variant="standard"
-                    value={title} onChange={(event) => setTitle(event.target.value)}
-                    sx={{ width: '40em', paddingTop: '10px', paddingBottom: '10px' }} 
-        />
-        <TextField className="form-link" id="outlined-multiline-flexible" label="Article URL" multiline maxRows={4} variant="standard"
-                    value={url} onChange={(event) => setUrl(event.target.value)}
-                    sx={{width:'40em'}}
-        />
-      </form>
+          <h1 className= "contributeTitle">Contribute</h1> 
+          <form onSubmit={handleSubmit} className="form-total">
+            <label className="surveyLabel"> Title <input type="text" id="fname" name="firstname" className="contributorInput" onChange={(event) => setTitle(event.target.value)} /></label>
+            <label className="surveyLabel"> URL  <input type="text" id="fname" name="firstname" className="contributorInput" onChange={(event) => setUrl(event.target.value)} /></label>
+            <input type="text" id="fname" name="firstname"  placeHolder="Type your mini blog..." className="contributorInput2" />
+          </form>
+        <div className="surveyLabel2">
+          <h1>Topics</h1>
+          <StyledChip className= {styles.chips}
+              label="Menstruation"
+              onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
+              clicked={selectedTopics.includes("menstruation")}
+            />
+            <StyledChip
+              label="HPV Vaccination"
+              onClick={() => handleTopicClick("hpv","https://www.cdc.gov/std/hpv/stdfact-hpv.htm#:~:text=What%20is%20HPV%3F,including%20genital%20warts%20and%20cancers.")}
+              clicked={selectedTopics.includes("hpv")}
+            />
+            <StyledChip
+              label="Polycystic ovary syndrome (PCOS)"
+              onClick={() => handleTopicClick("pcos","https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/")}
+              clicked={selectedTopics.includes("pcos")}
+            />
+            <StyledChip
+              label="Pregnancy"
+              onClick={() => handleTopicClick("pregnancy", "https://www.cdc.gov/pregnancy/index.html")}
+              clicked={selectedTopics.includes("pregnancy")}
+            />
+            <StyledChip
+              label="Ovarian and Cervical Cancer"
+              onClick={() => handleTopicClick("ovarian_cancer","https://www.nhs.uk/conditions/ovarian-cancer/")}
+              clicked={selectedTopics.includes("ovarian_cancer")}
+            />
+            <StyledChip
+              label="Postpartum Depression"
+              onClick={() => handleTopicClick("postpartum","https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617")}
+              clicked={selectedTopics.includes("postpartum")}
+            />
+            <StyledChip
+              label="Breast Cancer"
+              onClick={() => handleTopicClick("breast_cancer","https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm")}
+              clicked={selectedTopics.includes("breast_cancer")}
+            />
+            <StyledChip
+              label="Menopause"
+              onClick={() => handleTopicClick("menopause","https://www.nia.nih.gov/health/what-menopause")}
+              clicked={selectedTopics.includes("menopause")}
+            />
+          {/* <TextField className="other-topic" label="Other Topic" variant="outlined" sx={{width: '450px', marginTop: "10px", marginLeft: "10px"}}/> */}
       </div>
-
-      <div className="seperator"></div> 
-
-      <div className="topics">
-      <h1>Topics:</h1>
-      <StyledChip className= {styles.chips}
-          label="Menstruation"
-          onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
-          clicked={selectedTopics.includes("menstruation")}
-        />
-        <StyledChip
-          label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv","https://www.cdc.gov/std/hpv/stdfact-hpv.htm#:~:text=What%20is%20HPV%3F,including%20genital%20warts%20and%20cancers.")}
-          clicked={selectedTopics.includes("hpv")}
-        />
-        <StyledChip
-          label="Polycystic ovary syndrome (PCOS)"
-          onClick={() => handleTopicClick("pcos","https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/")}
-          clicked={selectedTopics.includes("pcos")}
-        />
-        <StyledChip
-          label="Pregnancy"
-          onClick={() => handleTopicClick("pregnancy", "https://www.cdc.gov/pregnancy/index.html")}
-          clicked={selectedTopics.includes("pregnancy")}
-        />
-        <StyledChip
-          label="Ovarian and Cervical Cancer"
-          onClick={() => handleTopicClick("ovarian_cancer","https://www.nhs.uk/conditions/ovarian-cancer/")}
-          clicked={selectedTopics.includes("ovarian_cancer")}
-        />
-        <StyledChip
-          label="Postpartum Depression"
-          onClick={() => handleTopicClick("postpartum","https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617")}
-          clicked={selectedTopics.includes("postpartum")}
-        />
-        <StyledChip
-          label="Breast Cancer"
-          onClick={() => handleTopicClick("breast_cancer","https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm")}
-          clicked={selectedTopics.includes("breast_cancer")}
-        />
-        <StyledChip
-          label="Menopause"
-          onClick={() => handleTopicClick("menopause","https://www.nia.nih.gov/health/what-menopause")}
-          clicked={selectedTopics.includes("menopause")}
-        />
-        {/* <TextField className="other-topic" label="Other Topic" variant="outlined" sx={{width: '450px', marginTop: "10px", marginLeft: "10px"}}/> */}
-          
-
-    </div>
-    <Button className="submit" type="submit" variant='contained'
+      <Button className="submit" type="submit" variant='contained'
                 onClick={handleSubmit} sx={{
                 width:'200px', 
                 height: '50px',
@@ -134,6 +126,9 @@ function FormComponent() {
                 }}>
           Submit
     </Button>
+    </div>
+
+    </div>
     </div>
   );
 }
