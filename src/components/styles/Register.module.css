@@ -50,10 +50,12 @@ body {
 
 /* this is outside of the grid cuz it dont fit and idk how to fix it  */
 .slogan{
+  grid-area: slogan;
+  /*
   position: absolute;
-  bottom: 0;
+  bottom: 0;*/
   justify-self: center;
-  font-size: 20px;
+  font-size: 18px;
   color: #3A448C;
   font-family: 'Montserrat', sans-serif;
 }

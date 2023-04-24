@@ -28,7 +28,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Paper, Popover} from '@mui/material'
 import shadows from "@mui/material/styles/shadows";
-import { StylesProvider } from "@chakra-ui/react";
+import styles from "../styles/Dashboard.module.css";
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -121,9 +121,9 @@ function Dashboard() {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Account', 'Contributor'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={()=>navigate(`/${text.toLowerCase()}`)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -133,18 +133,6 @@ function Dashboard() {
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
       </Box>
     );
   
@@ -315,6 +303,7 @@ function Dashboard() {
         {/* <h1> Stake The Stigma.</h1>
         <h2 > Destigmatizing Women's Health</h2> */}
         </div>
+        <div className={styles.articleGrid}>
             {fullContent && fullContent.map((topic)=>{
                 return <Article id={topic.id}
                 title={topic.title} 
@@ -324,7 +313,8 @@ function Dashboard() {
                 likes={topic.likes}
                 topic={topic.topics}/>
             })}
-    </main>gif
+        </div>
+    </main>
     );
   }
   
