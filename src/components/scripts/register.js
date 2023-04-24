@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 
 function Register() {
 
+    const inputStyle = {
+        borderRadius: '50px',
+    }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -36,33 +39,46 @@ function Register() {
     }
 
     return (
+        <body>
         <div className={styles.container}>
             <div className={styles.logo2}>
-             <h1>STAKE</h1>
-             <h1>THE STIGMA.</h1>
+             <h1>Stake The Stigma</h1>
              </div>
             <div className={styles.right}>
                 <form>
-                    <div>
-                        <h4> Email</h4>
-                        <TextField size="small"id="outlined-basic" label="Email" variant="outlined" onChange = {e => {setEmail(e.target.value)}}  />
+                    <div style={{"padding-top":"40px"}}>
+                        <TextField size="small"
+                                    id="outlined-basic" 
+                                    label="Email" 
+                                    variant="outlined" 
+                                    required
+                                    onChange = {e => {setEmail(e.target.value)}}
+                                    sx={inputStyle}
+                                     />
                     </div>
-                    <div>
-                        <h4> Password</h4>
-                        <TextField size="small"id="outlined-basic" label="Password" variant="outlined" onChange = {e => {setPassword(e.target.value)}}  />
+                    <div style={{"padding-top":"40px"}}>
+                        <TextField size="small"
+                                    id="outlined-basic" 
+                                    label="Password" 
+                                    variant="outlined" 
+                                    required
+                                    onChange = {e => {setPassword(e.target.value)}}  />
                     </div>
                     <div style={{"padding-top":"20px"}}>
-                    <Button size="small"variant="outlined" onClick={signIn}>Sign In</Button>
+                    <button className={styles.registerButton} onClick={signIn}>
+                        Sign In
+                    </button>
                     </div>
                 </form>
 
                 <p>Don't have an account? Create one here!</p>
-                <Button size="small"variant="outlined" onClick={createAccount}>Create your account</Button>
+                <button className={styles.registerButton} onClick={createAccount}>Create an account</button>
             </div>
             <div className={styles.slogan}>
-                <h2>_UNCENSOR CENSORED NEWS_</h2>
+                <h2>_destigmatizing women's health_</h2>
             </div>
         </div>
+        </body> 
         
     );
 }
