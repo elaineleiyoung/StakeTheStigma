@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.allComments{
+    overflow: hidden;
+    font-family: Montserrat;
+    position: relative;
+    left: 25%;
+    width: 100vw;
+}
+.allComments h1{
+    position: relative;
+    top: 0;
+    left: 12%;
+}
+
+.responses{
+    margin-top: 1em;
+    max-width: 90%;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
 /*
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 

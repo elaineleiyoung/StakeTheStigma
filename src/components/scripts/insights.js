@@ -33,11 +33,9 @@ function Insights() {
         return () => loggedUser();
     }, []);
 
-    if (!user) {
-        return <div>Loading...</div>;
-    }
-
-    //insights
+    useEffect(() => {
+        getUsers();
+    }, [topics]); 
 
     const getUsers = async () => {
         const userCollectionRef = collection(db, "users");
@@ -62,11 +60,11 @@ function Insights() {
         setTotalTopics(totalTopicUserCount);
         setTotalNumTopics(numTopics);
     };
-/*
-    useEffect(() => {
-        getUsers();
-    }, [topics]); 
-*/
+
+    if (!user) {
+        return <div>Loading...</div>;
+    }
+
     return(
         <section>
             <h1>Hello, {user.email}!</h1>

@@ -4,7 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
 import { doc, FieldValue, setDoc, updateDoc, collection, getDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase";
-import { Button} from '@mui/material';
+import { Button, TextField} from '@mui/material';
 
 function Comment(props) {
     // Defining variables used within this file
@@ -61,24 +61,28 @@ function Comment(props) {
     }
 
     return(
-        <section>
+        <section className={styles.allComments}>
             <h1> Comments </h1>
-            <div className = {styles.responses}>
-                {responses?responses.map((response) => <p><span>{response.user}</span>: {response.response}</p>): <h1>hi</h1>}
-            </div>
             <div className = {styles.formWrapper}>
                 <form onSubmit={handleSubmit} className= {styles.comment}>
-                    <textarea 
+                    <TextField
                         placeholder = "Leave a comment..." 
                         id="comment" 
                         value={comment} 
                         className = {styles.textArea}
                         onChange={(e) => {setComment(e.target.value);
-                                          setIsEmpty(false)}} />
-                    <Button type="submit"><SendIcon /></Button>
+                                          setIsEmpty(false)}} 
+                        sx={{width: '500px'}} />
+                    <Button type="submit" sx={{top:'10px', color:'#3A448C'}}>
+                        <SendIcon />
+                    </Button>
                     {isEmpty && <p>Please enter a valid response</p>}
                 </form>
             </div>
+            <div className = {styles.responses}>
+                {responses?responses.map((response) => <p><span>{response.user}</span>: {response.response}</p>): <h1>hi</h1>}
+            </div>
+            
         </section>
     );
 }
