@@ -6,7 +6,7 @@ const CardImage = () => {
 
   return (
     <div>
-      <img src={imageUrl} alt="Loading..." width="350px" height="300px"/>
+      <img src={imageUrl} alt="Loading..." width="100px" height="100px"/>
     </div>
   );
 };

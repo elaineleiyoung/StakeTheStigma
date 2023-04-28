@@ -4,6 +4,7 @@ import { collection, addDoc,  query, getDocs, where, limit } from "firebase/fi
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import {OpenAI} from '../../openAI'
+import {Categorize} from './categorize'
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -44,11 +45,14 @@ function Search() {
       const querySnapshot = await getDocs(q);
       if (querySnapshot.size === 0) {
         const content = await OpenAI(data.link);
+        const category = await Categorize(squery)
+        const qtopic = category.text.replace(/\s/g, '')
+        console.log(qtopic)
         console.log(content);
         const docRef = await addDoc(collection(db, "articles"), {
           title: data.title,
           url: data.link,
-          topic: "N/A",
+          topic: qtopic,
           content: content.text,
           likes: 0,
           userLikes: []
@@ -74,7 +78,8 @@ function Search() {
             title: doc.data().title,
             description: doc.data().url,
             content: doc.data().content,
-            likes: doc.data().likes
+            likes: doc.data().likes,
+            qtopic: doc.data().topic
           }
           newContent.push(article);
         });
@@ -112,6 +117,7 @@ function Search() {
                 content={topic.content}
                 likes={topic.likes}
                 id={topic.id}
+                topic={topic.qtopic}
               />
             );
           })}

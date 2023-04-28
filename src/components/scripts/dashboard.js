@@ -29,6 +29,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import {Paper, Popover} from '@mui/material'
 import shadows from "@mui/material/styles/shadows";
 import styles from "../styles/Dashboard.module.css";
+import Insights from './insights'
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -128,7 +130,7 @@ function Dashboard() {
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
-              </ListItemButton>
+              </ListItemButton  >
             </ListItem>
           ))}
         </List>
@@ -287,7 +289,7 @@ function Dashboard() {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
+            <StyledInputBase 
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               value={searchInput}
@@ -303,16 +305,40 @@ function Dashboard() {
         {/* <h1> Stake The Stigma.</h1>
         <h2 > Destigmatizing Women's Health</h2> */}
         </div>
-        <div className={styles.articleGrid}>
-            {fullContent && fullContent.map((topic)=>{
-                return <Article id={topic.id}
-                title={topic.title} 
-                description={topic.description} 
-                content={topic.content} 
-                userLikes={topic.userLikes} 
-                likes={topic.likes}
-                topic={topic.topics}/>
-            })}
+        <div className={styles.dboard}>
+        <div className={styles.welcome}>
+          <Paper elevation={10}>
+            <Typography variant="h4">
+              QUOTE OF THE DAY:
+            </Typography>
+            <Typography variant="subtext">
+              <div>
+              It’s not whether you get knocked down, it’s whether you get up.
+              </div>
+            </Typography>
+          </Paper>
+        </div>
+        <div className={styles.insights}>
+        <Paper elevation={10}>
+        <Insights/>
+        </Paper>
+        </div>
+        <Paper  className={styles.articlePaper} elevation={15}>
+      <div className={styles.articleGrid}>
+        {fullContent && fullContent.map((topic) => (
+          <Article
+            id={topic.id}
+            title={topic.title}
+            description={topic.description}
+            content={topic.content}
+            userLikes={topic.userLikes}
+            likes={topic.likes}
+            topic={topic.topics}
+            width={2/9}
+          />
+        ))}
+      </div>
+    </Paper>
         </div>
     </main>
     );

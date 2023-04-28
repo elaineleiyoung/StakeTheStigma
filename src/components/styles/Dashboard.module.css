@@ -1,20 +1,51 @@
 /* regular montserrat*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+.dboard{
+  display:grid;
+  height: 90vh;
+  grid-template-columns: 1/3fr 4/3fr;
+  grid-template-rows:  auto;
+  grid-template-areas:
+  "l articles "
+}
+.welcome{
+  grid-area: l;
+  padding-top: 5%;
+  width: 80%;
+  padding-left: 5%;
+}
+.insights{
+  grid-area: l;
+  width: 90%;
+  justify-self: start;
+  align-self: end;
+  justify-self: center;
+  padding-bottom: 45px;
+}
 
+
+.articlePaper{
+  grid-area: articles;
+  height: 86%;
+  overflow-y: scroll;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding-right: 50px;
+}
 .articleGrid{
   padding-top: 7%;
+  padding-bottom: 7%;
   display: grid;
   /*0.5rem*/
   /*
   column-gap: 45px;
   row-gap: 10px;
   */
-  gap: 100px;
+  gap: 50px;
   grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
   grid-template-rows: auto;
   margin-left: 10%;
-  margin-right: 10%;
 }
 /* main.Dashboard{
     display: flex;

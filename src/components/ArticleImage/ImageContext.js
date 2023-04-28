@@ -1,12 +1,14 @@
-import postpartum_depression_image from "./resources/postpartum-depression.jpeg";
-import female_health from "./resources/female_health.png";
-import hpv from "./resources/hpv";
-import pcos from "./resources/pcos";
-import pregnancy from "./resources/pregnancy";
-import sts from "./resources/sts.png";
-import menopause from "./resources/menopause";
-import ovarian_cancer from "./resources/ovarian_cancer";
-import breast_cancer from "./resources/breast_cancer";
+import autoimmune_disease from "./resources/autoimmune_disease.webp";
+import bone_health from "./resources/bone_health.jpeg"
+import breast_health from "./resources/breast_health.png";
+import cardiovascular_health from "./resources/cardiovascular_health.webp";
+import mental_health from "./resources/mental_health.png";
+import muscular_health from "./resources/muscular_health.jpeg";
+import nutrition from "./resources/nutrition.png";
+import reproductive_health from "./resources/reproductive_health.jpeg";
+import sexual_health from "./resources/sexual_health.jpeg";
+import skin_health from "./resources/skin_disease.jpeg";
+import sts from "./resources/sts.png"
 import React, { createContext } from 'react';
 
 export const ImageContext = createContext(null);
@@ -14,22 +16,28 @@ export const ImageContext = createContext(null);
 const ImageProvider = ({ children, topic }) => {
   const getImageUrl = (topic) => {
     switch (topic) {
-      case 'postpartum':
-        return postpartum_depression_image;
-      case 'pcos':
-        return pcos;
-      case 'hpv':
-        return hpv;
-      case 'pregnancy':
-        return pregnancy;
-      case 'menopause':
-        return menopause;
-      case 'menstruation':
-        return female_health;
-      case 'ovarian_cancer':
-        return ovarian_cancer;
-      case 'breast_cancer':
-        return breast_cancer;
+      case 'Reproductivehealth':
+        return reproductive_health;
+      case 'Breasthealth':
+        return breast_health;
+      case 'Sexualhealth':
+        return sexual_health;
+      case 'Mentalhealth':
+        return mental_health;
+      case 'Cardiovascularhealth':
+        return cardiovascular_health;
+      case 'Bonehealth':
+        return bone_health;
+      case 'Cancer':
+        return breast_health;
+      case 'Autoimmunediseases':
+        return autoimmune_disease;
+      case 'Skinhealth':
+        return skin_health;
+      case 'Muscularhealth':
+        return muscular_health;
+      case 'Nutritionandfitness':
+        return nutrition;
       default:
         return sts;
     }

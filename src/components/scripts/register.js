@@ -62,7 +62,8 @@ function Register() {
                                     label="Password" 
                                     variant="outlined" 
                                     required
-                                    onChange = {e => {setPassword(e.target.value)}}  />
+                                    onChange = {e => {setPassword(e.target.value)}}
+                                     />
                     </div>
                     <div style={{"padding-top":"20px"}}>
                     <button className={styles.registerButton} onClick={signIn}>
