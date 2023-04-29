@@ -20,6 +20,7 @@ import styles from "../../src/components/styles/Article.module.css";
 import CloseIcon from '@mui/icons-material/Close';
 import ImageProvider from './ArticleImage/ImageContext';
 import CardImage from './ArticleImage/CardImage.js';
+import { styled } from '@mui/system';
 
 
 //article style
@@ -60,8 +61,6 @@ export default function Article(props) {
 
   
 
-
-
   //sharing articles
   const handleShare = () => {
     if (navigator.share) {
@@ -99,7 +98,6 @@ export default function Article(props) {
         .catch((error) => {
           alert(error.message);
         });
-      
     }
     // rough front end here not yet connected with back*** next sprint
     if (saved) {
@@ -138,29 +136,29 @@ export default function Article(props) {
   }
 //Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
   return (
-    <Card sx={{ width: `${width}fr`,height: '100%',  borderRadius:2}}>
+    <Card sx={{ width: `${width}fr`,height: '100%',  borderRadius:2, background:'#F4F4F4'}}>
 
       <CardActionArea onClick={handleOpen}>
-          <ImageProvider topic={topic}> 
-            <CardImage />
-          </ImageProvider>
+      <ImageProvider topic={topic}> 
+        <CardImage />
+      </ImageProvider>
           <CardContent>
-            <Typography gutterBottom  component="div" className="custom-h5" >
-              {title}
-            </Typography>
+          <Typography gutterBottom component="div" className="custom-h5" style={{ fontFamily: 'Montserrat', fontWeight: 'bold', color:'121221'}}>
+             {title}
+          </Typography>
           </CardContent>
       </CardActionArea>
     
-      <a href={description} style={{textDecoration:"none", color: "grey", fontSize:"medium", paddingLeft:"10px"}}>Source</a>
+      <a href={description} style={{textDecoration:"none", color: "grey", fontSize:"medium", paddingLeft:"20px"}}>Source</a>
       
-      <CardActions>
-        <Button onClick={handleShare}>
-          <ShareRoundedIcon />
+      <CardActions className={styles.cardActions}>
+        <Button className={styles.cardActionButtons} onClick={handleShare}>
+          <ShareRoundedIcon sx={{marginBottom: '8px'}}/>
         </Button>
-        <Button onClick = {likeHandler}>
+        <Button className={styles.cardActionButtons} onClick = {likeHandler}>
           {!liked ? <h3><FavoriteBorderRoundedIcon /></h3> : <h3><FavoriteRoundedIcon /></h3>}
         </Button>
-        <Button onClick = {saveHandler}>
+        <Button className={styles.cardActionButtons} onClick = {saveHandler}>
           {!saved ? <h3><BookmarkBorderIcon /></h3> : <h3><BookmarkIcon/></h3>}
         </Button>
       </CardActions>

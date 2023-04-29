@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
-import Navbar from './Navbar'
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
@@ -30,6 +29,7 @@ import {Paper, Popover} from '@mui/material'
 import shadows from "@mui/material/styles/shadows";
 import styles from "../styles/Dashboard.module.css";
 import Insights from './insights'
+import quote1 from '../ArticleImage/resources/quote1.jpg'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,24 +54,59 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: '#3A448C'
+
 }));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  width: '100%',
+  borderRadius:'50px',
+  margin: theme.spacing(1),
+
+}));
+
+const Styled2Paper = styled(Paper)(({ theme }) => ({
+  display: 'relative',
+  width: '90%',
+  height:'99%',
+  borderRadius:'10px',
+  margin: theme.spacing(1),
+  boxShadow:'none',
+  backgroundColor:'white'
+}));
+
+
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
+    width: '100%',
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
-    width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: '20ch',
       '&:focus': {
-        width: '20ch',
+        width: '30ch',
       },
     },
   },
 }));
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(1, 2),
+}));
+
+const CustomTypography = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 'bold'
+}));
+
 function Dashboard() {
     //defining our variables that will be used within the dashboard
     // auth, firestore are just to initialize our Firebase for pulling user data and database functions
@@ -263,8 +298,8 @@ function Dashboard() {
       ))}
     </div>
           <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: 'linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7)', shadow:'none', height:'100px'}}>
-        <Toolbar>
+      <AppBar position="static" sx={{ background: 'linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7)', shadow:'none', height:'80px'}}>
+        <StyledToolbar>
           <IconButton
             size="large"
             edge="start"
@@ -275,30 +310,25 @@ function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            {email}'s Dashboard
-          </Typography>
           <Search>
 
-          <Paper component="form" onSubmit={handleSubmit}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase 
+          <StyledPaper component="form" onSubmit={handleSubmit}>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+            <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               value={searchInput}
               onChange={(event) => setSearchInput(event.target.value)}
             />
-             </Paper>
-
+          </StyledPaper>
           </Search>
-        </Toolbar>
+          <div className= {styles.logos}> 
+            <h1 className={styles.logo1}>Stake The Stigma</h1>
+            <h2 className={styles.logo2}>Destigmatizing Women's Health.</h2>
+          </div>
+        </StyledToolbar>
       </AppBar>
     </Box>
         <div >
@@ -307,23 +337,37 @@ function Dashboard() {
         </div>
         <div className={styles.dboard}>
         <div className={styles.welcome}>
-          <Paper elevation={10}>
-            <Typography variant="h4">
-              QUOTE OF THE DAY:
-            </Typography>
+
+          <CustomTypography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            whiteSpace= "pre-wrap"
+          >
+             Welcome{'\n'}{email}!
+          </CustomTypography>
+          
+          <Insights/>
+          <Paper>
             <Typography variant="subtext">
               <div>
-              It’s not whether you get knocked down, it’s whether you get up.
+              “The, the boy's a liar
+              The boy's a liar
+              He doesn't see ya
+              You're not lookin' at me, boy”
               </div>
             </Typography>
           </Paper>
+            <div className={styles.quoteImagePos}> 
+              <img className={styles.quoteImage} src={quote1} alt="Logo" />;
+            </div>
         </div>
         <div className={styles.insights}>
         <Paper elevation={10}>
-        <Insights/>
         </Paper>
         </div>
-        <Paper  className={styles.articlePaper} elevation={15}>
+        <Styled2Paper  className={styles.articlePaper} elevation={15}>
       <div className={styles.articleGrid}>
         {fullContent && fullContent.map((topic) => (
           <Article
@@ -338,7 +382,7 @@ function Dashboard() {
           />
         ))}
       </div>
-    </Paper>
+    </Styled2Paper>
         </div>
     </main>
     );

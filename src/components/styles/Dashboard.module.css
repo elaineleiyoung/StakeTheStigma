@@ -1,6 +1,7 @@
 /* regular montserrat*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .dboard{
   display:grid;
   height: 90vh;
@@ -15,6 +16,23 @@
   width: 80%;
   padding-left: 5%;
 }
+.logos{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  left: 70%;
+}
+
+.logo1{
+  font-family: 'Georgia', sans-serif;
+  margin-bottom: -15px;
+}
+
+.logo2{
+  font-family: 'Montserrat', sans-serif;
+}
+
 .insights{
   grid-area: l;
   width: 90%;
@@ -24,7 +42,15 @@
   padding-bottom: 45px;
 }
 
+.quoteImagePos{
+  margin-left: 70px;
+  margin-top: 50px;
+}
 
+.quoteImage{
+  height: 400px;
+  width: 300px;
+}
 .articlePaper{
   grid-area: articles;
   height: 86%;
@@ -33,8 +59,9 @@
   margin-right: 20px;
   padding-right: 50px;
 }
+
 .articleGrid{
-  padding-top: 7%;
+  padding-top: 2%;
   padding-bottom: 7%;
   display: grid;
   /*0.5rem*/
@@ -42,11 +69,12 @@
   column-gap: 45px;
   row-gap: 10px;
   */
-  gap: 50px;
+  gap: 30px;
   grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
   grid-template-rows: auto;
-  margin-left: 10%;
+  margin-left: 6%;
 }
+
 /* main.Dashboard{
     display: flex;
     flex-direction: column;

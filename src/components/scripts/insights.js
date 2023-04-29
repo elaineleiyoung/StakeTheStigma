@@ -66,10 +66,9 @@ function Insights() {
     }
 
     return(
-        <section>
-            <h1>Hello, {user.email}!</h1>
-            <p>{(totalTopics/totalUsers) * 100}% of users share some or all of the same topics as you!</p>
-            <p>Your topics make up {(sameTopic/totalNumTopics) * 100}% of all selected topics on this platform!</p>
+        <section> 
+            <p style={{ fontSize: '16px', fontFamily: 'Calibri, Arial' }}>{(totalTopics/totalUsers) * 100}% of users share some or all of the same topics as you.</p>
+            <p style={{ fontSize: '16px', fontFamily: 'Calibri, Arial' }}>Your topics make up {(sameTopic/totalNumTopics * 100).toFixed(1)}% of all selected topics on this platform!</p>
         </section>
     );
 }
