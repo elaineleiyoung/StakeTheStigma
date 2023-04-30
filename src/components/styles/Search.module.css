@@ -1,22 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-.searchContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "text . . . . button "
-}
-.heading{
-    font-family: 'Montserrat', sans-serif;
-    grid-area: text
 
+/* regular montserrat*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.sboard{
+  display:grid;
+  height: 90vh;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows:  auto;
+  grid-template-areas:
+  "button . "
+  "message articles"
+  ". ."
 }
 .back{
-    font-family: 'Montserrat', sans-serif;
     grid-area: button;
+    width: 20%;
+    margin-left: 5%;
+    margin-top: 8%;
+    background-color: transparent;
     border: none;
-    background: transparent;
-    align-self: center;
-    justify-self: start;
-    font-weight: bold
+    font-weight: bold;
+    font-size: 20vh;
+    color: #3A448C
+}
+.m1{
+  grid-area: message;
+  grid-row: 1/-1;
+  padding-top: 5%;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  align-self: center;
+}
+
+
+.searchPaper{
+  grid-area: articles;
+  grid-row: 1 / -1;
+  height: 86%;
+  overflow-y: scroll;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding-right: 50px;
+}
+
+.searchGrid{
+  padding-top: 2%;
+  padding-bottom: 7%;
+  display: grid;
+  /*0.5rem*/
+  /*
+  column-gap: 45px;
+  row-gap: 10px;
+  */
+  gap: 30px;
+  grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
+  grid-template-rows: auto;
+  margin-left: 6%;
 }

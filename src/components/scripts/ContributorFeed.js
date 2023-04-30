@@ -28,7 +28,7 @@ const CustomTypography = styled(Typography)(({ theme }) => ({
         fontFamily: 'Montserrat, sans-serif',
         fontWeight: 'bold'
       }));
-function Search() {
+function ContributorPage() {
   // Defining variables used throughout this file
   const location = useLocation()
   const squery = useMemo(() => location.state.query, [location.state.query])
@@ -172,7 +172,7 @@ function Search() {
     );
   }
 
-export default Search;
+export default ContributorPage;
 
   
 
