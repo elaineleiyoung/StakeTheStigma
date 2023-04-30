@@ -41,10 +41,19 @@ const Styled2Paper = styled(Paper)(({ theme }) => ({
   backgroundColor:'white'
 }));
 
+const Paper2 = styled(Paper)(({ theme }) => ({
+  display: 'relative',
+  width: '100%',
+  height:'auto',
+  marginTop: '-5%',
+  boxShadow:'none'
+}));
 
 const CustomTypography = styled(Typography)(({ theme }) => ({
   fontFamily: 'Montserrat, sans-serif',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  color:'black',
+  fontSize:'35px'
 }));
 
 function Dashboard() {
@@ -174,16 +183,16 @@ function Dashboard() {
           </CustomTypography>
           
           <Insights/>
-          <Paper>
+          <Paper2>
             <Typography variant="subtext">
               <div id={id}>
-                {quote}
                 <div className={styles.quoteImagePos}> 
-                  <img className={styles.quoteImage} src={imageUrl} alt="Motivational women's health image" />;
+                  <img className={styles.quoteImage} src={imageUrl} alt="Motivational women's health image" />
                 </div>
+                <div className={styles.quotes}> {quote} </div>
               </div>
             </Typography>
-          </Paper>
+          </Paper2>
         </div>
         <div className={styles.insights}>
         <Paper elevation={10}>

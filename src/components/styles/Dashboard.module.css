@@ -5,7 +5,7 @@
 .dboard{
   display:grid;
   height: 90vh;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 3fr;
   grid-template-rows:  auto;
   grid-template-areas:
   "l articles "
@@ -14,7 +14,7 @@
   grid-area: l;
   padding-top: 5%;
   width: 80%;
-  padding-left: 5%;
+  padding-left: 10%;
 }
 .logos{
   position: absolute;
@@ -47,10 +47,22 @@
   margin-top: 50px;
 }
 
-.quoteImage{
-  height: 300px;
-  width: 200px;
+.quotes{
+  position: absolute;
+  width: 270px;
+  height: auto;
+  padding: 15px;
+  top: 650px;
+  margin-left: 70px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
 }
+
+.quoteImage{
+  height: 350px;
+  width: 300px;
+}
+
 .articlePaper{
   grid-area: articles;
   height: 86%;
@@ -72,7 +84,8 @@
   gap: 30px;
   grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
   grid-template-rows: auto;
-  margin-left: 6%;
+  margin-left: 0%;
+  background-color: aliceblue;
 }
 
 /* main.Dashboard{

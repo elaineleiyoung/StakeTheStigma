@@ -2,7 +2,7 @@ import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 import Login from './components/scripts/login';
 import Dashboard from './components/scripts/dashboard';
 import Survey from './components/scripts/survey';
-import Register from './components/scripts/register';
+import Register from './components/scripts/Register';
 import Account from './components/scripts/account';
 import Search from './components/scripts/search';
 import FormComponent from './FormContributor.js';

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 
+
 function Insights() {
     //currently logged user
     const [user, setUser] = useState([]);
@@ -67,8 +68,25 @@ function Insights() {
 
     return(
         <section> 
-            <p style={{ fontSize: '16px', fontFamily: 'Calibri, Arial' }}>{(totalTopics/totalUsers) * 100}% of users share some or all of the same topics as you.</p>
-            <p style={{ fontSize: '16px', fontFamily: 'Calibri, Arial' }}>Your topics make up {(sameTopic/totalNumTopics * 100).toFixed(1)}% of all selected topics on this platform!</p>
+          <div>
+            <p style= {{display: 'inline', fontSize: '35px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#3A448C'}}>
+                {(totalTopics/totalUsers) * 100}% {" "}
+            </p>
+            <p style= {{display: 'inline', fontSize: '20px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#5E5E5E'}}>
+                of users share some or all of the same topics as you.
+            </p>
+         </div>
+         <div>
+            <p style= {{display: 'inline', fontSize: '20px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#5E5E5E'}}>
+                Your topics make up {" "}
+            </p>
+            <p style= {{display: 'inline', fontSize: '35px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#3A448C'}}>
+                {(sameTopic/totalNumTopics * 100).toFixed(1)}% {" "}
+            </p>
+            <p style= {{display: 'inline', fontSize: '20px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#5E5E5E'}}>
+                of all selected topics on this platform
+            </p>
+         </div>
         </section>
     );
 }
