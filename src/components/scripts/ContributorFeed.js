@@ -26,10 +26,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Paper, Popover} from '@mui/material'
 import shadows from "@mui/material/styles/shadows";
-import styles from "../styles/Dashboard.module.css";
 import Insights from './insights'
 import quote1 from '../ArticleImage/resources/quote1.jpg'
 import NaviBar  from "./navigationBar";
+import styles from "../styles/Search.module.css";
 
 const Styled2Paper = styled(Paper)(({ theme }) => ({
   display: 'relative',
@@ -47,7 +47,7 @@ const CustomTypography = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold'
 }));
 
-function Dashboard() {
+function ContributorFeed() {
     //defining our variables that will be used within the dashboard
     // auth, firestore are just to initialize our Firebase for pulling user data and database functions
     const auth = getAuth();
@@ -110,10 +110,8 @@ function Dashboard() {
     useEffect(() => {
       const fetchArticles = async () => {
         const newContent = [];
-        for (const link of links) {
-          console.log(link)
-          try {
-            const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
+        try {
+            const q = query(collection(db, "communityPosts"));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
@@ -130,86 +128,70 @@ function Dashboard() {
               newContent.push(article);;
             });
           } catch (error) {
-            console.error(`Error fetching articles for ${link}`, error);
+            console.error(`Error fetching articles for`, error);
           }
-        }
         setFullContent(newContent);
       };
-      //function for the motivational image and quote in our welcome tab of dashboard. 
-      const getWelcomeData = async () => {
-      const collectionRef = collection(db, "welcome");
-      const snapshot = await getDocs(collectionRef);
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      //generate random index
-      const random = Math.floor(Math.random() * (data.length - 1));
-      setId(data[random].id);
-      setImageUrl(data[random].imageUrl);
-      setQuote(data[random].quote);
-      };
-      getWelcomeData();
-      if (topics.length) {
-        fetchArticles();
-      }
+      fetchArticles()
     }, [topics]);
 
+      function handleBack(){
+            navigate('/dashboard')
+          }
 
     return (
-      <main > 
-         <NaviBar/>
-        <div >
-        {/* <h1> Stake The Stigma.</h1>
-        <h2 > Destigmatizing Women's Health</h2> */}
+        <main > 
+        <NaviBar/>
+        <div className={styles.sboard}>
+        <button className={styles.back}onClick={handleBack}>BACK</button>
+                <CustomTypography
+                        variant="h2"
+                        noWrap
+                        component="div"
+                        whiteSpace= "pre-wrap"
+                        className={styles.m1}
+                >
+                Contributor
+                <CustomTypography
+                        variant="h2"
+                        noWrap
+                        component="div"
+                        whiteSpace= "pre-wrap"
+                >
+                Feed: {'\n'}
+                <CustomTypography
+                        variant="h5"
+                        noWrap
+                        component="div"
+                        whiteSpace= "pre-wrap"
+                        color="#3A448C"
+                >
+                <em>Community Posts</em>
+                </CustomTypography>
+                </CustomTypography>
+                </CustomTypography>
+                
+                
+                <Styled2Paper  className={styles.searchPaper} elevation={15}>
+                        <div className={styles.searchGrid}>
+                                {fullContent && fullContent.map((topic) => (
+                                        <Article
+                                        id={topic.id}
+                                        title={topic.title}
+                                        description={topic.description}
+                                        content={topic.content}
+                                        userLikes={topic.userLikes}
+                                        likes={topic.likes}
+                                        topic={topic.topics}
+                                        />
+                                ))}
+                        </div>
+                </Styled2Paper>
         </div>
-        <div className={styles.dboard}>
-        <div className={styles.welcome}>
-
-          <CustomTypography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            whiteSpace= "pre-wrap"
-          >
-             Welcome{'\n'}{email}!
-          </CustomTypography>
-          
-          <Insights/>
-          <Paper>
-            <Typography variant="subtext">
-              <div id={id}>
-                {quote}
-                <div className={styles.quoteImagePos}> 
-                  <img className={styles.quoteImage} src={imageUrl} alt="Motivational women's health image" />;
-                </div>
-              </div>
-            </Typography>
-          </Paper>
-        </div>
-        <div className={styles.insights}>
-        <Paper elevation={10}>
-        </Paper>
-        </div>
-        <Styled2Paper  className={styles.articlePaper} elevation={15}>
-      <div className={styles.articleGrid}>
-        {fullContent && fullContent.map((topic) => (
-          <Article
-            id={topic.id}
-            title={topic.title}
-            description={topic.description}
-            content={topic.content}
-            userLikes={topic.userLikes}
-            likes={topic.likes}
-            topic={topic.topics}
-            width={2/9}
-          />
-        ))}
-      </div>
-    </Styled2Paper>
-        </div>
-    </main>
+</main>
     );
   }
   
 
 
-export default Dashboard;
+export default ContributorFeed;

@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import {useState, useContext} from 'react'
-import { doc, FieldValue, updateDoc, getDoc, arrayUnion, setDoc } from "firebase/firestore";
+import {useState, useContext, useEffect} from 'react'
+import { doc, FieldValue, updateDoc, getDoc, arrayUnion, setDoc, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
 import Comment from "./comment";
@@ -48,6 +48,7 @@ export default function Article(props) {
   const [topic, setTopic] = useState(props.topic)
   const [open, setOpen] = React.useState(false);
   const [liked, setLiked] = useState(false);
+  const [totalLikes, setTotalLikes] = useState();
   const [saved, setSaved] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -111,16 +112,18 @@ export default function Article(props) {
 
   
   //sets an article to true or false based on whether user liked that article, makes calls to database to reflect changes, could be more efficient however?
+
   async function likeHandler() {
     if (liked) {
       setLiked(false);
       const docRef = doc(db, "articles", props.id);
       updateDoc(docRef, {
-        userLikes: props.userLikes,
+        userLikes: arrayRemove(currentUser)
       });
       const likes = await getDoc(docRef);
       updateDoc(docRef, {
         likes: likes.data().userLikes.length});
+      setTotalLikes(likes.data().userLikes.length);
       }
     else {
       setLiked(true);
@@ -132,6 +135,7 @@ export default function Article(props) {
       const likes = await getDoc(docRef);
       updateDoc(docRef, {
         likes: likes.data().userLikes.length});
+      setTotalLikes(likes.data().userLikes.length);
     }
   }
 //Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
@@ -155,7 +159,7 @@ export default function Article(props) {
           <ShareRoundedIcon sx={{marginBottom: '8px'}}/>
         </Button>
         <Button className={styles.cardActionButtons} onClick = {likeHandler}>
-          {!liked ? <h3><FavoriteBorderRoundedIcon /></h3> : <h3><FavoriteRoundedIcon /></h3>}
+          {!liked ? <h3><FavoriteBorderRoundedIcon />{totalLikes}</h3> : <h3><FavoriteRoundedIcon />{totalLikes}</h3>}
         </Button>
         <Button className={styles.cardActionButtons} onClick = {saveHandler}>
           {!saved ? <h3><BookmarkBorderIcon /></h3> : <h3><BookmarkIcon/></h3>}
