@@ -5,7 +5,7 @@
 .dboard{
   display:grid;
   height: 90vh;
-  grid-template-columns: 1/3fr 4/3fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows:  auto;
   grid-template-areas:
   "l articles "
@@ -48,8 +48,8 @@
 }
 
 .quoteImage{
-  height: 400px;
-  width: 300px;
+  height: 300px;
+  width: 200px;
 }
 .articlePaper{
   grid-area: articles;

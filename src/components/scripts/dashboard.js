@@ -1,9 +1,8 @@
 import { db } from "../../firebase";
-import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
+import { doc,  collection, where, query, getDocs, limit, getFirestore, getDoc} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
-import { getFirestore, getDoc } from "firebase/firestore";
 import Article from '../article'
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
@@ -64,7 +63,10 @@ function Dashboard() {
     const [fullContent, setFullContent] = useState([])
     // used as to pass query to search page
     const [searchInput, setSearchInput] = useState("");
-
+    //used for generating welcome message in dashboard
+    const [id, setId] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+    const [quote, setQuote] = useState(null);
     
     const [state, setState] = React.useState({
       top: false,
@@ -133,7 +135,18 @@ function Dashboard() {
         }
         setFullContent(newContent);
       };
-  
+      //function for the motivational image and quote in our welcome tab of dashboard. 
+      const getWelcomeData = async () => {
+      const collectionRef = collection(db, "welcome");
+      const snapshot = await getDocs(collectionRef);
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      //generate random index
+      const random = Math.floor(Math.random() * (data.length - 1));
+      setId(data[random].id);
+      setImageUrl(data[random].imageUrl);
+      setQuote(data[random].quote);
+      };
+      getWelcomeData();
       if (topics.length) {
         fetchArticles();
       }
@@ -163,17 +176,14 @@ function Dashboard() {
           <Insights/>
           <Paper>
             <Typography variant="subtext">
-              <div>
-              “The, the boy's a liar
-              The boy's a liar
-              He doesn't see ya
-              You're not lookin' at me, boy”
+              <div id={id}>
+                {quote}
+                <div className={styles.quoteImagePos}> 
+                  <img className={styles.quoteImage} src={imageUrl} alt="Motivational women's health image" />;
+                </div>
               </div>
             </Typography>
           </Paper>
-            <div className={styles.quoteImagePos}> 
-              <img className={styles.quoteImage} src={quote1} alt="Logo" />;
-            </div>
         </div>
         <div className={styles.insights}>
         <Paper elevation={10}>

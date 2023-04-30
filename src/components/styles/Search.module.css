@@ -17,13 +17,19 @@
 .back{
     grid-area: button;
     width: 20%;
-    margin-left: 5%;
+    margin-left: 2%;
     margin-top: 8%;
     background-color: transparent;
     border: none;
     font-weight: bold;
     font-size: 20vh;
-    color: #3A448C
+    color: #3A448C;
+    transition: transform 0.3s ease-in-out;
+}
+.back:hover{
+    color: pink;
+    transform: skewX(10deg);
+
 }
 .m1{
   grid-area: message;
