@@ -1,34 +1,13 @@
 import { db } from "../../firebase";
 import { doc,  collection, where, query, getDocs, limit, getFirestore, getDoc} from "firebase/firestore"; 
-import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import Article from '../article'
-import SearchIcon from '@mui/icons-material/Search';
-import { InputAdornment, TextField } from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import {Paper, Popover} from '@mui/material'
-import shadows from "@mui/material/styles/shadows";
+import {Paper} from '@mui/material'
 import styles from "../styles/Dashboard.module.css";
 import Insights from './insights'
-import quote1 from '../ArticleImage/resources/quote1.jpg'
 import NaviBar  from "./navigationBar";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -62,8 +41,6 @@ function Dashboard() {
     // auth, firestore are just to initialize our Firebase for pulling user data and database functions
     const auth = getAuth();
     const firestore = getFirestore();
-    // navigate is used to go to search page while passing parameters
-    const navigate = useNavigate()
     // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
     // a user's topics and links to iterate over
