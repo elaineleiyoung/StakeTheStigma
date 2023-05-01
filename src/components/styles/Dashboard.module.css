@@ -33,6 +33,19 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.contributorBtn{
+  position: absolute;
+  background-color: #3A448C;
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  margin-left: 1300px;
+  margin-top: -120px;
+  box-shadow: none;
+  border: none;
+
+}
+
 .insights{
   grid-area: l;
   width: 90%;
@@ -85,7 +98,6 @@
   grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
   grid-template-rows: auto;
   margin-left: 0%;
-  background-color: aliceblue;
 }
 
 /* main.Dashboard{

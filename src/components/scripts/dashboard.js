@@ -30,6 +30,7 @@ import styles from "../styles/Dashboard.module.css";
 import Insights from './insights'
 import quote1 from '../ArticleImage/resources/quote1.jpg'
 import NaviBar  from "./navigationBar";
+import AddIcon from '@mui/icons-material/Add';
 
 const Styled2Paper = styled(Paper)(({ theme }) => ({
   display: 'relative',
@@ -214,6 +215,9 @@ function Dashboard() {
         ))}
       </div>
     </Styled2Paper>
+    <a href="/contributor">
+      <button className={styles.contributorBtn}><AddIcon fontSize="large" color= 'secondary' /></button>
+    </a>
         </div>
     </main>
     );
