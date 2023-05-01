@@ -7,11 +7,6 @@ import Search from './components/scripts/search';
 import FormComponent from './FormContributor.js';
 import Insights from "./components/scripts/insights";
 import Profile from "./components/Profile";
-import Register from './components/scripts/Register';
-import Account from './components/scripts/account';
-import Search from './components/scripts/search';
-import FormComponent from './FormContributor.js';
-import Insights from "./components/scripts/insights";
 import ContributorPage from "./components/scripts/ContributorFeed";
 import LikedArticles from "./components/scripts/LikedArticles";
 import { OpenAI } from './openAI'

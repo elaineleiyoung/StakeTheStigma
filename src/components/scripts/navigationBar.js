@@ -2,11 +2,7 @@ import { db } from "../../firebase";
 import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
-import { getAuth } from "firebase/auth";
-import { getFirestore, getDoc } from "firebase/firestore";
-import Article from '../article'
 import SearchIcon from '@mui/icons-material/Search';
-import { InputAdornment, TextField } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -126,28 +123,6 @@ function NaviBar() {
       setState({ ...state, [anchor]: open });
     };
   
-    const list = (anchor) => (
-      <Box
-        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-        role="presentation"
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
-      >
-        <List>
-          {['Account', 'Contributor'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton onClick={()=>navigate(`/${text.toLowerCase()}`)}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton  >
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-      </Box>
-    );
   
     // on submit, we navigate to the search page and feed it the searchInpu\t
     const handleSubmit = (event) =>{
@@ -165,19 +140,7 @@ function NaviBar() {
 
     return (
       <main > 
-         <div>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
-    </div>
+       
           <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ background: 'linear-gradient(to right, #A473E6, #9DB7FD, #87FAE7)', shadow:'none', height:'80px'}}>
         <StyledToolbar>
@@ -189,22 +152,24 @@ function NaviBar() {
             sx={{ mr: 2 }}
             onClick={toggleDrawer('left', true)}
           >
-            <MenuIcon />
+           <a href="/profile">
+            <button className={styles.profileBtn}><AccountCircleIcon fontSize="large" color= 'white' /></button>
+           </a>
           </IconButton>
+         {/* search bar*/}
           <Search>
-
-          <StyledPaper component="form" onSubmit={handleSubmit}>
-          <SearchIconWrapper sx={{backgroundColor: 'transparent'}}>
-            <SearchIcon />
-          </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              value={searchInput}
-              onChange={(event) => setSearchInput(event.target.value)}
-              sx={{backgroundColor: 'transparent'}}
-            />
-          </StyledPaper>
+            <StyledPaper component="form" onSubmit={handleSubmit}>
+            <SearchIconWrapper sx={{backgroundColor: 'transparent'}}>
+              <SearchIcon />
+            </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchInput}
+                onChange={(event) => setSearchInput(event.target.value)}
+                sx={{backgroundColor: 'transparent'}}
+              />
+            </StyledPaper>
           </Search>
           <div className= {styles.logos}> 
             <h1 className={styles.logo1}>Stake The Stigma</h1>

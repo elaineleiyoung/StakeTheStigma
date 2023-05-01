@@ -198,7 +198,7 @@ function Profile() {
               <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/" />
               <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
               {/* <br></br> */}
-              <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/" sx={{position: "relative", right:'4em'}}/>
+              <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
             </Tabs>
           </Paper>
 
@@ -228,10 +228,6 @@ function Profile() {
                       <MenuItem value="she/her">She/Her</MenuItem>
                       <MenuItem value="he/him">He/Him</MenuItem>
                       <MenuItem value="they/them">They/Them</MenuItem>
-                      <MenuItem value="ze/hir">Ze/Hir</MenuItem>
-                      <MenuItem value="xe/xem">Xe/Xem</MenuItem>
-                      <MenuItem value="ey/em">Ey/Em</MenuItem>
-                      <MenuItem value="per/pers">Per/Pers</MenuItem>
                       <MenuItem value="other">Other</MenuItem>
                     </Select>
                   </FormControl>

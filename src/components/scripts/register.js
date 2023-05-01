@@ -32,7 +32,7 @@ function Register() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((auth) => {
             if (auth) {
-                navigate("/");
+                navigate("/survey");
             }
         })
         .catch(error => alert(error.message))
@@ -77,8 +77,8 @@ function Register() {
                                         width: '400px',
                                     }}
                                     />
-                                    onChange = {e => {setPassword(e.target.value)}}
-                                     />
+                                    
+                                     
                     </div>
                     <div style={{"padding-top":"20px"}}>
                     <button className={styles.registerButton} onClick={signIn}>

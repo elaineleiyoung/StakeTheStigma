@@ -31,6 +31,7 @@
 
 .logo2{
   font-family: 'Montserrat', sans-serif;
+  font-size: 23px;
 }
 
 .contributorBtn{
@@ -44,6 +45,12 @@
   box-shadow: none;
   border: none;
 
+}
+
+.profileBtn{
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .insights{
