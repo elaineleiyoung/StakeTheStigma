@@ -1,5 +1,5 @@
 import { db } from "../firebase";
-import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
+import { doc,  collection, where, query, getDocs, limit, updateDoc, onSnapshot} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
@@ -25,6 +25,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 import Dashboard from "./scripts/dashboard";
 
 function Profile() {
@@ -36,6 +37,8 @@ function Profile() {
     const navigate = useNavigate()
     // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
+    const [isEditing, setIsEditing] = useState(false);
+
     // a user's topics and links to iterate over
     const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
@@ -51,7 +54,6 @@ function Profile() {
       setPronouns(event.target.value);
     };
   
-    
 
   // on page load, we grab the current user's information and populate our variables
   useEffect(() => {
@@ -82,11 +84,76 @@ function Profile() {
     });
     return unsubscribe;
   }, [auth, firestore]);
-    
-
-    
-
-    // When the input in the search field is changed, the update will be reflected in our variable
+  function EditableEmail({ email, setEmail }) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedEmail, setEditedEmail] = useState(email);
+  
+    const handleInputChange = (event) => {
+      const { value } = event.target;
+      setEditedEmail(value);
+    };
+  
+    const handleSaveClick = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userDocRef = doc(firestore, "users", user.uid);
+        try {
+          await updateDoc(userDocRef, { email: editedEmail });
+          console.log("Email updated successfully");
+          setEmail(editedEmail);
+        } catch (error) {
+          console.error("Error updating email:", error);
+        }
+      }
+      setIsEditing(false);
+    };
+  
+    const handleCancelClick = () => {
+      setEditedEmail(email);
+      setIsEditing(false);
+    };
+  
+    const handleEditClick = () => {
+      setIsEditing(true);
+    };
+  
+    useEffect(() => {
+      const user = auth.currentUser;
+      if (user) {
+        const userDocRef = doc(firestore, "users", user.uid);
+        const unsubscribe = onSnapshot(userDocRef, (doc) => {
+          setEmail(doc.data().email);
+        });
+        return unsubscribe;
+      }
+    }, []);
+  
+    if (isEditing) {
+      return (
+        <>
+          <input
+            className={styles.content}
+            type="text"
+            value={editedEmail}
+            onChange={handleInputChange}
+          />
+          <div sx={{ display: 'flex', position: 'relative', right: '100em'}}>
+            <Button sx={{ ml: 2 }} onClick={handleSaveClick}>Save</Button>
+            <Button sx={{ ml: 2 }} onClick={handleCancelClick}>Cancel</Button>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <p className={styles.content} onClick={() => setIsEditing(true)}>
+            {email}
+          </p>
+        </>
+      );
+    }
+  }
+  
 
     function LinkTab(props) {
       return (
@@ -99,6 +166,9 @@ function Profile() {
         />
       );
     }
+
+
+
     return (
       <main > 
         <div className={styles.total}>
@@ -142,7 +212,7 @@ function Profile() {
               <div className={styles.rightChildTop}>
                 <h1> Account Details </h1>
                 <p className={styles.label}>Username:</p>
-                <p className={styles.content}>{email}</p>
+                <EditableEmail email={email} setEmail={setEmail} />
                 <p className={styles.label}>Password:</p>
                 <p className={styles.content}>******</p>
                 
