@@ -4,11 +4,30 @@ import { collection, addDoc,  query, getDocs, where, limit } from "firebase/fi
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import {OpenAI} from '../../openAI'
+import {Categorize} from './categorize'
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Article from '../article'
 import { trackPromise } from 'react-promise-tracker'
+import NaviBar from "./navigationBar";
+import Typography from '@mui/material/Typography';
+import { styled, alpha } from '@mui/material/styles';
+import {Paper, Popover} from '@mui/material'
+
+const Styled2Paper = styled(Paper)(({ theme }) => ({
+        display: 'relative',
+        width: '90%',
+        height:'99%',
+        borderRadius:'10px',
+        margin: theme.spacing(1),
+        boxShadow:'none',
+        backgroundColor:'white'
+      }));
+const CustomTypography = styled(Typography)(({ theme }) => ({
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: 'bold'
+      }));
 function Search() {
   // Defining variables used throughout this file
   const location = useLocation()
@@ -29,7 +48,7 @@ function Search() {
   }
   const fetchLinks = async () => {
     try {
-      const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=1`);
+      const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=5`);
       const data = await response.json();
       setLinks(data['items']);
     } catch (error) {
@@ -44,11 +63,14 @@ function Search() {
       const querySnapshot = await getDocs(q);
       if (querySnapshot.size === 0) {
         const content = await OpenAI(data.link);
+        const category = await Categorize(squery)
+        const qtopic = category.text.replace(/\s/g, '')
+        console.log(qtopic)
         console.log(content);
         const docRef = await addDoc(collection(db, "articles"), {
           title: data.title,
           url: data.link,
-          topic: "N/A",
+          topic: qtopic,
           content: content.text,
           likes: 0,
           userLikes: []
@@ -74,7 +96,8 @@ function Search() {
             title: doc.data().title,
             description: doc.data().url,
             content: doc.data().content,
-            likes: doc.data().likes
+            likes: doc.data().likes,
+            qtopic: doc.data().topic
           }
           newContent.push(article);
         });
@@ -97,26 +120,55 @@ function Search() {
 
 
   return (
-    <div>
-      <div className={styles.searchContainer}>
-        <h1 className={styles.heading}>Search Results for {squery}...</h1>
-        <button className={styles.back}onClick={handleBack}>back</button>
-      </div>
-        <Box className={styles.articleContainer} sx={{ p: 2 }}>
-          {fullContent && fullContent.map((topic) => {
-            console.log(topic);
-            return (
-              <Article
-                title={topic.title}
-                description={topic.description}
-                content={topic.content}
-                likes={topic.likes}
-                id={topic.id}
-              />
-            );
-          })}
-        </Box>
-        </div>
+        <main > 
+                <NaviBar/>
+                <div className={styles.sboard}>
+                <button className={styles.back}onClick={handleBack}>BACK</button>
+                        <CustomTypography
+                                variant="h2"
+                                noWrap
+                                component="div"
+                                whiteSpace= "pre-wrap"
+                                className={styles.m1}
+                        >
+                        STS Search Results
+                        <CustomTypography
+                                variant="h2"
+                                noWrap
+                                component="div"
+                                whiteSpace= "pre-wrap"
+                        >
+                        For: {'\n'}
+                        <CustomTypography
+                                variant="h5"
+                                noWrap
+                                component="div"
+                                whiteSpace= "pre-wrap"
+                                color="#3A448C"
+                        >
+                        <em>{squery}</em>
+                        </CustomTypography>
+                        </CustomTypography>
+                        </CustomTypography>
+                        
+                        
+                        <Styled2Paper  className={styles.searchPaper} elevation={15}>
+                                <div className={styles.searchGrid}>
+                                        {fullContent && fullContent.map((topic) => (
+                                                <Article
+                                                id={topic.id}
+                                                title={topic.title}
+                                                description={topic.description}
+                                                content={topic.content}
+                                                userLikes={topic.userLikes}
+                                                likes={topic.likes}
+                                                topic={topic.qtopic}
+                                                />
+                                        ))}
+                                </div>
+                        </Styled2Paper>
+                </div>
+        </main>
     );
   }
 

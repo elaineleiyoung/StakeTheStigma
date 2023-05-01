@@ -23,11 +23,11 @@ function Login() {
                         Guest
                     </Link>
                 </button>
-                <button1 className={styles.login}>
+                <button className={styles.login}>
                     <Link to={"/register"} style={{textDecoration:'none', color: '#3A448C'}}>
                         Register/Login
                     </Link>
-                </button1>
+                </button>
             </div>
         </main>
     );

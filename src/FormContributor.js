@@ -11,11 +11,12 @@ import Box from '@mui/material/Box';
 import Survey from './components/scripts/survey';
 import Chip from '@mui/material/Chip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import { useNavigate } from 'react-router-dom'
 function FormComponent() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [selectedTopics, setSelectedTopics] = useState([]);
+  const navigate = useNavigate()
 
   function handleTopicClick(topic, link) {
     if (selectedTopics.includes(topic)) {
@@ -59,6 +60,7 @@ function FormComponent() {
         <h1 className="logo"> Stake The Stigma.</h1>
         <h2 className="subtitle">Destigmatizing Women's Health</h2>
       </header>
+      <button onClick={()=>navigate("/dashboard")}className="contributorBack">Back</button>
       <div className= "overall"> 
         <div className = "contributorIcon">
           <AccountCircleIcon sx={{ fontSize: 125, marginLeft: '2px' }} />

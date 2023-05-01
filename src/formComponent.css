@@ -142,3 +142,23 @@
   background-color: transparent;
   border-color: #3A448C;
 }
+
+.contributorBack {
+  z-index: 100;
+  position: absolute;
+  top: 25%;
+  right: 2%;
+  transform: translateY(-50%);
+  padding: 10px 20px;
+  background-color: #3A448C;
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.contributorBack:hover {
+  background-color: #2B2F6E;
+}
