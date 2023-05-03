@@ -22,7 +22,6 @@ import ImageProvider from './ArticleImage/ImageContext';
 import CardImage from './ArticleImage/CardImage.js';
 import { styled } from '@mui/system';
 
-
 //article style
 const style = {
   position: 'absolute',
@@ -152,7 +151,7 @@ export default function Article(props) {
           </CardContent>
       </CardActionArea>
     
-      <a href={description} style={{textDecoration:"none", color: "grey", fontSize:"medium", paddingLeft:"20px"}}>Source</a>
+      <a href={description}  target="_blank" style={{textDecoration:"none", color: "grey", fontSize:"medium", paddingLeft:"20px"}}>Source</a>
       
       <CardActions className={styles.cardActions}>
         <Button className={styles.cardActionButtons} onClick={handleShare}>

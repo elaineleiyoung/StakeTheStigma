@@ -34,7 +34,6 @@ function Profile() {
     const auth = getAuth();
     const firestore = getFirestore();
     // navigate is used to go to search page while passing parameters
-    const navigate = useNavigate()
     // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
     const [isEditing, setIsEditing] = useState(false);
@@ -47,7 +46,7 @@ function Profile() {
     // used as to pass query to search page
     const [searchInput, setSearchInput] = useState("");
     const [searchFocused, setSearchFocused] = useState(false);
-
+    const navigate = useNavigate()
     const [pronouns, setPronouns] = React.useState('');
 
     const handlePronounsChange = (event) => {
@@ -160,7 +159,7 @@ function Profile() {
         <Tab
           component="a"
           onClick={(event) => {
-            event.preventDefault();
+            navigate(props.href)
           }}
           {...props}
         />
@@ -194,8 +193,9 @@ function Profile() {
             <Paper elevation={0} sx={{width:"100%"}} >
             <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
               <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/" />
-              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/" />
-              <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/" />
+              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/dashboard" />
+              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="Community Posts" href="/contributorfeed" />
+              <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/liked" />
               <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
               {/* <br></br> */}
               <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
