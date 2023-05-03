@@ -6,8 +6,8 @@ The personalized dashboard experience allows users to customize their experience
 ## Table of contents
 
 - [Installation](#installation-npm-and-firebase)
-- [Running the app](#running-the-app)
 - [Built with](#built-with)
+- [Running the app](#running-the-app)
 - [Snapshots](#snapshots)
 - [About us](#about-us)
 
@@ -18,6 +18,8 @@ The personalized dashboard experience allows users to customize their experience
  Install firebase:
 ### `npm install firebase` 
 
+## Built with:  
+React frontend, Firebase Backend. 
 
 ## Running the App:
 
@@ -56,14 +58,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Built with:  
-React frontend, Firebase Backend. 
 
 ## Snapshots:
 <p align="middle">
