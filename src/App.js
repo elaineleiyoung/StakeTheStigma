@@ -1,13 +1,15 @@
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
-import Login from './components/scripts/login';
-import Dashboard from './components/scripts/dashboard';
-import Survey from './components/scripts/survey';
-import Register from './components/scripts/register';
-import Account from './components/scripts/account';
-import Search from './components/scripts/search';
-import FormComponent from './FormContributor.js';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Survey from './components/Survey';
+import Register from './components/Register';
+import Search from './components/Search';
+import FormComponent from './components/FormContributor.js';
 import Insights from "./components/scripts/insights";
-import { OpenAI } from './openAI'
+import Profile from "./components/Profile";
+import ContributorPage from "./components/ContributorFeed";
+import LikedArticles from "./components/LikedArticles";
+import { OpenAI } from './components/scripts/openAI'
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
         <Route path="/summarization" element = {<OpenAI />} />
         <Route path="/search" element = {<Search />} />
         <Route path="/contributor" element = {<FormComponent />} />
-        <Route path="/account" element = {<Account />} />
         <Route path="/insights" element = {<Insights />} />
+        <Route path="/profile" element = {<Profile />} />
+        <Route path="/contributorfeed" element={<ContributorPage/>}/>
+        <Route path="/liked" element={<LikedArticles/>}/>
       </Routes>
     </Router>
   );
