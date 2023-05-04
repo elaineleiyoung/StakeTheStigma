@@ -118,7 +118,7 @@ function NaviBar() {
             onClick={toggleDrawer('left', true)}
           >
            <a href="/profile">
-            <button className={styles.profileBtn}><AccountCircleIcon fontSize="large" color= 'white' /></button>
+            <button className={styles.profileBtn}><AccountCircleIcon fontSize="large" sx={{color:"white"}}/></button>
            </a>
           </IconButton>
          {/* search bar*/}

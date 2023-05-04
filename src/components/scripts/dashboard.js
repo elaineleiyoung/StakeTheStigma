@@ -173,7 +173,7 @@ function Dashboard() {
       </div>
     </Styled2Paper>
     <a href="/contributor">
-      <button className={styles.contributorBtn}><AddIcon fontSize="large" color= 'secondary' /></button>
+      <button className={styles.contributorBtn}><AddIcon fontSize="large" sx={{color:"white"}} /></button>
     </a>
         </div>
     </main>
