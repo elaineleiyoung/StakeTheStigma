@@ -33,7 +33,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 23px;
 }
-
 .contributorBtn{
   position: absolute;
   background-color: #3A448C;
@@ -44,8 +43,17 @@
   margin-top: -120px;
   box-shadow: none;
   border: none;
-
+  transition: all 0.3s ease; /* add transition for smooth animation */
 }
+
+/* apply styles on hover */
+.contributorBtn:hover {
+  transform: scale(1.2); /* increase size */
+  background-color: #4D5B9D; /* change color */
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.25); /* add box-shadow */
+  cursor: pointer; /* add pointer cursor */
+}
+
 
 .profileBtn{
   background-color: transparent;
