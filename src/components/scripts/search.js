@@ -46,7 +46,7 @@ function Search() {
   }
   const fetchLinks = async () => {
     try {
-      const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=5`);
+      const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${cx}&q=${squery}&num=6`);
       const data = await response.json();
       setLinks(data['items']);
     } catch (error) {
