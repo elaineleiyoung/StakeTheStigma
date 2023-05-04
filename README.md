@@ -70,15 +70,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Snapshots:
 <p align="middle">
  <h3>Dashboard Home Page:</h3>
-  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot1.png"/>
+  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot1.png"/>
  <h3>Login page:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot2.png"/>
- <h3>Survey page before starting dashboard: </h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
- <h3>Dashboard design (WIP):</h3>
- <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://user-images.githubusercontent.com/95207937/229644131-4f00d931-4969-4eb7-bfc5-023c359310bd.png">
- <h3>Search function implementation:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot2.png"/>
+ <h3>Personalized dashboard with articles: </h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot3.png"/>
+ <h3>User profile page: </h3>
+ <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot4.png" />
+ <h3>Comments:</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot5.png"/>
 </p>
 
 ## About us: 
