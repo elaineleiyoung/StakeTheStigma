@@ -1,15 +1,23 @@
 # StakeTheStigma
+## Project Link:
+https://stakethestigma-dc208.web.app/
+
 ## Project Description:  
 Stake the Stigma is a project aimed at destigmatizing women's health topics by providing a personalized dashboard experience for users. The goal of this project is to make it easier for people to access and search for specific articles and insights related to women's health topics. By doing so, the project aims to increase awareness and communication about important but often underrepresented subjects in society.
 
 The personalized dashboard experience allows users to customize their experience based on their preferences and interests. Users can choose specific topics or areas of interest, and the dashboard will then display articles and insights related to those topics. Users can also search for specific articles or keywords to find the resources related to those searches.
+
 ## Table of contents
 
-- [Installation](#installation-npm-and-firebase)
 - [Built with](#built-with)
+- [Installation](#installation-npm-and-firebase)
 - [Running the app](#running-the-app)
 - [Snapshots](#snapshots)
 - [About us](#about-us)
+
+
+## Built with:  
+React frontend, Firebase Backend. 
 
 ## Installation: npm and Firebase 
  
@@ -17,9 +25,6 @@ The personalized dashboard experience allows users to customize their experience
 ### `npm i`
  Install firebase:
 ### `npm install firebase` 
-
-## Built with:  
-React frontend, Firebase Backend. 
 
 ## Running the App:
 
@@ -68,15 +73,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Snapshots:
 <p align="middle">
  <h3>Dashboard Home Page:</h3>
-  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot1.png"/>
+  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot1.png"/>
  <h3>Login page:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot2.png"/>
- <h3>Survey page before starting dashboard: </h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
- <h3>Dashboard design (WIP):</h3>
- <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://user-images.githubusercontent.com/95207937/229644131-4f00d931-4969-4eb7-bfc5-023c359310bd.png">
- <h3>Search function implementation:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot2.png"/>
+ <h3>Personalized dashboard with articles: </h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot3.png"/>
+ <h3>User profile page: </h3>
+ <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot4.png" />
+ <h3>Comments:</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot5.png"/>
 </p>
 
 ## About us: 
