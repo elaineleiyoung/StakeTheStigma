@@ -22,8 +22,8 @@
   font-size: 40px;
   font-weight: 600;
   line-height: 45px;
-  position: absolute;
-  top: 12%;
+  position: relative;
+  bottom: 75%;
   left: 3.5%;
 }
 
@@ -46,7 +46,7 @@
   left: 16%;
   transform: translateX(-50%);
 }
-
+/* 
 .guestLogin{
   display: inline-block;
   border: none;
@@ -65,7 +65,7 @@
 }
 .guestLogin:hover{
   background-color: lightgray;
-}
+} */
 
 .login{
   display: inline-block;
@@ -83,6 +83,8 @@
   transition: all 0.5s;
   cursor: pointer;
   margin: 20px;
+  position: relative;
+  left: -10%;
 }
 .login:hover{
   background-color:white;
