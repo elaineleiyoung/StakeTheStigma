@@ -1,20 +1,20 @@
-import { db } from "../firebase";
-import { doc,  collection, where, query, getDocs, limit, updateDoc, onSnapshot} from "firebase/firestore"; 
+import { doc, updateDoc, onSnapshot} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 
+import NaviBar from './NavigationBar';
+
 import Box from '@mui/material/Box';
 
-import {Paper, Popover} from '@mui/material'
+import {Paper} from '@mui/material'
 
-import styles from './Profile.module.css';
+import styles from './styles/Profile.module.css';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArticleIcon from '@mui/icons-material/Article';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
@@ -26,7 +26,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import Dashboard from "./scripts/dashboard";
 
 function Profile() {
     //defining our variables that will be used within the dashboard
@@ -34,20 +33,13 @@ function Profile() {
     const auth = getAuth();
     const firestore = getFirestore();
     // navigate is used to go to search page while passing parameters
-    const navigate = useNavigate()
     // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
-    const [isEditing, setIsEditing] = useState(false);
-
     // a user's topics and links to iterate over
     const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
-    // used to pass data down to Article components
-    const [fullContent, setFullContent] = useState([])
     // used as to pass query to search page
-    const [searchInput, setSearchInput] = useState("");
-    const [searchFocused, setSearchFocused] = useState(false);
-
+    const navigate = useNavigate()
     const [pronouns, setPronouns] = React.useState('');
 
     const handlePronounsChange = (event) => {
@@ -58,7 +50,6 @@ function Profile() {
   // on page load, we grab the current user's information and populate our variables
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      console.log(user.name)
       if (user) {
         setEmail(user.email);
         const userDocRef = doc(firestore, "users", user.uid);
@@ -113,10 +104,6 @@ function Profile() {
       setIsEditing(false);
     };
   
-    const handleEditClick = () => {
-      setIsEditing(true);
-    };
-  
     useEffect(() => {
       const user = auth.currentUser;
       if (user) {
@@ -160,7 +147,7 @@ function Profile() {
         <Tab
           component="a"
           onClick={(event) => {
-            event.preventDefault();
+            navigate(props.href)
           }}
           {...props}
         />
@@ -171,13 +158,8 @@ function Profile() {
 
     return (
       <main > 
-        <div className={styles.total}>
-          <header className="heading">
-            <h1 className="logo"> Stake The Stigma.</h1>
-            <h2 className="subtitle">Destigmatizing Women's Health</h2>
-          </header>
-        </div>
-
+        
+        <NaviBar />
         <div className={styles.dboard} >
           <div className={styles.welcome}>
 
@@ -192,13 +174,15 @@ function Profile() {
             <br></br>
               
             <Paper elevation={0} sx={{width:"100%"}} >
-              <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
-                  <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/" />
-                  <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/" />
-                  <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/" />
-                  <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
-                  <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
-              </Tabs>
+            <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
+              <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/survey" />
+              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/dashboard" />
+              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="Community Posts" href="/contributorfeed" />
+              <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/liked" />
+              <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/profile" />
+              {/* <br></br> */}
+              <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
+            </Tabs>
           </Paper>
 
 

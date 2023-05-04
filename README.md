@@ -1,25 +1,56 @@
 # StakeTheStigma
+## Project Link:
+https://stakethestigma-dc208.web.app/
+
 ## Project Description:  
 Stake the Stigma is a project aimed at destigmatizing women's health topics by providing a personalized dashboard experience for users. The goal of this project is to make it easier for people to access and search for specific articles and insights related to women's health topics. By doing so, the project aims to increase awareness and communication about important but often underrepresented subjects in society.
 
-The personalized dashboard experience allows users to customize their experience based on their preferences and interests. Users can choose specific topics or areas of interest, and the dashboard will then display articles and insights related to those topics. Users can also search for specific articles or keywords to find the resources related to those searches.
+The personalized dashboard experience allows users to customize their experience based on their preferences and interests. Users can choose specific topics or areas of interest, and the dashboard will then display summarized articles and insights related to those topics. Users can also search for specific articles or keywords to find resources related to those queries and add such articles into the dashboard. There is also a separate contributor feed which features articles written or shared by contributors, who have integrated such articles into our database. 
+
 ## Table of contents
 
-- [Installation](#installation-npm-and-firebase)
 - [Built with](#built-with)
+- [Installation](#installation-npm-and-firebase)
 - [Running the app](#running-the-app)
 - [Snapshots](#snapshots)
 - [About us](#about-us)
 
-## Installation: npm and Firebase 
- 
- Install dependencies:
-### `npm i`
- Install firebase:
-### `npm install firebase` 
 
 ## Built with:  
 React frontend, Firebase Backend. 
+
+## Installation: npm and Firebase 
+ 
+Make sure you have Node.js and npm installed on your system. You can download and install them from https://nodejs.org.
+Clone this repository to your local machine using:
+### git clone https://github.com/your-username/your-project.git
+To change to the project directory:
+### cd your-project
+Install the project dependencies:
+### `npm i`
+This will install all the dependencies required to run the project. You should see a node_modules directory created in your project directory. The dependencies used are: 
+- "@chakra-ui/react": "^2.5.3"
+- "@emotion/react": "^11.10.6"
+- "@emotion/styled": "^11.10.6"
+- "@mui/icons-material": "^5.11.9"
+- "@mui/material": "^5.11.13"
+- "@testing-library/jest-dom": "^5.16.5"
+- "@testing-library/react": "^13.4.0"
+- "@testing-library/user-event": "^13.5.0"
+- "firebase": "^9.17.1"
+- "framer-motion": "^10.9.1"
+- "jquery": "^3.6.4"
+- "react": "^18.2.0"
+- "react-dom": "^18.2.0"
+- "react-loader-spinner": "^5.3.4"
+- "react-pro-sidebar": "^1.0.0"
+- "react-promise-tracker": "^2.1.1"
+- "react-router-dom": "^6.8.1"
+- "react-scripts": "5.0.1"
+- "web-vitals": "^2.1.4"
+
+To install firebase:
+### `npm install firebase` 
 
 ## Running the App:
 
@@ -68,15 +99,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Snapshots:
 <p align="middle">
  <h3>Dashboard Home Page:</h3>
-  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot1.png"/>
+  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot1.png"/>
  <h3>Login page:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot2.png"/>
- <h3>Survey page before starting dashboard: </h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
- <h3>Dashboard design (WIP):</h3>
- <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://user-images.githubusercontent.com/95207937/229644131-4f00d931-4969-4eb7-bfc5-023c359310bd.png">
- <h3>Search function implementation:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot2.png"/>
+ <h3>Personalized dashboard with articles: </h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot3.png"/>
+ <h3>User profile page: </h3>
+ <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot4.png" />
+ <h3>Comments:</h3>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot5.png"/>
 </p>
 
 ## About us: 
