@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 
+import NaviBar from './scripts/navigationBar';
+
 import Box from '@mui/material/Box';
 
 import {Paper} from '@mui/material'
@@ -156,13 +158,8 @@ function Profile() {
 
     return (
       <main > 
-        <div className={styles.total}>
-          <header className="heading">
-            <h1 className="logo"> Stake The Stigma.</h1>
-            <h2 className="subtitle">Destigmatizing Women's Health</h2>
-          </header>
-        </div>
-
+        
+        <NaviBar />
         <div className={styles.dboard} >
           <div className={styles.welcome}>
 
@@ -178,11 +175,11 @@ function Profile() {
               
             <Paper elevation={0} sx={{width:"100%"}} >
             <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
-              <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/" />
+              <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/survey" />
               <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/dashboard" />
               <LinkTab icon={<ArticleIcon />} iconPosition="start" label="Community Posts" href="/contributorfeed" />
               <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/liked" />
-              <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
+              <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/profile" />
               {/* <br></br> */}
               <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
             </Tabs>

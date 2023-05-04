@@ -137,8 +137,8 @@ function NaviBar() {
             </StyledPaper>
           </Search>
           <div className= {styles.logos}> 
-            <h1 className={styles.logo1}>Stake The Stigma</h1>
-            <h2 className={styles.logo2}>Destigmatizing Women's Health.</h2>
+            <h1 className={styles.logo1}>Stake The Stigma.</h1>
+            <h2 className={styles.logo2}>Destigmatizing Women's Health</h2>
           </div>
         </StyledToolbar>
       </AppBar>

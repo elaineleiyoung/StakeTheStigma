@@ -1,11 +1,12 @@
 
 .heading{
   position: relative; 
-  background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
+  padding-bottom: 10%;
+  /* background: linear-gradient(to left, #A473E6, #9DB7FD, #87FAE7);
   margin-top: -10px;
   margin-right: -10px;
   margin-left: -10px;
-  padding-top: 10px;
+  padding-top: 10px; */
 } 
 .logo{
   position: relative;
@@ -45,6 +46,7 @@
 }
 .overall{
   display: flex;
+  margin-top: 2.5%;
   
 }
 .contributorIcon{
@@ -64,6 +66,8 @@
 .contributeTitle{
   color: #3A448C;
   font-family: 'Montserrat';
+  position: relative;
+  left: 0.5%;
 }
 .form-total{
   display: flex;
@@ -95,6 +99,10 @@
   font-weight: 700;
 }
 
+.surveyLabel2 h1{
+  position: relative;
+  left: 1%;
+}
 .form-title{
   padding-top: 10px;
   padding-bottom: 100px;
@@ -121,7 +129,8 @@
 } */
 .submit{
   display: flex;
-  left: 40%;
+  left: 37.5%;
+  top: 2%;
   padding: 10px;
 
 }
@@ -142,13 +151,11 @@
   background-color: transparent;
   border-color: #3A448C;
 }
-
 .contributorBack {
   z-index: 100;
   position: absolute;
-  top: 25%;
-  right: 2%;
-  transform: translateY(-50%);
+  top: 20%;
+  right: 10%;
   padding: 10px 20px;
   background-color: #3A448C;
   color: white;
@@ -157,8 +164,11 @@
   font-size: 18px;
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* add transition */
 }
 
 .contributorBack:hover {
   background-color: #2B2F6E;
+  transform: scale(1.1); /* add transform effect */
 }
+

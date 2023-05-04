@@ -64,6 +64,7 @@ body {
   /*
   position: absolute;
   bottom: 0;*/
+  width: 110%;
   justify-self: center;
   font-size: 18px;
   color: #3A448C;

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { db } from "./firebase";
 import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
 import './formComponent.css'
-import styles from "./components/styles/formComponent.module.css";
 import {OpenAI} from './openAI';
+import NaviBar from './components/scripts/navigationBar';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -53,10 +53,12 @@ function FormComponent() {
 
   return (
     <div>
-      <header className="heading">
+      {/* <header className="heading">
         <h1 className="logo"> Stake The Stigma.</h1>
         <h2 className="subtitle">Destigmatizing Women's Health</h2>
       </header>
+       */}
+      <NaviBar className="heading" />
       <button onClick={()=>navigate("/dashboard")}className="contributorBack">Back</button>
       <div className= "overall"> 
         <div className = "contributorIcon">
@@ -71,7 +73,7 @@ function FormComponent() {
           </form>
         <div className="surveyLabel2">
           <h1>Topics</h1>
-          <StyledChip className= {styles.chips}
+          <StyledChip 
               label="Menstruation"
               onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
               clicked={selectedTopics.includes("menstruation")}
@@ -113,18 +115,28 @@ function FormComponent() {
             />
           {/* <TextField className="other-topic" label="Other Topic" variant="outlined" sx={{width: '450px', marginTop: "10px", marginLeft: "10px"}}/> */}
       </div>
-      <Button className="submit" type="submit" variant='contained'
-                onClick={handleSubmit} sx={{
-                width:'200px', 
-                height: '50px',
-                borderRadius: '999px',
-                backgroundColor: '#3A448C', 
-                  '&:hover': {
-                  backgroundColor: "#A473E6",
-                  }
-                }}>
-          Submit
-    </Button>
+      <Button
+  className="submit"
+  type="submit"
+  variant="contained"
+  onClick={handleSubmit}
+  sx={{
+    width: "200px",
+    height: "50px",
+    borderRadius: "999px",
+    backgroundColor: "#3A448C",
+    fontWeight:"bold",
+    transition: "transform 0.3s ease-in-out", // add transition
+    "&:hover": {
+      // backgroundColor: "#A473E6",
+      transform: "scale(1.1)", // add transform
+      cursor: "pointer", // add pointer cursor
+    },
+  }}
+>
+  Submit
+</Button>
+
     </div>
 
     </div>

@@ -56,7 +56,7 @@ function Survey() {
   return (
     <main className={styles.survey}>
       <div>
-            <h1 className = {styles.logo}>STAKE THE STIGMA</h1>
+            <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
             <h2 className={styles.subtitle}>-Destigmatizing Women's Health-</h2>
      
       <p className={styles.message}>What are you interested in?</p>
