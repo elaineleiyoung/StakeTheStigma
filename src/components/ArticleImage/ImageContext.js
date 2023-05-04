@@ -15,31 +15,30 @@ export const ImageContext = createContext(null);
 
 const ImageProvider = ({ children, topic }) => {
   const getImageUrl = (topic) => {
-    switch (topic) {
-      case 'Reproductivehealth':
-        return reproductive_health;
-      case 'Breasthealth':
-        return breast_health;
-      case 'Sexualhealth':
-        return sexual_health;
-      case 'Mentalhealth':
-        return mental_health;
-      case 'Cardiovascularhealth':
-        return cardiovascular_health;
-      case 'Bonehealth':
-        return bone_health;
-      case 'Cancer':
-        return breast_health;
-      case 'Autoimmunediseases':
-        return autoimmune_disease;
-      case 'Skinhealth':
-        return skin_health;
-      case 'Muscularhealth':
-        return muscular_health;
-      case 'Nutritionandfitness':
-        return nutrition;
-      default:
-        return sts;
+    if (/Reproductivehealth/i.test(topic)) {
+      return reproductive_health;
+    } else if (/Breasthealth/i.test(topic)) {
+      return breast_health;
+    } else if (/SexualHealth/i.test(topic)) {
+      return sexual_health;
+    } else if (/MentalHealth/i.test(topic)) {
+      return mental_health;
+    } else if (/Cardiovascularhealth/i.test(topic)) {
+      return cardiovascular_health;
+    } else if (/Bonehealth/i.test(topic)) {
+      return bone_health;
+    } else if (/Cancer/i.test(topic)) {
+      return breast_health;
+    } else if (/Autoimmunediseases/i.test(topic)) {
+      return autoimmune_disease;
+    } else if (/Skinhealth/i.test(topic)) {
+      return skin_health;
+    } else if (/Muscularhealth/i.test(topic)) {
+      return muscular_health;
+    } else if (/NutritionandFitness/i.test(topic)) {
+      return nutrition;
+    } else {
+      return sts;
     }
   };
 

@@ -52,7 +52,7 @@ function Survey() {
   };
   
   
-
+//Reproductive health, Breast health, Sexual health, Mental health, Cardiovascular health, Bone health, Cancer, Autoimmune diseases, Skin health, Muscular Health, Nutrition and fitness]
   return (
     <main className={styles.survey}>
       <div>
@@ -64,44 +64,54 @@ function Survey() {
       <div style={SurveyButton.containerStyle} className={styles.chipContainer}>
       
         <StyledChip className= {styles.chips}
-          label="Menstruation"
-          onClick={() => handleTopicClick("menstruation","https://www.nhs.uk/conditions/period-pain/")}
-          clicked={selectedTopics.includes("menstruation")}
+          label="Reproductive Health"
+          onClick={() => handleTopicClick("Reproductivehealth","https://www.theskimm.com/wellness/why-is-my-period-blood-brown")}
+          clicked={selectedTopics.includes("Reproductivehealth")}
         />
         <StyledChip
-          label="HPV Vaccination"
-          onClick={() => handleTopicClick("hpv","https://www.cdc.gov/std/hpv/stdfact-hpv.htm#:~:text=What%20is%20HPV%3F,including%20genital%20warts%20and%20cancers.")}
-          clicked={selectedTopics.includes("hpv")}
+          label="Breast Health"
+          onClick={() => handleTopicClick("Breasthealth","https://www.healthline.com/health/womens-health/why-does-my-breast-hurt-when-i-press-it")}
+          clicked={selectedTopics.includes("Breasthealth")}
         />
         <StyledChip
-          label="Polycystic ovary syndrome (PCOS)"
-          onClick={() => handleTopicClick("pcos","https://www.nhs.uk/conditions/polycystic-ovary-syndrome-pcos/")}
-          clicked={selectedTopics.includes("pcos")}
+          label="Mental Health"
+          onClick={() => handleTopicClick("Mentalhealth","https://www.berkeleywellbeing.com/feeling-sad.html")}
+          clicked={selectedTopics.includes("Mentalhealth")}
         />
         <StyledChip
-          label="Pregnancy"
-          onClick={() => handleTopicClick("pregnancy", "https://www.cdc.gov/pregnancy/index.html")}
-          clicked={selectedTopics.includes("pregnancy")}
+          label="Cardiovascular Health"
+          onClick={() => handleTopicClick("Cardiovascularhealth", "https://www.mayoclinic.org/diseases-conditions/heart-palpitations/symptoms-causes/syc-20373196")}
+          clicked={selectedTopics.includes("Cardiovascularhealth")}
         />
         <StyledChip
-          label="Ovarian and Cervical Cancer"
-          onClick={() => handleTopicClick("ovarian_cancer","https://www.nhs.uk/conditions/ovarian-cancer/")}
-          clicked={selectedTopics.includes("ovarian_cancer")}
+          label="Bone Health"
+          onClick={() => handleTopicClick("Bonehealth","https://www.healthline.com/health/bone-health/why-do-my-bones-crack-so-much")}
+          clicked={selectedTopics.includes("Bonehealth")}
         />
         <StyledChip
-          label="Postpartum Depression"
-          onClick={() => handleTopicClick("postpartum","https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617")}
-          clicked={selectedTopics.includes("postpartum")}
+          label="Cancer"
+          onClick={() => handleTopicClick("Cancer","https://www.cancerresearchuk.org/about-cancer/causes-of-cancer/can-cancer-be-prevented-0")}
+          clicked={selectedTopics.includes("Cancer")}
         />
         <StyledChip
-          label="Breast Cancer"
-          onClick={() => handleTopicClick("breast_cancer","https://www.cdc.gov/cancer/breast/basic_info/what-is-breast-cancer.htm")}
-          clicked={selectedTopics.includes("breast_cancer")}
+          label="Autoimmune Diseases"
+          onClick={() => handleTopicClick("Autoimmunediseases","https://www.healthline.com/health/autoimmune-disorders")}
+          clicked={selectedTopics.includes("Autoimmunediseases")}
         />
         <StyledChip
-          label="Menopause"
-          onClick={() => handleTopicClick("menopause","https://www.nia.nih.gov/health/what-menopause")}
-          clicked={selectedTopics.includes("menopause")}
+          label="Skin Health"
+          onClick={() => handleTopicClick("Skinhealth","https://share.upmc.com/2018/04/dry-flaky-skin-on-face/")}
+          clicked={selectedTopics.includes("Skinhealth")}
+        />
+                <StyledChip
+          label="Muscular Health"
+          onClick={() => handleTopicClick("Muscularhealth","https://my.clevelandclinic.org/health/symptoms/22274-calf-muscle-pain")}
+          clicked={selectedTopics.includes("Muscularhealth")}
+        />
+                  <StyledChip
+          label="Nutrition and Fitness"
+          onClick={() => handleTopicClick("Nutritionandfitness","https://www.ndtv.com/health/weight-loss-diet-essential-nutrients-you-need-for-losing-weight-quickly-2098994")}
+          clicked={selectedTopics.includes("Nutritionandfitness")}
         />
 
         <Button component={Link}  color="primary" onClick={handleSubmit} className={styles.submit} 
