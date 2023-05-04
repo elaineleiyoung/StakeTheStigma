@@ -2,14 +2,9 @@ import styles from "../styles/Register.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 
 function Register() {
 
-    const inputStyle = {
-        borderRadius: '50px',
-    }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -20,7 +15,7 @@ function Register() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
         .then(auth => {
-            navigate("/dashboard");
+            navigate("/");
         })
         .catch(error => alert(error.message))
     }
@@ -39,56 +34,30 @@ function Register() {
     }
 
     return (
-        <body>
-        <div className={styles.container}>
-            <div className={styles.logo2}>
-             <h1>Stake The Stigma</h1>
-             </div>
-             <h2 className={styles.logo3}>destigmatizing women's health</h2>
-            <div className={styles.right}>
+        <div className = {styles.sheesh}>
+             <h1 className = {styles.logo}>STAKE THE STIGMA.</h1>
+             <h2 className={styles.logo2}>_UNCENSOR CENSORED NEWS_</h2>
+        
+        <section className = {styles.layout}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "25vh", marginLeft: "100px" }}>
                 <form>
-                    <div style={{"padding-top":"40px"}}>
-                        <TextField size="small"
-                                    id="outlined-basic" 
-                                    label="Email" 
-                                    variant="outlined" 
-                                    required
-                                    onChange = {e => {setEmail(e.target.value)}}
-                                    sx={{
-                                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                                        border:'2px solid #3A448C',
-                                        borderRadius: '999px',
-                                        width: '400px',
-                                    }}
-                                     />
+                    <div className = {styles.emailInput}>
+                        <h4 className= {styles.logo3}> Email</h4>
+                        <input type = "text" value = {email} onChange = {e => {setEmail(e.target.value)}} className = {styles.email}/>
                     </div>
-                    <div style={{"padding-top":"40px"}}>
-                        <TextField size="small"
-                                    // id="outlined-basic" 
-                                    label="Password" 
-                                    // variant="standard"
-                                    type="password"
-                                    required
-                                    onChange = {e => {setPassword(e.target.value)}} 
-                                    sx={{
-                                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                                        border:'2px solid #3A448C',
-                                        borderRadius: '999px',
-                                        width: '400px',
-                                    }}
-                                    />
+                    <div className = {styles.passwordInput}>
+                        <h4 className= {styles.logo3}> Password</h4>
+                        <input type = "password" value = {password} onChange = {e => {setPassword(e.target.value)}} className = {styles.password} />
                     </div>
-                    <div style={{"padding-top":"20px"}}>
-                    <button className={styles.registerButton} onClick={signIn}>
-                        Sign In
-                    </button>
-                    </div>
+
+                    <button type = "submit" onClick = {signIn} className = {styles.signInBtn}>Sign In</button>
                 </form>
-                <p className={styles.registerCaption}>Don't have an account? Create one here!</p>
-                <button className={styles.registerButton} onClick={createAccount}>Create an account</button>
+
+                <p className = {styles.message}>Don't have an account? Create one here!</p>
+                <button className = {styles.createAccBtn} onClick = {createAccount}>Create your account</button>
             </div>
+        </section>
         </div>
-        </body> 
         
     );
 }
