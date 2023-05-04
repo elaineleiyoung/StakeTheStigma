@@ -3,13 +3,18 @@
 Stake the Stigma is a project aimed at destigmatizing women's health topics by providing a personalized dashboard experience for users. The goal of this project is to make it easier for people to access and search for specific articles and insights related to women's health topics. By doing so, the project aims to increase awareness and communication about important but often underrepresented subjects in society.
 
 The personalized dashboard experience allows users to customize their experience based on their preferences and interests. Users can choose specific topics or areas of interest, and the dashboard will then display articles and insights related to those topics. Users can also search for specific articles or keywords to find the resources related to those searches.
+
 ## Table of contents
 
-- [Installation](#installation-npm-and-firebase)
 - [Built with](#built-with)
+- [Installation](#installation-npm-and-firebase)
 - [Running the app](#running-the-app)
 - [Snapshots](#snapshots)
 - [About us](#about-us)
+
+
+## Built with:  
+React frontend, Firebase Backend. 
 
 ## Installation: npm and Firebase 
  
@@ -17,9 +22,6 @@ The personalized dashboard experience allows users to customize their experience
 ### `npm i`
  Install firebase:
 ### `npm install firebase` 
-
-## Built with:  
-React frontend, Firebase Backend. 
 
 ## Running the App:
 
