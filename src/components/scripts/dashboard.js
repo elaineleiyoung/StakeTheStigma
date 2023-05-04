@@ -72,53 +72,51 @@ function Dashboard() {
             setTopics(null);
             setLinks(null)
           }
+          return unsubscribe;
         });
-        return unsubscribe;
-      }, [auth, firestore]);
-
-    useEffect(() => {
-      const fetchArticles = async () => {
-        const newContent = [];
-        for (const link of links) {
-          try {
-            const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-              // doc.data() is never undefined for query doc snapshots
-              const article = {
-                id: doc.id,
-                title: doc.data().title,
-                description: doc.data().url,
-                content: doc.data().content,
-                userLikes: [],
-                likes: doc.data().userLikes.length,
-                topics: doc.data().topic,
-              }
-              newContent.push(article);;
-            });
-          } catch (error) {
-            console.error(`Error fetching articles for ${link}`, error);
+        const fetchArticles = async () => {
+          const newContent = [];
+          for (const link of links) {
+            try {
+              const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
+              const querySnapshot = await getDocs(q);
+              querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                const article = {
+                  id: doc.id,
+                  title: doc.data().title,
+                  description: doc.data().url,
+                  content: doc.data().content,
+                  userLikes: [],
+                  likes: doc.data().userLikes.length,
+                  topics: doc.data().topic,
+                }
+                newContent.push(article);;
+              });
+            } catch (error) {
+              console.error(`Error fetching articles for ${link}`, error);
+            }
           }
+          setFullContent(newContent);
+        };
+        //function for the motivational image and quote in our welcome tab of dashboard. 
+        const getWelcomeData = async () => {
+        const collectionRef = collection(db, "welcome");
+        const snapshot = await getDocs(collectionRef);
+        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        //generate random index
+        const random = Math.floor(Math.random() * (data.length - 1));
+        setId(data[random].id);
+        setImageUrl(data[random].imageUrl);
+        setQuote(data[random].quote);
+        };
+        if (id == null) {
+          getWelcomeData();
         }
-        setFullContent(newContent);
-      };
-      //function for the motivational image and quote in our welcome tab of dashboard. 
-      const getWelcomeData = async () => {
-      const collectionRef = collection(db, "welcome");
-      const snapshot = await getDocs(collectionRef);
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      //generate random index
-      const random = Math.floor(Math.random() * (data.length - 1));
-      setId(data[random].id);
-      setImageUrl(data[random].imageUrl);
-      setQuote(data[random].quote);
-      };
-      getWelcomeData();
-      if (topics.length) {
-        fetchArticles();
-      }
-    }, [topics]);
-
+        else {
+          fetchArticles();
+        }
+      }, [topics]);
 
     return (
       <main > 
@@ -145,7 +143,7 @@ function Dashboard() {
             <Typography variant="subtext">
               <div id={id}>
                 <div className={styles.quoteImagePos}> 
-                  <img className={styles.quoteImage} src={imageUrl} alt="Motivational women's health image" />
+                  <img className={styles.quoteImage} src={imageUrl} alt="Motivating women's health" />
                 </div>
                 <div className={styles.quotes}> {quote} </div>
               </div>
