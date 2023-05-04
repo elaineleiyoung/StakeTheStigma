@@ -29,7 +29,6 @@ To change to the project directory:
 Install the project dependencies:
 ### `npm i`
 This will install all the dependencies required to run the project. You should see a node_modules directory created in your project directory. The dependencies used are: 
-- "@chakra-ui/react": "^2.5.3"
 - "@emotion/react": "^11.10.6"
 - "@emotion/styled": "^11.10.6"
 - "@mui/icons-material": "^5.11.9"
