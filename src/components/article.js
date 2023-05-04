@@ -105,6 +105,7 @@ export default function Article(props) {
   //sets an article to true or false based on whether user liked that article, makes calls to database to reflect changes, could be more efficient however?
 
   async function likeHandler() {
+    const auth = getAuth();
     if (liked) {
       setLiked(false);
       const docRef = doc(db, "articles", props.id);
@@ -115,6 +116,20 @@ export default function Article(props) {
       updateDoc(docRef, {
         likes: likes.data().userLikes.length});
       setTotalLikes(likes.data().userLikes.length);
+      if (auth.currentUser) {
+        // add like to user's thing
+        // Send API call to Firebase with selectedTopics array
+        // Example API call using fetch:
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        
+        // Add topics array to user profile in Firestore
+        updateDoc(userRef, { likedArticles: arrayRemove(props.description) }, { merge: true })
+          .then(() => {
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      }
       }
     else {
       setLiked(true);
@@ -126,6 +141,20 @@ export default function Article(props) {
       updateDoc(docRef, {
         likes: likes.data().userLikes.length});
       setTotalLikes(likes.data().userLikes.length);
+    }
+    if (auth.currentUser) {
+      // add like to user's thing
+      // Send API call to Firebase with selectedTopics array
+      // Example API call using fetch:
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      
+      // Add topics array to user profile in Firestore
+      updateDoc(userRef, { likedArticles: arrayUnion(props.description) }, { merge: true })
+        .then(() => {
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     }
   }
 //Our articles are made using MUI Card and Modal Components. Articles are rendered with a prop passed in dashboard page, that metadata is then used below to supplement the fields.
