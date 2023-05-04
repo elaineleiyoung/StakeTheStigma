@@ -45,9 +45,10 @@ body {
   position: absolute;
   left: 100px;
   font-size: 35px;
-  top: 68%;
+  top: 73%;
   font-family: 'Montserrat', sans-serif;
 }
+
 .right{
   grid-area: r;
   padding-bottom: 50px;

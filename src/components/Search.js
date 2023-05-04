@@ -7,7 +7,7 @@ import {OpenAI} from './scripts/openAI'
 import {Categorize} from './scripts/categorize'
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
-import Article from './Article'
+import Article from './article'
 import { trackPromise } from 'react-promise-tracker'
 import NaviBar from "./NavigationBar";
 import Typography from '@mui/material/Typography';
