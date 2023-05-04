@@ -192,14 +192,13 @@ function Profile() {
             <br></br>
               
             <Paper elevation={0} sx={{width:"100%"}} >
-            <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
-              <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/" />
-              <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/" />
-              <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/" />
-              <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
-              {/* <br></br> */}
-              <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
-            </Tabs>
+              <Tabs value={email} aria-label="nav tabs example" orientation="vertical" sx={{display: 'flex', justifyContent: 'center', marginLeft:'12.5%'}}>
+                  <LinkTab icon={<DashboardCustomizeIcon />} iconPosition="start"label="My Topics" href="/" />
+                  <LinkTab icon={<ArticleIcon />} iconPosition="start" label="My Articles" href="/" />
+                  <LinkTab icon={<FavoriteIcon />} iconPosition="start" label="My Favorites" href="/" />
+                  <LinkTab icon={<AccountCircleIcon />} iconPosition="start" label="Profile Details" href="/" />
+                  <LinkTab icon={<LogoutIcon />} iconPosition="start" label="Logout" href="/register" sx={{position: "relative", right:'4em'}}/>
+              </Tabs>
           </Paper>
 
 

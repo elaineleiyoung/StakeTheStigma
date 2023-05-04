@@ -70,7 +70,7 @@ function Insights() {
         <section> 
           <div>
             <p style= {{display: 'inline', fontSize: '35px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#3A448C'}}>
-                {(totalTopics/totalUsers) * 100}% {" "}
+                {((totalTopics/totalUsers) * 100).toFixed(1)}% {" "}
             </p>
             <p style= {{display: 'inline', fontSize: '20px', fontFamily: 'Montserrat', fontWeight:'bold', color:'#5E5E5E'}}>
                 of users share some or all of the same topics as you.
