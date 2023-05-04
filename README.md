@@ -98,15 +98,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Snapshots:
 <p align="middle">
  <h3>Dashboard Home Page:</h3>
-  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot1.png"/>
+  <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot1.png"/>
  <h3>Login page:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot2.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot2.png"/>
  <h3>Personalized dashboard with articles: </h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot3.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot3.png"/>
  <h3>User profile page: </h3>
- <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot4.png" />
+ <img width="830" alt="Screen Shot 2023-04-03 at 6 55 35 PM" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot4.png" />
  <h3>Comments:</h3>
- <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/new-dashboard/assets/screenshot5.png"/>
+ <img height="300" src="https://github.com/elaineleiyoung/StakeTheStigma/blob/master/assets/screenshot5.png"/>
 </p>
 
 ## About us: 
