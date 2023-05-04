@@ -1,14 +1,11 @@
 import styles from "../styles/Survey.module.css";
 import { db } from "../../firebase";
-import { doc, setDoc, collection, addDoc, arrayUnion } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 import React, { useState } from 'react';
 import SurveyButton from "./button";
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
-import DoneIcon from "@mui/icons-material/Done";
 import { Link } from 'react-router-dom';
-import {OpenAI} from '../../openAI'
-import { useEffect } from 'react'
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 
@@ -116,7 +113,6 @@ function Survey() {
           backgroundColor: 'white 20%',   //its just transparent now, TBF
           color: 'white', 
           borderRadius: "20px",
-          width: "fit-content",
           padding: "6px 12px",
           fontWeight: "bold",
           fontSize: "25px",

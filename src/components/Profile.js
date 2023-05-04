@@ -1,5 +1,4 @@
-import { db } from "../firebase";
-import { doc,  collection, where, query, getDocs, limit, updateDoc, onSnapshot} from "firebase/firestore"; 
+import { doc, updateDoc, onSnapshot} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
@@ -7,14 +6,13 @@ import { getFirestore, getDoc } from "firebase/firestore";
 
 import Box from '@mui/material/Box';
 
-import {Paper, Popover} from '@mui/material'
+import {Paper} from '@mui/material'
 
 import styles from './Profile.module.css';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArticleIcon from '@mui/icons-material/Article';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
@@ -26,7 +24,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import Dashboard from "./scripts/dashboard";
 
 function Profile() {
     //defining our variables that will be used within the dashboard
@@ -36,16 +33,10 @@ function Profile() {
     // navigate is used to go to search page while passing parameters
     // logged in user's email. Can be used later
     const [email, setEmail] = useState(null)
-    const [isEditing, setIsEditing] = useState(false);
-
     // a user's topics and links to iterate over
     const [topics, setTopics] = useState([])
     const [links, setLinks] = useState([])
-    // used to pass data down to Article components
-    const [fullContent, setFullContent] = useState([])
     // used as to pass query to search page
-    const [searchInput, setSearchInput] = useState("");
-    const [searchFocused, setSearchFocused] = useState(false);
     const navigate = useNavigate()
     const [pronouns, setPronouns] = React.useState('');
 
@@ -57,7 +48,6 @@ function Profile() {
   // on page load, we grab the current user's information and populate our variables
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      console.log(user.name)
       if (user) {
         setEmail(user.email);
         const userDocRef = doc(firestore, "users", user.uid);
@@ -110,10 +100,6 @@ function Profile() {
     const handleCancelClick = () => {
       setEditedEmail(email);
       setIsEditing(false);
-    };
-  
-    const handleEditClick = () => {
-      setIsEditing(true);
     };
   
     useEffect(() => {

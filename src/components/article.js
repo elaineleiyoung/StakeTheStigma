@@ -1,13 +1,12 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import {useState, useContext, useEffect} from 'react'
-import { doc, FieldValue, updateDoc, getDoc, arrayUnion, setDoc, arrayRemove } from "firebase/firestore";
+import {useState} from 'react';
+import { doc, updateDoc, getDoc, arrayUnion, setDoc, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
 import Comment from "./comment";
@@ -17,10 +16,8 @@ import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styles from "../../src/components/styles/Article.module.css";
-import CloseIcon from '@mui/icons-material/Close';
 import ImageProvider from './ArticleImage/ImageContext';
 import CardImage from './ArticleImage/CardImage.js';
-import { styled } from '@mui/system';
 
 //article style
 const style = {
@@ -55,11 +52,6 @@ export default function Article(props) {
   const auth = getAuth();
   const currentUser = auth.currentUser.email;
   const [shared, setShared] = useState(false);
-
-  //image context switch
-  console.log(props.topic)
-
-  
 
   //sharing articles
   const handleShare = () => {
@@ -130,7 +122,6 @@ export default function Article(props) {
       updateDoc(docRef, {
         userLikes: arrayUnion(...props.userLikes, currentUser)
       });
-      console.log(currentUser);
       const likes = await getDoc(docRef);
       updateDoc(docRef, {
         likes: likes.data().userLikes.length});

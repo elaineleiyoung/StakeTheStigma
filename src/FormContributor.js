@@ -3,15 +3,12 @@ import { db } from "./firebase";
 import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
 import './formComponent.css'
 import styles from "./components/styles/formComponent.module.css";
-import Navbar from './components/scripts/Navbar';
 import {OpenAI} from './openAI';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Survey from './components/scripts/survey';
 import Chip from '@mui/material/Chip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom'
+
 function FormComponent() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');

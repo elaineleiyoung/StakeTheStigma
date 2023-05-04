@@ -7,13 +7,12 @@ import {OpenAI} from '../../openAI'
 import {Categorize} from './categorize'
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import Article from '../article'
 import { trackPromise } from 'react-promise-tracker'
 import NaviBar from "./navigationBar";
 import Typography from '@mui/material/Typography';
-import { styled, alpha } from '@mui/material/styles';
-import {Paper, Popover} from '@mui/material'
+import { styled } from '@mui/material/styles';
+import {Paper} from '@mui/material'
 
 const Styled2Paper = styled(Paper)(({ theme }) => ({
         display: 'relative',
@@ -32,7 +31,6 @@ function Search() {
   // Defining variables used throughout this file
   const location = useLocation()
   const squery = useMemo(() => location.state.query, [location.state.query])
-  console.log(squery)
   const API_KEY = 'AIzaSyBmN_FaKypjOKQQFrR91ClS76B0YG8bNZ0';
   // parameter for my Google PSE
   const cx = 'd5445a74cd13a432b'  

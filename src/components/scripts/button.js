@@ -1,6 +1,3 @@
-import styles from "../styles/Login.module.css";
-import { getFirestore, doc, updateDoc } from "firebase/firestore";
-
 import React, { useState } from 'react';
 
 function SurveyButton(props) {

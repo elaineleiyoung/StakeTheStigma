@@ -1,32 +1,15 @@
-import { db } from "../../firebase";
-import { doc,  collection, where, query, getDocs, limit} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import MenuIcon from '@mui/icons-material/Menu';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import {Paper, Popover} from '@mui/material'
-import shadows from "@mui/material/styles/shadows";
+import {Paper} from '@mui/material'
 import styles from "../styles/Dashboard.module.css";
-import Insights from './insights'
-import quote1 from '../ArticleImage/resources/quote1.jpg'
 import { useLocation } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
@@ -60,18 +43,6 @@ const Search = styled('div')(({ theme }) => ({
     margin: theme.spacing(1),
   }));
   
-  const Styled2Paper = styled(Paper)(({ theme }) => ({
-    display: 'relative',
-    width: '90%',
-    height:'99%',
-    borderRadius:'10px',
-    margin: theme.spacing(1),
-    boxShadow:'none',
-    backgroundColor:'white'
-  }));
-  
-  
-  
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
@@ -94,12 +65,6 @@ const Search = styled('div')(({ theme }) => ({
     alignItems: 'center',
     padding: theme.spacing(1, 2),
   }));
-  
-  const CustomTypography = styled(Typography)(({ theme }) => ({
-    fontFamily: 'Montserrat, sans-serif',
-    fontWeight: 'bold'
-  }));
-  
   
 function NaviBar() {
     const location = useLocation();
@@ -128,7 +93,7 @@ function NaviBar() {
     const handleSubmit = (event) =>{
         event.preventDefault()
         console.log(searchInput)
-        if(currentPath == '/search'){
+        if(currentPath === '/search'){
             navigate('/search', { state:
                 {query: searchInput}});
             window.location.reload()

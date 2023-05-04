@@ -17,12 +17,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import styles from "../styles/Dashboard.module.css";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
-import Face3RoundedIcon from '@mui/icons-material/Face3Rounded';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 

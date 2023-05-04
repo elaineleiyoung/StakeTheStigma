@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const Categorize = async (query) => {
 
     const apiKey = process.env.REACT_APP_OPEN_AI_KEY;

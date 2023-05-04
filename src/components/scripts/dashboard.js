@@ -48,28 +48,10 @@ function Dashboard() {
     const [links, setLinks] = useState([])
     // used to pass data down to Article components
     const [fullContent, setFullContent] = useState([])
-    // used as to pass query to search page
-    const [searchInput, setSearchInput] = useState("");
     //used for generating welcome message in dashboard
     const [id, setId] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [quote, setQuote] = useState(null);
-    
-    const [state, setState] = React.useState({
-      top: false,
-      left: false,
-      bottom: false,
-      right: false,
-    });
-  
-    const toggleDrawer = (anchor, open) => (event) => {
-      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-      }
-  
-      setState({ ...state, [anchor]: open });
-    };
-  
   
      // on page load, we grab the current user's information and populate our variables
     useEffect(() => {
@@ -98,13 +80,11 @@ function Dashboard() {
       const fetchArticles = async () => {
         const newContent = [];
         for (const link of links) {
-          console.log(link)
           try {
             const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
               // doc.data() is never undefined for query doc snapshots
-              console.log(doc.data())
               const article = {
                 id: doc.id,
                 title: doc.data().title,
