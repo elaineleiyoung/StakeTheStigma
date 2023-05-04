@@ -33,7 +33,7 @@ function FormComponent() {
       if (querySnapshot.size === 0) {
         const content = await OpenAI(url);
         console.log(content);
-        const docRef = await addDoc(collection(db, "articles"), {
+        const docRef = await addDoc(collection(db, "communityPosts"), {
           title: title,
           url: url,
           topic: selectedTopics,
