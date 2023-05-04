@@ -1,14 +1,14 @@
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import { doc,  collection, where, query, getDocs, limit, getFirestore, getDoc} from "firebase/firestore"; 
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
-import Article from '../article'
+import Article from './Article'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import {Paper} from '@mui/material'
-import styles from "../styles/Dashboard.module.css";
-import Insights from './insights'
-import NaviBar  from "./navigationBar";
+import styles from "./styles/Dashboard.module.css";
+import Insights from './scripts/insights'
+import NaviBar  from "./NavigationBar";
 import AddIcon from '@mui/icons-material/Add';
 
 const Styled2Paper = styled(Paper)(({ theme }) => ({

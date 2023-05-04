@@ -1,8 +1,8 @@
-import styles from "../styles/Survey.module.css";
-import { db } from "../../firebase";
+import styles from "./styles/Survey.module.css";
+import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore"; 
 import React, { useState } from 'react';
-import SurveyButton from "./button";
+import SurveyButton from "./Button";
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';

@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Paper} from '@mui/material'
-import styles from "../styles/Dashboard.module.css";
+import styles from "./styles/Dashboard.module.css";
 import { useLocation } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({

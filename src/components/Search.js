@@ -1,15 +1,15 @@
-import styles from "../styles/Search.module.css";
-import { db } from "../../firebase";
+import styles from "./styles/Search.module.css";
+import { db } from "../firebase";
 import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import {OpenAI} from '../../openAI'
-import {Categorize} from './categorize'
+import {OpenAI} from './scripts/openAI'
+import {Categorize} from './scripts/categorize'
 import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom';
-import Article from '../article'
+import Article from './Article'
 import { trackPromise } from 'react-promise-tracker'
-import NaviBar from "./navigationBar";
+import NaviBar from "./NavigationBar";
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import {Paper} from '@mui/material'

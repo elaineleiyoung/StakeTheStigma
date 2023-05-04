@@ -1,4 +1,4 @@
-import styles from "../styles/Register.module.css";
+import styles from "./styles/Register.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, getUserByEmail } from "firebase/auth";

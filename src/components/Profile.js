@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 import { getFirestore, getDoc } from "firebase/firestore";
 
-import NaviBar from './scripts/navigationBar';
+import NaviBar from './NavigationBar';
 
 import Box from '@mui/material/Box';
 
 import {Paper} from '@mui/material'
 
-import styles from './Profile.module.css';
+import styles from './styles/Profile.module.css';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';

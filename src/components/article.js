@@ -9,15 +9,15 @@ import {useState} from 'react';
 import { doc, updateDoc, getDoc, arrayUnion, setDoc, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
-import Comment from "./comment";
+import Comment from "./Comment";
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styles from "../../src/components/styles/Article.module.css";
-import ImageProvider from './ArticleImage/ImageContext';
-import CardImage from './ArticleImage/CardImage.js';
+import ImageProvider from './ImageMapping/ImageContext';
+import CardImage from './ImageMapping/CardImage.js';
 
 //article style
 const style = {

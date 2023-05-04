@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { collection, addDoc,  query, getDocs, where, limit } from "firebase/firestore";
-import './formComponent.css'
-import {OpenAI} from './openAI';
-import NaviBar from './components/scripts/navigationBar';
+import './styles/formComponent.css'
+import {OpenAI} from './scripts/openAI';
+import NaviBar from './NavigationBar';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';

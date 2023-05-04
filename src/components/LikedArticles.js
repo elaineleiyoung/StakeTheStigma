@@ -1,14 +1,14 @@
-import { db } from "../../firebase";
-import { doc,  collection, query, getDocs, getFirestore, getDoc} from "firebase/firestore"; 
+import { db } from "../firebase";
+import { doc,  collection, where, query, getDocs, limit, getFirestore, getDoc} from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
-import Article from '../article'
+import Article from './Article'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import {Paper} from '@mui/material'
-import NaviBar  from "./navigationBar";
-import styles from "../styles/Search.module.css";
+import NaviBar  from "./NavigationBar";
+import styles from "./styles/Search.module.css";
 
 const Styled2Paper = styled(Paper)(({ theme }) => ({
   display: 'relative',
@@ -26,7 +26,7 @@ const CustomTypography = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold'
 }));
 
-function ContributorFeed() {
+function LikedArticles() {
     //defining our variables that will be used within the dashboard
     // auth, firestore are just to initialize our Firebase for pulling user data and database functions
     const auth = getAuth();
@@ -41,7 +41,6 @@ function ContributorFeed() {
     // used to pass data down to Article components
     const [fullContent, setFullContent] = useState([])
   
-  
      // on page load, we grab the current user's information and populate our variables
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -51,7 +50,7 @@ function ContributorFeed() {
             const userDoc = await getDoc(userDocRef);
             if (userDoc.exists()) {
               setTopics(userDoc.data().topics);
-              setLinks(userDoc.data().links);
+              setLinks(userDoc.data().likedArticles)
             } else {
               setTopics([]);
               setLinks([]);
@@ -66,32 +65,37 @@ function ContributorFeed() {
       }, [auth, firestore]);
 
     useEffect(() => {
-      const fetchArticles = async () => {
-        const newContent = [];
-        try {
-            const q = query(collection(db, "communityPosts"));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-              // doc.data() is never undefined for query doc snapshots
-              console.log(doc.data())
-              const article = {
-                id: doc.id,
-                title: doc.data().title,
-                description: doc.data().url,
-                content: doc.data().content,
-                userLikes: [],
-                likes: doc.data().userLikes.length,
-                topics: doc.data().topic,
+        const fetchArticles = async () => {
+            const newContent = [];
+            for (const link of links) {
+              console.log(link)
+              try {
+                const q = query(collection(db, "articles"), where("url", "==", link), limit(1));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                  // doc.data() is never undefined for query doc snapshots
+                  console.log(doc.data())
+                  const article = {
+                    id: doc.id,
+                    title: doc.data().title,
+                    description: doc.data().url,
+                    content: doc.data().content,
+                    userLikes: [],
+                    likes: doc.data().userLikes.length,
+                    topics: doc.data().topic,
+                  }
+                  newContent.push(article);;
+                });
+              } catch (error) {
+                console.error(`Error fetching articles for ${link}`, error);
               }
-              newContent.push(article);;
-            });
-          } catch (error) {
-            console.error(`Error fetching articles for`, error);
+            }
+            setFullContent(newContent);
+          };
+          if (links.length) {
+            fetchArticles();
           }
-        setFullContent(newContent);
-      };
-      fetchArticles()
-    }, [topics]);
+    }, [links]);
 
       function handleBack(){
             navigate('/dashboard')
@@ -109,14 +113,15 @@ function ContributorFeed() {
                         whiteSpace= "pre-wrap"
                         className={styles.m1}
                 >
-                Contributor
+                Articles You 
                 <CustomTypography
                         variant="h2"
                         noWrap
                         component="div"
                         whiteSpace= "pre-wrap"
+                        color="red"
                 >
-                Feed: {'\n'}
+                liked {'\n'}
                 <CustomTypography
                         variant="h5"
                         noWrap
@@ -124,7 +129,7 @@ function ContributorFeed() {
                         whiteSpace= "pre-wrap"
                         color="#3A448C"
                 >
-                <em>Community Posts</em>
+                <em>Some of Your Favorites</em>
                 </CustomTypography>
                 </CustomTypography>
                 </CustomTypography>
@@ -152,4 +157,4 @@ function ContributorFeed() {
   
 
 
-export default ContributorFeed;
+export default LikedArticles;
