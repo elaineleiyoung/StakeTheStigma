@@ -9,7 +9,7 @@ import {useState} from 'react';
 import { doc, updateDoc, getDoc, arrayUnion, setDoc, arrayRemove } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
-import Comment from "./Comment";
+import Comment from "./comment";
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';

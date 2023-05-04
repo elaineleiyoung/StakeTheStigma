@@ -3,7 +3,7 @@ import { doc,  collection, query, getDocs, getFirestore, getDoc} from "firebase/
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
-import Article from './Article'
+import Article from './article'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import {Paper} from '@mui/material'
