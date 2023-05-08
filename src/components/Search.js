@@ -31,7 +31,6 @@ function Search() {
   // Defining variables used throughout this file
   const location = useLocation()
   const squery = useMemo(() => location.state.query, [location.state.query])
-  const API_KEY = 'AIzaSyBmN_FaKypjOKQQFrR91ClS76B0YG8bNZ0';
   // parameter for my Google PSE
   const cx = 'd5445a74cd13a432b'  
   const [links, setLinks] = useState([])
